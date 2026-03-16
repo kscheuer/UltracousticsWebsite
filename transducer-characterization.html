@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transducer Characterization | Ultracoustics</title>
+  <meta name="description" content="Non-contact broadband beam profile mapping for ultrasonic transducers. Full 0-5 MHz spatial characterization at 0.1 mm resolution in a single scan pass.">
+
+  <meta property="og:title" content="Transducer Characterization | Ultracoustics">
+  <meta property="og:description" content="Full broadband beam profiles in a single scan &mdash; 0 to 5 MHz at 0.1 mm resolution. No couplant, no water tank.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ultracoustics.ca/transducer-characterization.html">
+  <meta property="og:image" content="https://ultracoustics.ca/assets/images/Logos/cropped-BlackLogo-scaled-1.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/Logos/UltracousticsSquareLogo.png">
+  <link rel="canonical" href="https://ultracoustics.ca/transducer-characterization.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ultracoustics home">
+        <img src="assets/images/Logos/LogoMain.png" alt="Ultracoustics" style="height: 32px;">
+      </a>
+      <button class="nav__toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="broadsonic.html" class="nav__link">BROADSONIC</a>
+        <div class="nav__dropdown">
+          <span class="nav__link nav__dropdown-toggle">Applications</span>
+          <div class="nav__dropdown-menu">
+            <a href="leak-detection.html" class="nav__dropdown-item">Leak Detection</a>
+            <a href="partial-discharge.html" class="nav__dropdown-item">Partial Discharge</a>
+            <a href="ultrasonic-cleaning.html" class="nav__dropdown-item">Ultrasonic Cleaning</a>
+            <a href="transducer-characterization.html" class="nav__dropdown-item">Transducer Characterization</a>
+          </div>
+        </div>
+        <a href="research.html" class="nav__link">Research</a>
+        <div class="nav__dropdown">
+          <span class="nav__link nav__dropdown-toggle">About Us</span>
+          <div class="nav__dropdown-menu">
+            <a href="team.html" class="nav__dropdown-item">Team</a>
+            <a href="media.html" class="nav__dropdown-item">Media</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav__cta">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ====== Hero ====== -->
+    <section class="hero hero--short">
+      <div class="hero__bg-glow"></div>
+      <div class="container hero__content">
+        <div class="hero__grid">
+          <div>
+            <p class="hero__label">Application</p>
+            <h1 class="hero__title">Transducer Characterization</h1>
+            <p class="hero__desc">Full broadband beam profiles in a single scan &mdash; 0 to 5 MHz at 0.1 mm resolution. No couplant, no water tank, no repeat scans at different frequencies.</p>
+            <div class="hero__actions">
+              <a href="contact.html" class="btn btn--primary">Request a Scan</a>
+              <a href="#how-it-works" class="btn btn--secondary">How It Works</a>
+            </div>
+          </div>
+          <div>
+            <a href="assets/demos/transducer_characterization_1p5MHz.html" target="_blank" rel="noopener" class="demo-thumb">
+              <img src="assets/demos/transducer_characterization_1p5MHz.png" alt="Interactive transducer scan report — 1.5 MHz transducer at 0.1 mm resolution" style="max-width: 520px; margin-left: auto; width: 100%; border-radius: 12px; display: block;">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Key Value Props ====== -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">Why BROADSONIC Characterization</p>
+          <h2 class="section-header__title">One Scan Replaces Dozens</h2>
+          <p class="section-header__desc">A single BROADSONIC scan captures the complete 0&ndash;5 MHz spectrum at every spatial point. Conventional approaches require separate scans at each frequency of interest.</p>
+        </div>
+        <div class="app-cards fade-in">
+          <div class="app-card">
+            <div class="app-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-9 6 18 3-9h4"/></svg>
+            </div>
+            <h3 class="app-card__title">0&ndash;5 MHz Bandwidth</h3>
+            <p class="app-card__desc">Full broadband spectrum captured at every pixel in a single pass. No frequency pre-selection required.</p>
+          </div>
+          <div class="app-card">
+            <div class="app-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4m-2.93-7.07-2.83 2.83M7.76 16.24l-2.83 2.83m14.14 0-2.83-2.83M7.76 7.76 4.93 4.93"/></svg>
+            </div>
+            <h3 class="app-card__title">0.1 mm Resolution</h3>
+            <p class="app-card__desc">100 &mu;m spatial resolution from a single-point optical sensor. Resolve fine beam structure that larger sensors blur out.</p>
+          </div>
+          <div class="app-card">
+            <div class="app-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10l4.5 4.5"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <h3 class="app-card__title">Minutes per cm&sup2;</h3>
+            <p class="app-card__desc">Fast enough for production QA, not just one-off lab measurements. Results delivered within one week.</p>
+          </div>
+          <div class="app-card">
+            <div class="app-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+            </div>
+            <h3 class="app-card__title">Non-Contact</h3>
+            <p class="app-card__desc">No couplant, no water tank, no loading effects on the transducer under test. Measures the actual radiated acoustic field in air.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== What You Get ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="app-content fade-in">
+          <h2 style="margin-top: 0;">What You Get</h2>
+
+          <h3>Spatial Vibration Maps</h3>
+          <p>2D amplitude maps at any frequency of interest across the 0&ndash;5 MHz band. Each scan pixel contains a full frequency spectrum, so maps can be reconstructed at any frequency in post-processing. No need to decide on frequencies before scanning.</p>
+
+          <h3>Interactive Reports</h3>
+          <p>Results are delivered as a browser-based interactive HTML report that anyone can explore without specialized software &mdash; plus raw data files for further analysis.</p>
+
+          <h3>Measurement Specifications</h3>
+          <table class="comparison-table" style="max-width: 640px;">
+            <tbody>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Bandwidth</td>
+                <td>0&ndash;5 MHz, single pass</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Scan Area</td>
+                <td>Up to 20 &times; 20 cm</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Spatial Resolution</td>
+                <td>Down to 0.1 mm (100 &mu;m)</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Scan Speed</td>
+                <td>Minutes per cm&sup2; at fine resolution</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Contact</td>
+                <td>None &mdash; air-coupled, no couplant</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Supported Transducer Types</h3>
+          <ul>
+            <li>Single-element piezoelectric transducers</li>
+            <li>Phased arrays and multi-element transducers</li>
+            <li>CMUTs and PMUTs</li>
+            <li>Focused transducers</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== How It Works ====== -->
+    <section class="section" id="how-it-works" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">Process</p>
+          <h2 class="section-header__title">How It Works</h2>
+        </div>
+        <div class="how-steps fade-in">
+          <div class="how-step">
+            <div class="how-step__number">1</div>
+            <h3 class="how-step__title">Ship Your Transducer</h3>
+            <p class="how-step__desc">Send your transducer to Ultracoustics in Edmonton, Alberta.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step__number">2</div>
+            <h3 class="how-step__title">We Scan It</h3>
+            <p class="how-step__desc">BROADSONIC and a precision translation stage capture the full spatial acoustic field.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step__number">3</div>
+            <h3 class="how-step__title">Results in One Week</h3>
+            <p class="how-step__desc">Receive an interactive HTML report and raw data within one week of receiving your transducer.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step__number">4</div>
+            <h3 class="how-step__title">Transducer Returned</h3>
+            <p class="how-step__desc">Your transducer is shipped back to you safely.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== See It In Action ====== -->
+    <section class="section video-bg-section">
+      <video class="video-bg" autoplay muted loop playsinline preload="auto">
+        <source src="assets/Videos/TransducerScan.MOV" type="video/quicktime">
+        <source src="assets/Videos/TransducerScan.MOV" type="video/mp4">
+      </video>
+      <div class="video-bg-overlay"></div>
+      <div class="container" style="position: relative; z-index: 2;">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">See It In Action</p>
+          <h2 class="section-header__title">Scanning a Transducer Beam Profile</h2>
+          <p class="section-header__desc" style="max-width: 640px; margin-inline: auto;">A BROADSONIC sensor mounted on a precision translation stage scans the acoustic field of an ultrasonic transducer point-by-point. The full 0&ndash;5 MHz spectrum is captured at every position in a single pass.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Why This Application ====== -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="app-content fade-in">
+          <h2 style="margin-top: 0;">Why This Application Exists</h2>
+          <p>Conventional transducer characterization methods face fundamental limitations that BROADSONIC eliminates.</p>
+
+          <h3>Hydrophone Scanning</h3>
+          <p>Requires water immersion, couplant, and careful alignment. Critically, hydrophone scans are typically performed at a single frequency per pass &mdash; characterizing a transducer across its full bandwidth requires many separate scans. BROADSONIC captures the full 0&ndash;5 MHz bandwidth in a single pass.</p>
+
+          <h3>Laser Vibrometry</h3>
+          <p>Can achieve high resolution but requires direct optical access to the transducer face, costs $100K+ for the system, and measures surface velocity rather than radiated acoustic pressure.</p>
+
+          <h3>Conventional Air-Coupled Microphones</h3>
+          <p>Top out around 100 kHz. They simply cannot characterize MHz-range transducers. BROADSONIC offers 50&times; the bandwidth.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Who It's For ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">Industries</p>
+          <h2 class="section-header__title">Who Uses This</h2>
+        </div>
+        <div class="app-cards fade-in">
+          <div class="app-card">
+            <h3 class="app-card__title">Transducer Manufacturers</h3>
+            <p class="app-card__desc">QA/QC beam profile verification on production units.</p>
+          </div>
+          <div class="app-card">
+            <h3 class="app-card__title">NDT Equipment Companies</h3>
+            <p class="app-card__desc">Validate transducer performance and uniformity.</p>
+          </div>
+          <div class="app-card">
+            <h3 class="app-card__title">Research Groups</h3>
+            <p class="app-card__desc">Characterize custom or prototype transducers &mdash; CMUTs, PMUTs, phased arrays.</p>
+          </div>
+          <div class="app-card">
+            <h3 class="app-card__title">Medical Ultrasound</h3>
+            <p class="app-card__desc">Beam profile data for regulatory submissions or design validation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Interactive Demo ====== -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="fade-in">
+            <p class="section-header__label">Proof of Capability</p>
+            <h2 class="section-header__title">Explore a Real Scan</h2>
+            <p class="section-header__desc">Spatial vibration scan of a 1.5 MHz transducer at 0.1 mm resolution. Each pixel contains a full frequency spectrum across the 0&ndash;5 MHz band. Click to explore the interactive report.</p>
+            <a href="assets/demos/transducer_characterization_1p5MHz.html" target="_blank" rel="noopener" class="btn btn--primary" style="margin-top: 20px;">Open Interactive Report &rarr;</a>
+          </div>
+          <div class="fade-in">
+            <a href="assets/demos/transducer_characterization_1p5MHz.html" target="_blank" rel="noopener" class="demo-thumb">
+              <img src="assets/demos/transducer_characterization_1p5MHz.png" alt="Interactive transducer scan report" style="width: 100%; border-radius: 12px; display: block;">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Supporting Research ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="supporting-research fade-in">
+          <h2 class="supporting-research__title">Supporting Research</h2>
+
+          <div class="supporting-research__item">
+            <h3 class="supporting-research__item-title">Non-Contact Characterization of Plates Using a Turbulent Air-Jet Source and an Ultrasound Microphone</h3>
+            <p class="supporting-research__item-meta">MDPI NDT &middot; 2026</p>
+            <a href="assets/docs/Papers/Non-Contact%20Characterization%20of%20Plates%20Using%20a%20Turbulent%20Air-Jet%20Source%20and%20an%20Ultrasound%20Microphone.pdf" class="supporting-research__item-link">Download PDF &rarr;</a>
+          </div>
+
+          <div class="supporting-research__item">
+            <h3 class="supporting-research__item-title">Resonant Ultrasound Spectroscopy Detection Using a Non-Contact Ultrasound Microphone</h3>
+            <p class="supporting-research__item-meta">MDPI Sensors &middot; 2025</p>
+            <a href="assets/docs/Papers/Resonant%20Ultrasound%20Spectroscopy%20Detection%20Using%20a%20Non-Contact%20Ultrasound%20Microphone.pdf" class="supporting-research__item-link">Download PDF &rarr;</a>
+          </div>
+
+          <div class="supporting-research__item">
+            <h3 class="supporting-research__item-title">Air-Coupled Ultrasound Using Broadband Shock Waves from Piezoelectric Spark Igniters</h3>
+            <p class="supporting-research__item-meta">Applied Physics Letters &middot; 2024</p>
+            <a href="assets/docs/Papers/Air-coupled%20ultrasound%20using%20broadband%20shock%20waves%20from%20piezoelectric%20spark%20igniters.pdf" class="supporting-research__item-link">Download PDF &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CTA ====== -->
+    <section class="section">
+      <div class="container text-center">
+        <div class="section-header section-header--centered fade-in">
+          <h2 class="section-header__title">Get a Quote for Transducer Characterization</h2>
+          <p class="section-header__desc">Per-scan pricing available. Tell us about your transducer and we'll provide a quote.</p>
+        </div>
+        <div class="fade-in">
+          <a href="contact.html" class="btn btn--primary btn--lg">Request a Scan</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">
+            <img src="assets/images/Logos/LogoMain.png" alt="Ultracoustics" style="height: 32px;">
+          </div>
+          <p class="footer__desc">Ultracoustics Technologies Ltd. Edmonton-based deep tech building the world's most advanced ultrasonic microphone.</p>
+          <div class="footer__social">
+            <a href="https://www.linkedin.com/company/ultracoustics/" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/ultracoustics/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Product</h4>
+          <a href="broadsonic.html" class="footer__link">BROADSONIC</a>
+          <a href="research.html" class="footer__link">Research</a>
+          <a href="assets/docs/BroadsonicDatasheet20260313%20(1).pdf" class="footer__link">Datasheet (PDF)</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Applications</h4>
+          <a href="leak-detection.html" class="footer__link">Leak Detection</a>
+          <a href="partial-discharge.html" class="footer__link">Partial Discharge</a>
+          <a href="ultrasonic-cleaning.html" class="footer__link">Ultrasonic Cleaning</a>
+          <a href="transducer-characterization.html" class="footer__link">Transducer Characterization</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Contact</h4>
+          <a href="mailto:kyle@ultracoustics.ca" class="footer__link">kyle@ultracoustics.ca</a>
+          <p class="footer__link" style="cursor:default;color:var(--text-secondary);">Suite 4-263, 103 St NW<br>Edmonton, AB T5J 0B2</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Ultracoustics Technologies Ltd.</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+</body>
+</html>

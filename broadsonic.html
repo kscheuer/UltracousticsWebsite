@@ -72,6 +72,7 @@
             <a href="leak-detection.html" class="nav__dropdown-item">Leak Detection</a>
             <a href="partial-discharge.html" class="nav__dropdown-item">Partial Discharge</a>
             <a href="ultrasonic-cleaning.html" class="nav__dropdown-item">Ultrasonic Cleaning</a>
+            <a href="transducer-characterization.html" class="nav__dropdown-item">Transducer Characterization</a>
           </div>
         </div>
         <a href="research.html" class="nav__link">Research</a>
@@ -128,6 +129,34 @@
           </div>
           <div class="product-hero-img">
             <img src="assets/images/Product/Transparent/Transparent_Probe.png" alt="BROADSONIC sensor probe">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Frequency Spectrum Visualizer ====== -->
+    <section class="section spectrum-section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">Bandwidth Advantage</p>
+          <h2 class="section-header__title">See the Frequency Spectrum</h2>
+          <p class="section-header__desc">BROADSONIC covers a frequency range that no other air-coupled sensor can reach.</p>
+        </div>
+        <div class="spectrum-canvas-wrap fade-in">
+          <canvas id="spectrumCanvas"></canvas>
+        </div>
+        <div class="spectrum-labels fade-in">
+          <div class="spectrum-label">
+            <span class="spectrum-label__dot" style="background: #4ade80;"></span>
+            <span style="color: var(--text-secondary);">Human Hearing (20 Hz &ndash; 20 kHz)</span>
+          </div>
+          <div class="spectrum-label">
+            <span class="spectrum-label__dot" style="background: #f59e0b;"></span>
+            <span style="color: var(--text-secondary);">Conventional Ultrasonic Mic (&le; 100 kHz)</span>
+          </div>
+          <div class="spectrum-label">
+            <span class="spectrum-label__dot" style="background: var(--accent);"></span>
+            <span style="color: var(--text-primary); font-weight: 600;">BROADSONIC (20 Hz &ndash; 5 MHz)</span>
           </div>
         </div>
       </div>
@@ -364,6 +393,7 @@
           <a href="leak-detection.html" class="footer__link">Leak Detection</a>
           <a href="partial-discharge.html" class="footer__link">Partial Discharge</a>
           <a href="ultrasonic-cleaning.html" class="footer__link">Ultrasonic Cleaning</a>
+          <a href="transducer-characterization.html" class="footer__link">Transducer Characterization</a>
         </div>
         <div>
           <h4 class="footer__heading">Contact</h4>
@@ -379,6 +409,17 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- Sticky CTA Bar -->
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta__inner">
+      <div class="sticky-cta__text"><strong>BROADSONIC</strong> &mdash; 5 MHz optical ultrasonic sensor. Ready to evaluate?</div>
+      <div class="sticky-cta__actions">
+        <a href="contact.html" class="btn btn--primary btn--sm">Request a Demo</a>
+        <a href="assets/docs/BroadsonicDatasheet20260313%20(1).pdf" class="btn btn--secondary btn--sm">Datasheet</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Back to Top -->
   <button class="back-to-top" id="backToTop" aria-label="Back to top">
