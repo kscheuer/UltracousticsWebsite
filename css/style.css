@@ -170,13 +170,9 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-.nav__logo-triangle {
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 17px solid var(--accent);
-  flex-shrink: 0;
+.nav__logo img {
+  height: 44px;
+  width: auto;
 }
 
 .nav__links {
@@ -679,7 +675,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Team Grid --- */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 32px;
 }
 
@@ -1171,6 +1167,18 @@ h1, h2, h3, h4, h5, h6 {
 .media-item__desc {
   font-size: 14px;
   color: var(--text-secondary);
+}
+
+/* --- Product Images --- */
+.product-hero-img {
+  max-width: 520px;
+  margin-left: auto;
+}
+
+.product-hero-img img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ==========================================================================
