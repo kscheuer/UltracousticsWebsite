@@ -12,12 +12,47 @@
   <meta property="og:url" content="https://ultracoustics.ca/broadsonic.html">
   <meta property="og:image" content="https://ultracoustics.ca/assets/images/Logos/cropped-BlackLogo-scaled-1.jpg">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/Logos/UltracousticsSquareLogo.png">
+  <link rel="canonical" href="https://ultracoustics.ca/broadsonic.html">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "BROADSONIC Optical Ultrasonic Sensor",
+    "brand": {
+      "@type": "Brand",
+      "name": "Ultracoustics"
+    },
+    "description": "5 MHz bandwidth optical ultrasonic sensor using Fabry-Perot interferometry. Non-contact, air-coupled acoustic sensing with 250x the frequency range of human hearing.",
+    "image": "https://ultracoustics.ca/assets/images/Product/Transparent/Transparent_Box.png",
+    "url": "https://ultracoustics.ca/broadsonic.html",
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Ultracoustics Technologies Ltd.",
+      "url": "https://ultracoustics.ca"
+    },
+    "category": "Ultrasonic Sensors",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://ultracoustics.ca/contact.html",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "CAD"
+    }
+  }
+  </script>
 </head>
 <body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- ====== Navigation ====== -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -55,6 +90,7 @@
   <main>
     <!-- ====== Hero ====== -->
     <section class="hero hero--short">
+      <div class="hero__mesh"></div>
       <div class="hero__bg-glow"></div>
       <div class="container hero__content">
         <div class="hero__grid">
@@ -343,5 +379,10 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 </body>
 </html>

@@ -13,14 +13,51 @@
   <meta property="og:url" content="https://ultracoustics.ca/">
   <meta property="og:image" content="https://ultracoustics.ca/assets/images/Logos/cropped-BlackLogo-scaled-1.jpg">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/Logos/UltracousticsSquareLogo.png">
+  <link rel="canonical" href="https://ultracoustics.ca/">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Ultracoustics Technologies Ltd.",
+    "url": "https://ultracoustics.ca",
+    "logo": "https://ultracoustics.ca/assets/images/Logos/LogoMain.png",
+    "description": "Edmonton-based deep tech company building the world's most advanced ultrasonic microphone. BROADSONIC optical ultrasonic sensor with 5 MHz bandwidth for leak detection, partial discharge monitoring, and ultrasonic cleaning QA.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Suite 4-263, 103 St NW",
+      "addressLocality": "Edmonton",
+      "addressRegion": "AB",
+      "postalCode": "T5J 0B2",
+      "addressCountry": "CA"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "kyle@ultracoustics.ca",
+      "telephone": "+1-780-232-8721",
+      "contactType": "sales"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/ultracoustics/",
+      "https://www.instagram.com/ultracoustics/"
+    ]
+  }
+  </script>
 </head>
 <body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- ====== Navigation ====== -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -62,12 +99,13 @@
   <main>
     <!-- ====== Hero ====== -->
     <section class="hero">
+      <div class="hero__mesh"></div>
       <div class="hero__bg-glow"></div>
       <div class="container hero__content">
         <div class="hero__grid">
           <div>
             <p class="hero__label">Optical Ultrasonic Sensor</p>
-            <h1 class="hero__title">The World's Most Advanced Ultrasonic Microphone</h1>
+            <h1 class="hero__title">The World's Most Advanced <span class="text-gradient">Ultrasonic Microphone</span></h1>
             <p class="hero__subtitle">Non-Contact. Unparalleled Bandwidth. Ultra-Sensitive.</p>
             <p class="hero__desc">From 20 Hz to 5 MHz, BROADSONIC captures acoustic information that no other air-coupled sensor can reach.</p>
             <div class="hero__actions">
@@ -77,6 +115,30 @@
           </div>
           <div class="product-hero-img">
             <img src="assets/images/Product/Transparent/Transparent_Box.png" alt="BROADSONIC control unit and sensor head">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Trust Stats Bar ====== -->
+    <section class="trust-bar">
+      <div class="container">
+        <div class="trust-bar__grid">
+          <div class="trust-bar__item fade-in">
+            <span class="trust-bar__number" data-counter="5">0</span>
+            <span class="trust-bar__label">MHz Bandwidth</span>
+          </div>
+          <div class="trust-bar__item fade-in">
+            <span class="trust-bar__number"><span data-counter="10">0</span>+</span>
+            <span class="trust-bar__label">Peer-Reviewed Papers</span>
+          </div>
+          <div class="trust-bar__item fade-in">
+            <span class="trust-bar__number" data-counter="3">0</span>
+            <span class="trust-bar__label">Target Industries</span>
+          </div>
+          <div class="trust-bar__item fade-in">
+            <span class="trust-bar__number"><span data-counter="12">0</span>+</span>
+            <span class="trust-bar__label">Research &amp; Industry Partners</span>
           </div>
         </div>
       </div>
@@ -176,6 +238,24 @@
         </div>
       </div>
     </section>
+
+    <!-- ====== Partner Logos Strip ====== -->
+    <section class="section--tight">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">Ecosystem</p>
+          <h2 class="section-header__title">Backed by Leading Institutions</h2>
+        </div>
+        <div class="partners-grid fade-in" style="max-width: 900px; margin: 0 auto;">
+          <img src="assets/images/Logos/ERA-Logo.png" alt="Emissions Reduction Alberta" class="partner-logo" style="background: #e8e8e8; border-radius: 8px; padding: 16px; border: 1px solid #ddd; object-fit: contain;">
+          <img src="assets/images/Logos/Alberta_Innovates_logo.svg_.png" alt="Alberta Innovates" class="partner-logo" style="background: #e8e8e8; border-radius: 8px; padding: 16px; border: 1px solid #ddd; object-fit: contain;">
+          <img src="assets/images/Logos/ua_logo_green_rgb.png" alt="University of Alberta" class="partner-logo" style="background: #e8e8e8; border-radius: 8px; padding: 16px; border: 1px solid #ddd; object-fit: contain;">
+          <img src="assets/images/Logos/National_Research_Council_Canada_logo.svg_-1.png" alt="National Research Council Canada" class="partner-logo" style="background: #e8e8e8; border-radius: 8px; padding: 16px; border: 1px solid #ddd; object-fit: contain;">
+          <img src="assets/images/Logos/Mitacs_logo_blue-scaled-1.webp" alt="Mitacs" class="partner-logo" style="background: #e8e8e8; border-radius: 8px; padding: 16px; border: 1px solid #ddd; object-fit: contain;">
+          <img src="assets/images/Logos/NANOFAB-CMYK_UofA_flat.png" alt="nanoFAB" class="partner-logo" style="background: #e8e8e8; border-radius: 8px; padding: 16px; border: 1px solid #ddd; object-fit: contain;">
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ====== Footer ====== -->
@@ -184,8 +264,7 @@
       <div class="footer__grid">
         <div>
           <div class="footer__brand">
-            <span class="nav__logo-triangle" aria-hidden="true"></span>
-            ULTRACOUSTICS
+            <img src="assets/images/Logos/LogoMain.png" alt="Ultracoustics">
           </div>
           <p class="footer__desc">Ultracoustics Technologies Ltd. Edmonton-based deep tech building the world's most advanced ultrasonic microphone.</p>
           <div class="footer__social">
@@ -223,5 +302,10 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 </body>
 </html>

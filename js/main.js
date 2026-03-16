@@ -105,4 +105,34 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // --- Scroll Progress Indicator ---
+  var scrollProgress = document.getElementById('scrollProgress');
+  var backToTop = document.getElementById('backToTop');
+
+  if (scrollProgress || backToTop) {
+    window.addEventListener('scroll', function () {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+      if (scrollProgress) {
+        scrollProgress.style.width = scrollPercent + '%';
+      }
+
+      if (backToTop) {
+        if (scrollTop > 400) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      }
+    }, { passive: true });
+  }
+
+  if (backToTop) {
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
 });

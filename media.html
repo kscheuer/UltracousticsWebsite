@@ -12,12 +12,19 @@
   <meta property="og:url" content="https://ultracoustics.ca/media.html">
   <meta property="og:image" content="https://ultracoustics.ca/assets/images/Logos/cropped-BlackLogo-scaled-1.jpg">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/Logos/UltracousticsSquareLogo.png">
+  <link rel="canonical" href="https://ultracoustics.ca/media.html">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- ====== Navigation ====== -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -73,25 +80,34 @@
 
         <div class="media-grid fade-in">
           <div class="media-item">
-            <div class="video-embed">
-              <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/TPuigJZ0_ek" title="Arc Lighter Demo: Partial Discharge Detection" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
-            </div>
+            <a href="https://www.youtube.com/watch?v=TPuigJZ0_ek" target="_blank" rel="noopener" class="video-thumb">
+              <img src="https://img.youtube.com/vi/TPuigJZ0_ek/hqdefault.jpg" alt="Arc Lighter Demo: Partial Discharge Detection" loading="lazy">
+              <div class="video-thumb__play">
+                <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.64 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#FF0000"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
+              </div>
+            </a>
             <h3 class="media-item__title">Arc Lighter Demo: Partial Discharge Detection</h3>
             <p class="media-item__desc">BROADSONIC detecting discharge events from an arc lighter at 1 meter standoff distance with exceptional signal-to-noise ratio.</p>
           </div>
 
           <div class="media-item">
-            <div class="video-embed">
-              <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/QcxpJtcQ81Y?start=93" title="Hanover Messe: Supply Chain Interview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
-            </div>
+            <a href="https://www.youtube.com/watch?v=QcxpJtcQ81Y&t=93" target="_blank" rel="noopener" class="video-thumb">
+              <img src="https://img.youtube.com/vi/QcxpJtcQ81Y/hqdefault.jpg" alt="Hanover Messe: Supply Chain Interview" loading="lazy">
+              <div class="video-thumb__play">
+                <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.64 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#FF0000"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
+              </div>
+            </a>
             <h3 class="media-item__title">Hanover Messe: Supply Chain Interview</h3>
             <p class="media-item__desc">Kyle Scheuer discusses Ultracoustics and the supply chain at Hanover Messe, one of the world's largest industrial technology trade fairs.</p>
           </div>
 
           <div class="media-item">
-            <div class="video-embed">
-              <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/XI-rxwNafaI?start=1" title="ICG Promo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
-            </div>
+            <a href="https://www.youtube.com/watch?v=XI-rxwNafaI&t=1" target="_blank" rel="noopener" class="video-thumb">
+              <img src="https://img.youtube.com/vi/XI-rxwNafaI/hqdefault.jpg" alt="ICG Promo Video" loading="lazy">
+              <div class="video-thumb__play">
+                <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.64 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#FF0000"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
+              </div>
+            </a>
             <h3 class="media-item__title">ICG Success Story</h3>
             <p class="media-item__desc">Ultracoustics featured in the Innovation Capital Group promotional video, highlighting the company's deep-tech journey from lab to market.</p>
           </div>
@@ -163,5 +179,10 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 </body>
 </html>
