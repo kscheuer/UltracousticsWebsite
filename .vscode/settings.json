@@ -3,6 +3,7 @@
         "/^\\$htmlFiles = Get-ChildItem \"c:\\\\Users\\\\scheu\\\\Documents\\\\UltracousticsWebsite\\\\\\*\\.html\"\nforeach \\(\\$file in \\$htmlFiles\\) \\{\n    \\$content = Get-Content \\$file\\.FullName -Raw\n    # Replace nav logo: triangle span \\+ ULTRACOUSTICS text\n    \\$content = \\$content -replace '<span class=\"nav__logo-triangle\" aria-hidden=\"true\"></span>\\\\s\\*\\\\n\\\\s\\*ULTRACOUSTICS', '<img src=\"assets/images/Logos/LogoMain\\.png\" alt=\"Ultracoustics\" style=\"height: 32px;\">'\n    Set-Content \\$file\\.FullName \\$content -NoNewline\n    Write-Host \"Updated: \\$\\(\\$file\\.Name\\)\"\n\\}$/": {
             "approve": true,
             "matchCommandLine": true
-        }
+        },
+        "&": true
     }
 }

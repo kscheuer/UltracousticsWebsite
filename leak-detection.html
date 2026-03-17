@@ -33,10 +33,26 @@
     "mainEntity": [
       {
         "@type": "Question",
+        "name": "What is the smallest leak BROADSONIC can detect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Published measurements in the Journal of the Acoustical Society of America (2025) demonstrated detection of leaks from orifices as small as 5 μm, with a minimum detectable leak rate of approximately 0.6 SCCM — roughly 100× more sensitive than the ~60 SCCM threshold of conventional ultrasonic leak detectors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can BROADSONIC estimate the size of a leak, not just detect it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Published data show that both acoustic power and peak emission frequency scale predictably with orifice size and driving pressure. This means both the hole diameter and the leak rate can be estimated from a single spectral measurement — not just detect/no-detect."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "What types of gas leaks can BROADSONIC detect?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "BROADSONIC is gas-agnostic — it detects the turbulent flow from any pressurized gas leak, not the gas composition itself. This includes natural gas, compressed air, nitrogen, hydrogen, refrigerants, and any other pressurized medium."
+          "text": "BROADSONIC is gas-agnostic — it detects the turbulent flow from any pressurized gas leak, not the gas composition itself. Published experiments confirmed that spectral features depend on orifice geometry and pressure, not the gas species. This includes natural gas, compressed air, nitrogen, hydrogen, refrigerants, and any other pressurized medium."
         }
       },
       {
@@ -44,7 +60,7 @@
         "name": "How does ultrasonic leak detection work in noisy industrial environments?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Industrial noise concentrates below 100 kHz, while leak signatures extend to MHz frequencies. BROADSONIC's 5 MHz bandwidth allows detection algorithms to operate in frequency bands with minimal background interference, even near compressors, pumps, and other loud machinery."
+          "text": "Industrial noise concentrates below 100 kHz, while leak signatures extend to MHz frequencies where measured signal levels lie orders of magnitude above the sensor's noise floor. BROADSONIC's 5 MHz bandwidth allows detection algorithms to operate in frequency bands with minimal background interference, even near compressors, pumps, and other loud machinery."
         }
       },
       {
@@ -52,7 +68,7 @@
         "name": "Does the sensor need to be pointed directly at the leak?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. BROADSONIC has greater than ±60° omnidirectional response, so it does not need to be aimed directly at a leak source. It responds to acoustic energy from a wide range of angles, simplifying deployment and enabling area monitoring."
+          "text": "No. BROADSONIC has greater than ±60° omnidirectional response and does not need to be aimed directly at a leak source. Published measurements confirmed off-axis and off-position detection with spectral content clearly visible above the noise floor."
         }
       },
       {
@@ -60,7 +76,7 @@
         "name": "How is BROADSONIC different from optical gas imaging (OGI)?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "OGI cameras rely on infrared absorption and can only detect specific gases. BROADSONIC detects the acoustic signature of turbulent flow, making it completely gas-agnostic. It also works in any lighting condition and does not require line-of-sight to the leak point."
+          "text": "OGI cameras rely on infrared absorption and can only detect specific gases. BROADSONIC detects the acoustic signature of turbulent flow, making it completely gas-agnostic. It also works in any lighting condition, does not require line-of-sight to the leak point, and its all-optical sensor head is intrinsically safe in hazardous atmospheres."
         }
       }
     ]
@@ -128,27 +144,63 @@
       </div>
     </section>
 
-    <!-- ====== Content ====== -->
+    <!-- ====== Key Results ====== -->
     <section class="section">
       <div class="container">
-        <div class="app-content fade-in">
-          <h3 style="margin-top: 0;">Why Ultrasonic Leak Detection?</h3>
-          <p>Pressurized gas leaks produce broadband ultrasonic emissions as turbulent flow exits through small orifices. These acoustic signatures extend well into the MHz range, far above ambient industrial noise. BROADSONIC captures this full spectrum with 5 MHz bandwidth, enabling detection of leaks that conventional acoustic sensors miss entirely.</p>
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">Measured Performance</p>
+          <h2 class="section-header__title">Quantified Leak Detection Performance</h2>
+          <p class="section-header__desc">Every claim below is backed by measured data published in peer-reviewed journals.</p>
+        </div>
+        <div class="features-grid fade-in" style="margin-top: 32px;">
+          <div class="feature-card">
+            <div class="feature-card__icon" style="font-size: 2rem;">5&thinsp;&mu;m</div>
+            <h3 class="feature-card__title">Smallest Orifice Detected</h3>
+            <p class="feature-card__desc">Resolved leak signatures from a 5&thinsp;&mu;m pinhole &mdash; smaller than a red blood cell. Conventional ultrasonic detectors cannot resolve leaks at this scale.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" style="font-size: 2rem;">0.6&thinsp;SCCM</div>
+            <h3 class="feature-card__title">Minimum Detectable Leak Rate</h3>
+            <p class="feature-card__desc">Detects leak rates as low as ~0.6&thinsp;SCCM &mdash; approximately 100&times; more sensitive than the ~60&thinsp;SCCM threshold of conventional ultrasonic leak detectors.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" style="font-size: 2rem;">5&thinsp;MHz</div>
+            <h3 class="feature-card__title">Detection Bandwidth</h3>
+            <p class="feature-card__desc">Leak spectra captured across the full 0&ndash;5&thinsp;MHz band, where conventional microphones capture only the low-frequency tail below ~100&thinsp;kHz.<sup><a href="assets/docs/Papers/All-Optical%2C%20Air-Coupled%20Ultrasonic%20Detection%20of%20Low-Pressure%20Gas%20Leaks%20and%20Observation%20of%20Jet%20Tones%20in%20the%20MHz%20Range.pdf" title="Sensors 2023" style="color:var(--accent);">[2]</a></sup></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" style="font-size: 2rem;">Sizing</div>
+            <h3 class="feature-card__title">Quantitative Leak Sizing</h3>
+            <p class="feature-card__desc">Spectral signatures encode both the orifice size and leak rate, allowing quantitative estimation from a single measurement &mdash; not just detect/no-detect.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <h3>Proven Micro-Leak Sensitivity</h3>
-          <p>In industrial pilot testing, BROADSONIC detected micro-scale gas leaks from orifices as small as 5 &mu;m at close range &mdash; leaks that conventional heated diode detectors failed to identify. This level of sensitivity opens the door to early-stage leak detection before leaks escalate into safety or environmental incidents.</p>
+    <!-- ====== Content ====== -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="app-content fade-in">
+          <h3 style="margin-top: 0;">Why Broadband Ultrasonic Leak Detection?</h3>
+          <p>Pressurized gas escaping through a small orifice generates turbulent flow whose acoustic emissions extend well into the MHz range. Conventional ultrasonic leak detectors operate below 100&thinsp;kHz and capture only the low-frequency tail of this spectrum. BROADSONIC's 5&thinsp;MHz bandwidth records the full emission, revealing spectral features &mdash; including discrete jet tones at specific MHz frequencies &mdash; that are invisible to narrowband instruments.<sup><a href="assets/docs/Papers/All-Optical%2C%20Air-Coupled%20Ultrasonic%20Detection%20of%20Low-Pressure%20Gas%20Leaks%20and%20Observation%20of%20Jet%20Tones%20in%20the%20MHz%20Range.pdf" title="Sensors 2023" style="color:var(--accent);">[2]</a></sup></p>
+
+          <h3>Micro-Scale Sensitivity</h3>
+          <p>Laboratory measurements published in the <em>Journal of the Acoustical Society of America</em> (2025) demonstrate detection of leaks from orifices as small as 5&thinsp;&mu;m, with a minimum detectable leak rate of ~0.6&thinsp;SCCM. This is roughly 100&times; below the ~60&thinsp;SCCM threshold of widely deployed conventional detectors, enabling early-stage leak identification before leaks escalate into safety or environmental incidents.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
+
+          <h3>Quantitative Leak Sizing</h3>
+          <p>Leak emissions are not just detectable &mdash; they carry quantitative information. Published data show that both acoustic power and peak emission frequency scale predictably with orifice size and driving pressure. This means both the hole diameter and the leak rate can be estimated from a single spectral measurement, without prior knowledge of the gas type.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
 
           <h3>Gas-Agnostic by Design</h3>
-          <p>Unlike infrared or optical gas imaging (OGI) methods that rely on molecular absorption of specific gases, ultrasonic detection is fundamentally acoustic. It responds to the turbulent flow itself, not the gas composition. This means BROADSONIC detects leaks regardless of the gas involved: natural gas, compressed air, nitrogen, refrigerants, hydrogen, or any other pressurized medium.</p>
+          <p>Unlike infrared or optical gas imaging (OGI) methods that rely on molecular absorption of specific gases, ultrasonic detection is fundamentally acoustic &mdash; it responds to turbulent flow, not gas composition. Published measurements confirmed that spectral features depend on orifice geometry and pressure, not the gas species.<sup><a href="assets/docs/Papers/All-Optical%2C%20Air-Coupled%20Ultrasonic%20Detection%20of%20Low-Pressure%20Gas%20Leaks%20and%20Observation%20of%20Jet%20Tones%20in%20the%20MHz%20Range.pdf" title="Sensors 2023" style="color:var(--accent);">[2]</a></sup> BROADSONIC detects leaks regardless of the gas involved: natural gas, compressed air, nitrogen, refrigerants, hydrogen, or any other pressurized medium.</p>
 
-          <h3>Omnidirectional Sensitivity</h3>
-          <p>With greater than &pm;60 degrees of omnidirectionality, BROADSONIC does not need to be aimed directly at a leak source. The sensor responds to acoustic energy arriving from a wide range of angles, simplifying deployment and enabling area monitoring without precise positioning.</p>
+          <h3>Omnidirectional Detection at Standoff Distance</h3>
+          <p>With greater than &pm;60&deg; omnidirectional response, BROADSONIC does not need to be aimed directly at a leak source. Published measurements confirmed off-axis and off-position detection with spectral content clearly visible above the noise floor.<sup><a href="assets/docs/Papers/All-Optical%2C%20Air-Coupled%20Ultrasonic%20Detection%20of%20Low-Pressure%20Gas%20Leaks%20and%20Observation%20of%20Jet%20Tones%20in%20the%20MHz%20Range.pdf" title="Sensors 2023" style="color:var(--accent);">[2]</a></sup> This simplifies deployment for area monitoring without precise positioning.</p>
 
           <h3>Performance in High-Noise Environments</h3>
-          <p>Industrial facilities are acoustically noisy, but most of that noise concentrates below 100 kHz. Leak signatures extend to MHz frequencies where the background is quiet. BROADSONIC's 5 MHz bandwidth allows detection algorithms to operate in frequency bands with minimal interference, achieving reliable detection even near compressors, pumps, and other loud machinery.</p>
+          <p>Industrial noise concentrates below 100&thinsp;kHz. Leak signatures extend to MHz frequencies where measured signal levels lie orders of magnitude above the sensor&rsquo;s noise floor.<sup><a href="assets/docs/Papers/All-Optical%2C%20Air-Coupled%20Ultrasonic%20Detection%20of%20Low-Pressure%20Gas%20Leaks%20and%20Observation%20of%20Jet%20Tones%20in%20the%20MHz%20Range.pdf" title="Sensors 2023" style="color:var(--accent);">[2]</a></sup> BROADSONIC's 5&thinsp;MHz bandwidth allows detection algorithms to operate in frequency bands with minimal interference, achieving reliable detection even near compressors, pumps, and other loud machinery.</p>
 
-          <h3>Non-Contact, Standoff Detection</h3>
-          <p>BROADSONIC operates entirely in air with no physical contact required. The sensor head contains no electrical elements, providing inherent immunity to electromagnetic interference. The fiber-coupled design allows the lightweight 3 g sensor head to be positioned flexibly while the control unit remains in a convenient location up to 3 meters away.</p>
+          <h3>Non-Contact, All-Optical Operation</h3>
+          <p>The sensor head contains no electrical elements &mdash; detection is entirely optical, providing inherent immunity to electromagnetic interference and intrinsic safety in hazardous or explosive atmospheres.<sup><a href="assets/docs/Papers/All-Optical%2C%20Air-Coupled%20Ultrasonic%20Detection%20of%20Low-Pressure%20Gas%20Leaks%20and%20Observation%20of%20Jet%20Tones%20in%20the%20MHz%20Range.pdf" title="Sensors 2023" style="color:var(--accent);">[2]</a></sup> The fiber-coupled design allows the lightweight 3&thinsp;g sensor head to be positioned flexibly while the control unit remains up to 3&thinsp;meters away.</p>
         </div>
 
         <div class="fade-in" style="margin-top: 48px;">
@@ -194,31 +246,45 @@
         <div class="faq fade-in">
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
+              What is the smallest leak BROADSONIC can detect?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>Published measurements in the <em>Journal of the Acoustical Society of America</em> (2025) demonstrated detection of leaks from orifices as small as 5&thinsp;&mu;m, with a minimum detectable leak rate of ~0.6&thinsp;SCCM &mdash; roughly 100&times; more sensitive than the ~60&thinsp;SCCM threshold of conventional ultrasonic leak detectors.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              Can BROADSONIC estimate the size of a leak, not just detect it?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>Yes. Published data show that both acoustic power and peak emission frequency scale predictably with orifice size and driving pressure. This means both the hole diameter and the leak rate can be estimated from a single spectral measurement &mdash; not just detect/no-detect.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
               What types of gas leaks can BROADSONIC detect?
               <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
-            <div class="faq__answer"><p>BROADSONIC is gas-agnostic — it detects the turbulent flow from any pressurized gas leak, not the gas composition itself. This includes natural gas, compressed air, nitrogen, hydrogen, refrigerants, and any other pressurized medium.</p></div>
+            <div class="faq__answer"><p>BROADSONIC is gas-agnostic &mdash; it detects the turbulent flow from any pressurized gas leak, not the gas composition. Published experiments confirmed that spectral features depend on orifice geometry and pressure, not the gas species. This includes natural gas, compressed air, nitrogen, hydrogen, refrigerants, and any other pressurized medium.</p></div>
           </div>
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
               How does ultrasonic leak detection work in noisy industrial environments?
               <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
-            <div class="faq__answer"><p>Industrial noise concentrates below 100 kHz, while leak signatures extend to MHz frequencies. BROADSONIC's 5 MHz bandwidth allows detection algorithms to operate in frequency bands with minimal background interference, even near compressors, pumps, and other loud machinery.</p></div>
+            <div class="faq__answer"><p>Industrial noise concentrates below 100&thinsp;kHz, while leak signatures extend to MHz frequencies where measured signal levels lie orders of magnitude above the sensor&rsquo;s noise floor. BROADSONIC's 5&thinsp;MHz bandwidth allows detection algorithms to operate in frequency bands with minimal background interference, even near compressors, pumps, and other loud machinery.</p></div>
           </div>
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
               Does the sensor need to be pointed directly at the leak?
               <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
-            <div class="faq__answer"><p>No. BROADSONIC has greater than &pm;60&deg; omnidirectional response, so it does not need to be aimed directly at a leak source. It responds to acoustic energy from a wide range of angles, simplifying deployment and enabling area monitoring.</p></div>
+            <div class="faq__answer"><p>No. BROADSONIC has greater than &pm;60&deg; omnidirectional response and does not need to be aimed directly at a leak source. Published measurements confirmed off-axis and off-position detection with spectral content clearly visible above the noise floor.</p></div>
           </div>
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">
               How is BROADSONIC different from optical gas imaging (OGI)?
               <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
-            <div class="faq__answer"><p>OGI cameras rely on infrared absorption and can only detect specific gases. BROADSONIC detects the acoustic signature of turbulent flow, making it completely gas-agnostic. It also works in any lighting condition and does not require line-of-sight to the leak point.</p></div>
+            <div class="faq__answer"><p>OGI cameras rely on infrared absorption and can only detect specific gases. BROADSONIC detects the acoustic signature of turbulent flow, making it completely gas-agnostic. It also works in any lighting condition, does not require line-of-sight to the leak point, and its all-optical sensor head is intrinsically safe in hazardous atmospheres.</p></div>
           </div>
         </div>
       </div>
