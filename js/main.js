@@ -151,9 +151,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   }
 
+  // --- Reduced Motion Check ---
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // --- Typing Ticker (Homepage) ---
   var tickerEl = document.getElementById('heroTicker');
-  if (tickerEl) {
+  if (tickerEl && !prefersReducedMotion) {
     var tickerWords = ['Leak Detection', 'Partial Discharge', 'Ultrasonic Cleaning', 'NDT', 'Research', 'Transducer Characterization'];
     var wordIndex = 0;
     var charIndex = tickerWords[0].length;
@@ -189,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- Frequency Spectrum Visualizer (BROADSONIC page) ---
   var specCanvas = document.getElementById('spectrumCanvas');
-  if (specCanvas) {
+  if (specCanvas && !prefersReducedMotion) {
     var ctx = specCanvas.getContext('2d');
     var dpr = window.devicePixelRatio || 1;
     var animTime = 0;
@@ -369,6 +372,73 @@ document.addEventListener('DOMContentLoaded', function () {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     specObserver.observe(specCanvas);
+  }
+
+  // --- Contact Form Feedback ---
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    var submitBtn = document.getElementById('contactSubmit');
+    var statusEl = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Clear previous state
+      statusEl.className = 'form__status';
+      statusEl.textContent = '';
+      contactForm.querySelectorAll('.form__input--invalid, .form__textarea--invalid').forEach(function (el) {
+        el.classList.remove('form__input--invalid', 'form__textarea--invalid');
+      });
+
+      // Validate
+      var name = contactForm.querySelector('#name');
+      var email = contactForm.querySelector('#email');
+      var message = contactForm.querySelector('#message');
+      var valid = true;
+
+      if (!name.value.trim()) {
+        name.classList.add('form__input--invalid');
+        valid = false;
+      }
+      if (!email.value.trim() || !email.validity.valid) {
+        email.classList.add('form__input--invalid');
+        valid = false;
+      }
+      if (!message.value.trim()) {
+        message.classList.add('form__textarea--invalid');
+        valid = false;
+      }
+
+      if (!valid) {
+        statusEl.className = 'form__status form__status--error';
+        statusEl.textContent = 'Please fill in all fields correctly.';
+        return;
+      }
+
+      // Submit via fetch
+      submitBtn.classList.add('btn--sending');
+      submitBtn.textContent = 'Sending...';
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (response) {
+        if (response.ok) {
+          statusEl.className = 'form__status form__status--success';
+          statusEl.textContent = 'Message sent! We\'ll get back to you soon.';
+          contactForm.reset();
+        } else {
+          throw new Error('Server error');
+        }
+      }).catch(function () {
+        statusEl.className = 'form__status form__status--error';
+        statusEl.textContent = 'Something went wrong. Please email kyle@ultracoustics.ca directly.';
+      }).finally(function () {
+        submitBtn.classList.remove('btn--sending');
+        submitBtn.textContent = 'Send Message';
+      });
+    });
   }
 
 });
