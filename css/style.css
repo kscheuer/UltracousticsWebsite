@@ -2590,8 +2590,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Before/After Comparison Slider */
 .bond-compare {
-  margin: 28px -60px;
-  max-width: calc(100% + 120px);
+  margin: 28px auto;
+  max-width: 100%;
 }
 .bond-compare__labels {
   display: flex;
