@@ -79,13 +79,13 @@
       <div class="nav__links">
         <a href="index.html" class="nav__link">Home</a>
         <a href="broadsonic.html" class="nav__link">BROADSONIC</a>
+        <a href="transducer-characterization.html" class="nav__link">Services</a>
         <div class="nav__dropdown">
           <span class="nav__link nav__dropdown-toggle">Applications</span>
           <div class="nav__dropdown-menu">
             <a href="leak-detection.html" class="nav__dropdown-item">Leak Detection</a>
-            <a href="partial-discharge.html" class="nav__dropdown-item">Partial Discharge</a>
             <a href="ultrasonic-cleaning.html" class="nav__dropdown-item">Ultrasonic Cleaning</a>
-            <a href="transducer-characterization.html" class="nav__dropdown-item">Transducer Characterization</a>
+            <a href="partial-discharge.html" class="nav__dropdown-item">Partial Discharge</a>
           </div>
         </div>
         <a href="research.html" class="nav__link">Research</a>
@@ -113,7 +113,7 @@
             <h1 class="hero__title">The Widest Bandwidth <span class="text-gradient">Ultrasonic Sensor</span> Commercially Available</h1>
             <p class="hero__subtitle">Non-Contact. Unparalleled Bandwidth. Ultra-Sensitive.</p>
             <p class="hero__desc">From 20 Hz to 5 MHz, BROADSONIC captures acoustic information that no other air-coupled sensor can reach.</p>
-            <p class="hero__desc" style="margin-bottom: 32px; font-size: 15px;">For <span class="hero__ticker"><span class="hero__ticker-word" id="heroTicker">Leak Detection</span></span></p>
+            <p class="hero__desc" style="margin-bottom: 32px; font-size: 15px;">For <span class="hero__ticker"><span class="hero__ticker-word" id="heroTicker">Transducer Characterization</span></span></p>
             <div class="hero__actions">
               <a href="contact.html" class="btn btn--primary btn--lg">Contact Us</a>
               <a href="broadsonic.html" class="btn btn--secondary btn--lg">Explore BROADSONIC</a>
@@ -190,16 +190,6 @@
             <span class="card__link">Learn More</span>
           </a>
 
-          <!-- Partial Discharge -->
-          <a href="partial-discharge.html" class="card" style="text-decoration:none;">
-            <div class="card__icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <h3 class="card__title">Partial Discharge</h3>
-            <p class="card__desc">Non-contact acoustic detection of partial discharge events. Captures the full PD spectrum up to 5 MHz with complete immunity to electromagnetic interference.</p>
-            <span class="card__link">Learn More</span>
-          </a>
-
           <!-- Ultrasonic Cleaning -->
           <a href="ultrasonic-cleaning.html" class="card" style="text-decoration:none;">
             <div class="card__icon">
@@ -210,15 +200,37 @@
             <span class="card__link">Learn More</span>
           </a>
 
-          <!-- Transducer Characterization -->
-          <a href="transducer-characterization.html" class="card" style="text-decoration:none;">
+          <!-- Partial Discharge -->
+          <a href="partial-discharge.html" class="card" style="text-decoration:none;">
             <div class="card__icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2 12h4l3-9 6 18 3-9h4"/></svg>
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
-            <h3 class="card__title">Transducer Characterization</h3>
-            <p class="card__desc">Full broadband beam profiles in a single scan. 0&ndash;5 MHz spatial mapping at 0.1 mm resolution, non-contact, with results in one week.</p>
+            <h3 class="card__title">Partial Discharge</h3>
+            <p class="card__desc">Non-contact acoustic detection of partial discharge events. Captures the full PD spectrum up to 5 MHz with complete immunity to electromagnetic interference.</p>
             <span class="card__link">Learn More</span>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Service Callout ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="fade-in">
+            <p class="section-header__label">Available Now</p>
+            <h2 class="section-header__title">Transducer Characterization Service</h2>
+            <p class="section-header__desc">Ship us your transducer. Get a full broadband beam profile &mdash; 0 to 5 MHz at 0.1 mm resolution &mdash; delivered as an interactive report within one week. No couplant, no water tank, no repeat scans.</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px;">
+              <a href="transducer-characterization.html" class="btn btn--primary">Request a Scan</a>
+              <a href="assets/demos/transducer_characterization_1p5MHz.html" target="_blank" rel="noopener" class="btn btn--secondary">See Example Report &rarr;</a>
+            </div>
+          </div>
+          <div class="fade-in">
+            <a href="assets/demos/transducer_characterization_1p5MHz.html" target="_blank" rel="noopener" class="demo-thumb">
+              <img src="assets/demos/transducer_characterization_1p5MHz.png" alt="Interactive transducer scan report — 1.5 MHz transducer" loading="lazy" style="width: 100%; border-radius: 12px; display: block;">
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -462,24 +474,6 @@
       draw();
     })();
     </script>
-
-    <!-- ====== Interactive Demo ====== -->
-    <section class="section">
-      <div class="container">
-        <div class="hero__grid">
-          <div class="fade-in">
-            <p class="section-header__label">Interactive Demo</p>
-            <h2 class="section-header__title">See It In Action</h2>
-            <p class="section-header__desc">Spatial vibration scan of a 1.5 MHz transducer at 0.1 mm resolution. Each pixel contains a full frequency spectrum across the 0-5 MHz band. Click to explore.</p>
-          </div>
-          <div class="fade-in">
-            <a href="assets/demos/transducer_characterization_1p5MHz.html" target="_blank" rel="noopener" class="demo-thumb">
-              <img src="assets/demos/transducer_characterization_1p5MHz.png" alt="Interactive transducer scan report" loading="lazy" style="width: 100%; border-radius: 12px; display: block;">
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ====== Research / Credibility ====== -->
     <section class="section waveform-bg-section" style="background: var(--bg-secondary);">

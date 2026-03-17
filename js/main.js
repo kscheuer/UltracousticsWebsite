@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- Typing Ticker (Homepage) ---
   var tickerEl = document.getElementById('heroTicker');
   if (tickerEl && !prefersReducedMotion) {
-    var tickerWords = ['Leak Detection', 'Partial Discharge', 'Ultrasonic Cleaning', 'NDT', 'Research', 'Transducer Characterization'];
+    var tickerWords = ['Transducer Characterization', 'Leak Detection', 'Ultrasonic Cleaning', 'Partial Discharge', 'NDT', 'Research'];
     var wordIndex = 0;
     var charIndex = tickerWords[0].length;
     var isDeleting = true;
