@@ -98,7 +98,6 @@
     statsEl.innerHTML =
       '<div class="tm-stat"><span class="tm-stat-label">Mean Thickness</span><span class="tm-stat-value">' + meanTh.toFixed(2) + ' &mu;m</span></div>' +
       '<div class="tm-stat"><span class="tm-stat-label">Total Wedge</span><span class="tm-stat-value">' + (vmax - vmin).toFixed(1) + ' &mu;m</span></div>' +
-      '<div class="tm-stat"><span class="tm-stat-label">Roughness (Rq)</span><span class="tm-stat-value">' + rq.toFixed(2) + ' &mu;m</span></div>' +
       '<div class="tm-stat"><span class="tm-stat-label">Scan Area</span><span class="tm-stat-value">' + scanW + ' &times; ' + scanH + ' mm</span></div>' +
       '<div class="tm-stat"><span class="tm-stat-label">Resolution</span><span class="tm-stat-value">' + cols + ' &times; ' + rows + ' px</span></div>';
 
