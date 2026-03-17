@@ -2088,3 +2088,266 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.7;
   pointer-events: none;
 }
+
+/* --- Fabry-Perot Animation --- */
+.fpi-animation-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+}
+
+.fpi-animation-wrap canvas {
+  width: 100%;
+  display: block;
+}
+
+.fpi-steps {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.fpi-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-subtle);
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.fpi-step--active {
+  border-color: var(--accent);
+  color: var(--text-primary);
+  background: rgba(255, 79, 201, 0.08);
+}
+
+.fpi-step__num {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.fpi-step--active .fpi-step__num {
+  background: var(--accent);
+  color: #000;
+}
+
+.fpi-step__text {
+  white-space: nowrap;
+}
+
+/* --- Datasheet Gate Modal --- */
+.ds-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.ds-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ds-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.ds-modal__card {
+  position: relative;
+  background: #141414;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  max-width: 440px;
+  width: 90%;
+  transform: translateY(16px);
+  transition: transform 0.25s ease;
+}
+
+.ds-modal.active .ds-modal__card {
+  transform: translateY(0);
+}
+
+.ds-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.ds-modal__close:hover {
+  color: var(--text-primary);
+}
+
+.ds-modal__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.ds-modal__desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.ds-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ds-modal__input {
+  background: var(--bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: var(--font-base);
+  transition: border-color 0.2s;
+}
+
+.ds-modal__input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.ds-modal__input::placeholder {
+  color: #555;
+}
+
+.ds-modal__status {
+  font-size: 13px;
+  margin-top: 8px;
+  text-align: center;
+  min-height: 20px;
+}
+
+/* --- Scroll-Driven Animations --- */
+@supports (animation-timeline: scroll()) {
+  .scroll-reveal-left {
+    animation: slideFromLeft linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+
+  .scroll-reveal-right {
+    animation: slideFromRight linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+
+  .scroll-scale-in {
+    animation: scaleIn linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 80%;
+  }
+
+  .scroll-counter-pop {
+    animation: counterPop linear both;
+    animation-timeline: view();
+    animation-range: entry 20% entry 70%;
+  }
+
+  @keyframes slideFromLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slideFromRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes counterPop {
+    0% { opacity: 0; transform: scale(0.5); }
+    70% { opacity: 1; transform: scale(1.08); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* Apply scroll-driven to specific elements */
+  .hero__grid > *:first-child {
+    animation: slideFromLeft linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+  }
+
+  .hero__grid > *:last-child {
+    animation: slideFromRight linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+  }
+
+  .spectrum-canvas-wrap {
+    animation: scaleIn linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 70%;
+  }
+
+  .software-hero__img {
+    animation: scaleIn linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 80%;
+  }
+
+  .comparison-table tr {
+    animation: slideFromLeft linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+
+  .software-feature {
+    animation: scaleIn linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 90%;
+  }
+
+  .specs__group {
+    animation: slideFromRight linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 80%;
+  }
+
+  .stat__number {
+    animation: counterPop linear both;
+    animation-timeline: view();
+    animation-range: entry 20% entry 70%;
+  }
+}

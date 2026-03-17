@@ -109,7 +109,7 @@
             <p class="stat__label">the frequency range of human hearing</p>
             <div class="hero__actions" style="margin-top: 32px;">
               <a href="contact.html" class="btn btn--primary btn--lg">Get a Quote</a>
-              <a href="assets/docs/BroadsonicDatasheet20260313%20(1).pdf" class="btn btn--secondary btn--lg">Download Datasheet</a>
+              <button class="btn btn--secondary btn--lg" onclick="document.getElementById('datasheetModal').classList.add('active')">Download Datasheet</button>
             </div>
           </div>
         </div>
@@ -123,12 +123,30 @@
           <div>
             <p class="section-header__label">Technology</p>
             <h2 class="section-header__title">50x Beyond Conventional Ultrasonic Microphones</h2>
-            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8;">
-              Conventional air-coupled microphones are limited to frequencies below ~100 kHz. BROADSONIC extends that range to 5 MHz, opening access to acoustic information that has historically required physical contact with the source or expensive laboratory setups. It achieves this using Fabry-Perot interferometry: a fiber-coupled optical membrane captures the full acoustic band with exceptional sensitivity. The sensor head contains no electrical elements, making it inherently immune to electromagnetic interference. The result is 50x the bandwidth of the best conventional ultrasonic microphones, non-contact, in air.
+            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px;">
+              BROADSONIC uses Fabry-Perot interferometry: laser light travels through a fiber and reflects between two mirrors inside a micro-cavity. When sound pressure deflects the membrane, the cavity length changes, shifting the interference pattern. This optical readout captures the full 0–5 MHz acoustic band with exceptional sensitivity — no electrical elements, inherently immune to EMI.
             </p>
+            <div class="fpi-steps">
+              <div class="fpi-step" data-step="1">
+                <span class="fpi-step__num">1</span>
+                <span class="fpi-step__text">Laser enters fiber</span>
+              </div>
+              <div class="fpi-step" data-step="2">
+                <span class="fpi-step__num">2</span>
+                <span class="fpi-step__text">Light reflects in cavity</span>
+              </div>
+              <div class="fpi-step" data-step="3">
+                <span class="fpi-step__num">3</span>
+                <span class="fpi-step__text">Sound deflects membrane</span>
+              </div>
+              <div class="fpi-step" data-step="4">
+                <span class="fpi-step__num">4</span>
+                <span class="fpi-step__text">Interference shift → signal</span>
+              </div>
+            </div>
           </div>
-          <div class="product-hero-img">
-            <img src="assets/images/Product/Transparent/Transparent_Probe.png" alt="BROADSONIC sensor probe" loading="lazy">
+          <div class="fpi-animation-wrap">
+            <canvas id="fpiCanvas" width="500" height="400"></canvas>
           </div>
         </div>
       </div>
@@ -437,7 +455,7 @@
         </div>
         <div class="fade-in" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
               <a href="contact.html" class="btn btn--primary btn--lg">Get a Quote</a>
-              <a href="assets/docs/BroadsonicDatasheet20260313%20(1).pdf" class="btn btn--secondary btn--lg">Download Datasheet</a>
+              <button class="btn btn--secondary btn--lg" onclick="document.getElementById('datasheetModal').classList.add('active')">Download Datasheet</button>
         </div>
       </div>
     </section>
@@ -488,6 +506,25 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/fpi-animation.js"></script>
+
+  <!-- Datasheet Gate Modal -->
+  <div class="ds-modal" id="datasheetModal">
+    <div class="ds-modal__backdrop" onclick="this.parentElement.classList.remove('active')"></div>
+    <div class="ds-modal__card">
+      <button class="ds-modal__close" onclick="this.closest('.ds-modal').classList.remove('active')" aria-label="Close">&times;</button>
+      <h3 class="ds-modal__title">Download the BROADSONIC Datasheet</h3>
+      <p class="ds-modal__desc">Enter your email to receive the full technical datasheet. We won't spam you — just useful updates about BROADSONIC.</p>
+      <form class="ds-modal__form" id="datasheetForm">
+        <input type="text" name="name" placeholder="Name" required class="ds-modal__input" autocomplete="name">
+        <input type="email" name="email" placeholder="Work email" required class="ds-modal__input" autocomplete="email">
+        <input type="text" name="company" placeholder="Company (optional)" class="ds-modal__input" autocomplete="organization">
+        <input type="hidden" name="_subject" value="Datasheet Download Request">
+        <button type="submit" class="btn btn--primary" style="width:100%">Download Datasheet (PDF)</button>
+      </form>
+      <p class="ds-modal__status" id="dsStatus"></p>
+    </div>
+  </div>
 
   <!-- Sticky CTA Bar -->
   <div class="sticky-cta" id="stickyCta">
@@ -495,7 +532,7 @@
       <div class="sticky-cta__text"><strong>BROADSONIC</strong> &mdash; 5 MHz optical ultrasonic sensor. Ready to evaluate?</div>
       <div class="sticky-cta__actions">
         <a href="contact.html" class="btn btn--primary btn--sm">Request a Demo</a>
-        <a href="assets/docs/BroadsonicDatasheet20260313%20(1).pdf" class="btn btn--secondary btn--sm">Datasheet</a>
+        <button class="btn btn--secondary btn--sm" onclick="document.getElementById('datasheetModal').classList.add('active')">Datasheet</button>
       </div>
     </div>
   </div>
@@ -504,5 +541,8 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_CF_ANALYTICS_TOKEN"}'></script>
 </body>
 </html>

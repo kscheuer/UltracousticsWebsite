@@ -134,8 +134,15 @@
           <h3>Spatial Vibration Maps</h3>
           <p>2D amplitude maps at any frequency of interest across the 0&ndash;5 MHz band. Each scan pixel contains a full frequency spectrum, so maps can be reconstructed at any frequency in post-processing. No need to decide on frequencies before scanning.</p>
 
-          <h3>Interactive Reports</h3>
-          <p>Results are delivered as a browser-based interactive HTML report that anyone can explore without specialized software &mdash; plus raw data files for further analysis.</p>
+          <h3>Interactive Reports — No Software Required</h3>
+          <p>Results are delivered as a browser-based interactive HTML report that opens in any browser with zero software installation. Unlike proprietary analysis tools that lock data behind expensive licenses, our reports are fully self-contained and shareable.</p>
+          <ul>
+            <li><strong>Spatial amplitude maps</strong> at any user-selected frequency across the 0–5 MHz band, with a frequency slider for real-time exploration</li>
+            <li><strong>Per-pixel spectrum viewer:</strong> click any point on the spatial map to see its full frequency spectrum</li>
+            <li><strong>Color scale controls</strong> for adjusting dynamic range and visualization</li>
+            <li><strong>Exportable raw data</strong> in standard formats for further analysis in your own tools</li>
+          </ul>
+          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">Share reports with colleagues, customers, and regulators — anyone with a browser can explore the data themselves.</p>
 
           <h3>Measurement Specifications</h3>
           <table class="comparison-table" style="max-width: 640px;">
@@ -164,12 +171,17 @@
           </table>
 
           <h3>Supported Transducer Types</h3>
-          <ul>
-            <li>Single-element piezoelectric transducers</li>
-            <li>Phased arrays and multi-element transducers</li>
-            <li>CMUTs and PMUTs</li>
-            <li>Focused transducers</li>
-          </ul>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; margin-top: 16px;">
+            <ul>
+              <li>Single-element piezoelectric transducers</li>
+              <li>Phased arrays and multi-element transducers</li>
+              <li>CMUTs and PMUTs</li>
+              <li>Focused transducers</li>
+            </ul>
+            <div style="text-align: center;">
+              <img src="assets/images/Product/cmut-render.png" alt="Render of a CMUT micro-machined ultrasonic transducer array" loading="lazy" style="width: 100%; max-width: 320px; border-radius: 12px; filter: brightness(0.95);">
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -379,5 +391,8 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_CF_ANALYTICS_TOKEN"}'></script>
 </body>
 </html>
