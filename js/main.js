@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
     navToggle.addEventListener('click', function () {
       navToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
-      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+      var isOpen = navLinks.classList.contains('active');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
     // Close mobile nav when a link is clicked
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navToggle.classList.remove('active');
         navLinks.classList.remove('active');
         document.body.style.overflow = '';
+        navToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
@@ -157,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- Typing Ticker (Homepage) ---
   var tickerEl = document.getElementById('heroTicker');
   if (tickerEl && !prefersReducedMotion) {
-    var tickerWords = ['Transducer Characterization', 'Leak Detection', 'Ultrasonic Cleaning', 'Partial Discharge', 'NDT', 'Research'];
+    var tickerWords = ['Transducer Characterization', 'Leak Detection', 'Ultrasonic Cleaning', 'Non-Destructive Testing', 'Partial Discharge', 'Research'];
     var wordIndex = 0;
     var charIndex = tickerWords[0].length;
     var isDeleting = true;
@@ -466,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function () {
           statusEl.textContent = 'Downloading...';
           statusEl.style.color = '#4ade80';
           var a = document.createElement('a');
-          a.href = 'assets/docs/BroadsonicDatasheet20260313%20(1).pdf';
+          a.href = 'assets/docs/UltracousticsBroadsonicDatasheet.pdf';
           a.download = 'BROADSONIC_Datasheet.pdf';
           document.body.appendChild(a);
           a.click();

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Destructive Testing | Ultracoustics</title>
+  <meta name="theme-color" content="#FF4FC9">
+  <meta name="description" content="Non-contact ultrasonic imaging and inspection with BROADSONIC. Air-coupled C-scans, bond inspection, and sub-micron thickness mapping — no couplant, no gel, no contact.">
+
+  <meta property="og:title" content="Non-Destructive Testing | Ultracoustics">
+  <meta property="og:description" content="Non-contact ultrasonic C-scans, bond inspection, and sub-micron thickness mapping. No couplant, no gel, no contact.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ultracoustics.ca/ndt.html">
+  <meta property="og:image" content="https://ultracoustics.ca/assets/images/Logos/cropped-BlackLogo-scaled-1.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ultracoustics.ca/assets/images/Logos/cropped-BlackLogo-scaled-1.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/Logos/UltracousticsSquareLogo.png">
+  <link rel="apple-touch-icon" href="assets/images/Logos/UltracousticsSquareLogo.png">
+  <link rel="canonical" href="https://ultracoustics.ca/ndt.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does air-coupled ultrasonic NDT work without couplant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BROADSONIC uses an optical Fabry-Perot sensor that detects sound waves transmitted through air. An ultrasonic source excites the part under test, and BROADSONIC captures the transmitted or reflected acoustic field from the other side — no gel, no water, no physical contact. This enables inspection of hot parts, moving surfaces, delicate materials, and sterile environments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What defects can non-contact ultrasonic imaging detect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BROADSONIC-based imaging can detect kissing bonds and partial adhesion in bonded structures, delaminations in composites and laminates, voids and inclusions, thickness variations down to sub-micron levels via ZGV resonance mapping, and contact patterns in spot welds and adhesive joints."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is ZGV resonance mapping and how does it measure thickness?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zero-group-velocity (ZGV) Lamb wave resonances are acoustic modes whose frequency maps directly to local plate thickness. By exciting these modes and measuring their frequency at each point with BROADSONIC, a full-field thickness map can be constructed — non-contact and with sub-micron sensitivity. A 7.4 μm thickness variation over 20 mm was measured on a standard microscope slide."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What materials and industries does this apply to?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non-contact ultrasonic imaging applies to composites, adhesive bonds, spot welds, semiconductor wafers, battery electrodes, display glass, thin films, and any material where contact-based inspection is impractical or where sub-surface defects need to be detected without touching the surface."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ultracoustics home">
+        <img src="assets/images/Logos/LogoMain.png" alt="Ultracoustics" style="height: 32px;">
+      </a>
+      <button class="nav__toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="broadsonic.html" class="nav__link">BROADSONIC</a>
+        <a href="transducer-characterization.html" class="nav__link">Services</a>
+        <div class="nav__dropdown">
+          <span class="nav__link nav__dropdown-toggle">Applications</span>
+          <div class="nav__dropdown-menu">
+            <a href="leak-detection.html" class="nav__dropdown-item">Leak Detection</a>
+            <a href="ultrasonic-cleaning.html" class="nav__dropdown-item">Ultrasonic Cleaning</a>
+            <a href="partial-discharge.html" class="nav__dropdown-item">Partial Discharge</a>
+            <a href="ndt.html" class="nav__dropdown-item">Non-Destructive Testing</a>
+          </div>
+        </div>
+        <a href="research.html" class="nav__link">Research</a>
+        <div class="nav__dropdown">
+          <span class="nav__link nav__dropdown-toggle">About Us</span>
+          <div class="nav__dropdown-menu">
+            <a href="team.html" class="nav__dropdown-item">Team</a>
+            <a href="media.html" class="nav__dropdown-item">Media</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav__cta">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ====== Hero ====== -->
+    <section class="hero hero--short">
+      <div class="hero__bg-glow"></div>
+      <div class="container hero__content">
+        <div class="hero__grid">
+          <div>
+            <p class="hero__label">Application</p>
+            <h1 class="hero__title">Non-Destructive Testing</h1>
+            <p class="hero__desc">Non-contact ultrasonic imaging. See bond quality, defects, and sub-micron thickness variations &mdash; no couplant, no gel, no touching the surface.</p>
+            <div class="hero-stats" style="display: flex; gap: 32px; margin: 24px 0 32px; flex-wrap: wrap;">
+              <div>
+                <div class="stat" style="margin: 0;">
+                  <span class="stat__number" data-counter="5">0</span>
+                  <span class="stat__suffix">MHz</span>
+                </div>
+                <p class="stat__label">Bandwidth</p>
+              </div>
+              <div>
+                <div class="stat" style="margin: 0;">
+                  <span class="stat__number" data-counter="100">0</span>
+                  <span class="stat__suffix">&mu;m</span>
+                </div>
+                <p class="stat__label">Resolution</p>
+              </div>
+              <div>
+                <div class="stat" style="margin: 0;">
+                  <span class="stat__number" style="font-size: clamp(48px, 6vw, 72px); font-weight: 700; letter-spacing: -0.04em; color: var(--accent); line-height: 1;">0</span>
+                  <span class="stat__suffix" style="color: var(--accent);">Couplant</span>
+                </div>
+                <p class="stat__label">Required</p>
+              </div>
+            </div>
+            <div class="hero__actions">
+              <a href="contact.html" class="btn btn--primary">Discuss Your Application</a>
+              <a href="broadsonic.html" class="btn btn--secondary">View BROADSONIC Specs</a>
+            </div>
+          </div>
+          <div>
+            <img src="assets/images/Product/BROADSONIC_PROBE.jpg" alt="BROADSONIC optical ultrasonic sensor" style="aspect-ratio: 4/3; max-width: 520px; margin-left: auto; width: 100%; border-radius: 12px; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== The Problem ====== -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">The Problem</p>
+          <h2 class="section-header__title">Some Things Can&rsquo;t Be Touched During Inspection</h2>
+          <p class="section-header__desc">Hot parts. Moving surfaces. Delicate materials. Sterile environments. Conventional ultrasonic NDT requires couplant &mdash; gel, water, or direct contact &mdash; that is impractical or impossible in many high-value inspection scenarios.</p>
+        </div>
+        <div class="app-cards fade-in">
+          <div class="app-card">
+            <div class="app-card__icon">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10l4.5 4.5"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <h3 class="app-card__title">Couplant-Free</h3>
+            <p class="app-card__desc">No gel, no water tank, no contact. Inspect through air at standoff distance.</p>
+          </div>
+          <div class="app-card">
+            <div class="app-card__icon">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-9 6 18 3-9h4"/></svg>
+            </div>
+            <h3 class="app-card__title">0&ndash;5 MHz Bandwidth</h3>
+            <p class="app-card__desc">Full broadband capture at every scan point. Reconstruct images at any frequency in post-processing.</p>
+          </div>
+          <div class="app-card">
+            <div class="app-card__icon">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4m-2.93-7.07-2.83 2.83M7.76 16.24l-2.83 2.83m14.14 0-2.83-2.83M7.76 7.76 4.93 4.93"/></svg>
+            </div>
+            <h3 class="app-card__title">100 &mu;m Resolution</h3>
+            <p class="app-card__desc">Point-sensor optical detection. Resolve fine structural features that larger sensors average out.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Capability 1: Thickness Mapping ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="app-content fade-in">
+          <p class="section-header__label">Capability</p>
+          <h2 style="margin-top: 0;">Sub-Micron Thickness Mapping</h2>
+          <p>Zero-group-velocity (ZGV) Lamb wave resonances map directly to local plate thickness. BROADSONIC excites these modes and measures their frequency at each scan point, constructing a full-field thickness map with sub-micron sensitivity &mdash; completely non-contact.</p>
+
+          <h3>Measured Result</h3>
+          <p>We scanned a standard microscope slide and measured a <strong>7.4 &mu;m thickness wedge across 20 mm</strong> &mdash; a 1.3 arcminute tilt, completely invisible to contact methods. Explore the real data below.</p>
+
+          <!-- Interactive Thickness Map Demo -->
+          <div id="thicknessMap" class="thickness-map-demo" style="margin: 32px 0;"></div>
+
+          <h3>Where This Matters</h3>
+          <ul>
+            <li><strong>Semiconductor wafers</strong> &mdash; thickness uniformity across the wafer</li>
+            <li><strong>Battery electrodes</strong> &mdash; coating thickness consistency</li>
+            <li><strong>Display glass</strong> &mdash; flatness verification</li>
+            <li><strong>Composite layups</strong> &mdash; ply thickness and uniformity</li>
+          </ul>
+          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 16px;">If your process assumes &ldquo;flat,&rdquo; you might want to check.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== See It In Action ====== -->
+    <section class="section video-bg-section">
+      <video class="video-bg" autoplay muted loop playsinline preload="auto">
+        <source src="assets/Videos/GlassSlideScan.mp4" type="video/mp4">
+        <source src="assets/Videos/GlassSlideScan.MOV" type="video/quicktime">
+      </video>
+      <div class="video-bg-overlay"></div>
+      <div class="container" style="position: relative; z-index: 2;">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">See It In Action</p>
+          <h2 class="section-header__title">Scanning a Glass Slide for Sub-Micron Thickness Variation</h2>
+          <p class="section-header__desc" style="max-width: 640px; margin-inline: auto;">BROADSONIC scans a standard microscope slide point-by-point, exciting ZGV Lamb wave resonances at each position. The resulting thickness map reveals a 7.4 &mu;m wedge across 20 mm &mdash; completely invisible to contact methods.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Capability 2: Bond Inspection ====== -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="app-content fade-in">
+          <p class="section-header__label">Capability</p>
+          <h2 style="margin-top: 0;">Adhesive Bond &amp; Contact Inspection</h2>
+          <p>Kissing bonds and partial adhesion are invisible to visual inspection, but they are the root cause of field failures in composites, electronics, and medical devices. BROADSONIC scans reveal the <strong>actual contact area</strong> &mdash; not what the surface looks like, but where acoustic energy is actually transmitted.</p>
+
+          <h3>What We&rsquo;ve Demonstrated</h3>
+          <p>Wall tape on a microscope slide &mdash; what looks like a simple rectangle to the naked eye reveals edge adhesion, air pockets, and pressure variation. All measured non-contact, from above.</p>
+
+          <!-- Before/After Comparison Slider -->
+          <div class="bond-compare" id="bondCompare">
+            <div class="bond-compare__labels">
+              <span class="bond-compare__label bond-compare__label--left">What you see</span>
+              <span class="bond-compare__label bond-compare__label--right">What BROADSONIC sees</span>
+            </div>
+            <div class="bond-compare__wrapper">
+              <img src="assets/images/Product/bond_amp_map.jpg" alt="Amplitude map showing bond quality" class="bond-compare__img bond-compare__img--after" draggable="false">
+              <div class="bond-compare__reveal" id="bondReveal">
+                <img src="assets/images/Product/bond_ground_truth.jpg" alt="Visible light photograph of tape on glass" class="bond-compare__img bond-compare__img--before" draggable="false">
+              </div>
+              <div class="bond-compare__slider" id="bondSlider">
+                <div class="bond-compare__handle">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="8 4 3 12 8 20"/><polyline points="16 4 21 12 16 20"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detail maps with colorbars -->
+          <div class="bond-scan-grid bond-scan-grid--2col">
+            <figure class="bond-scan-fig">
+              <img src="assets/images/Product/bond_freq_map.jpg" alt="Peak frequency map revealing tape adhesion pattern" loading="lazy">
+              <div class="colorbar colorbar--blue">
+                <span class="colorbar-tick" style="left:0%">2.70</span>
+                <span class="colorbar-tick" style="left:25%">2.75</span>
+                <span class="colorbar-tick" style="left:50%">2.80</span>
+                <span class="colorbar-tick" style="left:75%">2.85</span>
+                <span class="colorbar-tick" style="left:100%">2.90</span>
+              </div>
+              <figcaption>Frequency (MHz)</figcaption>
+            </figure>
+            <figure class="bond-scan-fig">
+              <img src="assets/images/Product/bond_amp_map.jpg" alt="Peak amplitude map showing signal attenuation from tape contact" loading="lazy">
+              <div class="colorbar colorbar--pink">
+                <span class="colorbar-tick" style="left:0%">0</span>
+                <span class="colorbar-tick" style="left:25%">5</span>
+                <span class="colorbar-tick" style="left:50%">10</span>
+                <span class="colorbar-tick" style="left:75%">15</span>
+                <span class="colorbar-tick" style="left:100%">20</span>
+              </div>
+              <figcaption>Amplitude (dB)</figcaption>
+            </figure>
+          </div>
+
+          <script>
+          (function() {
+            var compare = document.getElementById('bondCompare');
+            var reveal = document.getElementById('bondReveal');
+            var slider = document.getElementById('bondSlider');
+            var wrapper = compare ? compare.querySelector('.bond-compare__wrapper') : null;
+            var beforeImg = reveal ? reveal.querySelector('.bond-compare__img--before') : null;
+            if (!compare || !reveal || !slider || !wrapper || !beforeImg) return;
+
+            var dragging = false;
+
+            function syncBeforeWidth() {
+              // Make the before image match the wrapper width so it stays aligned
+              beforeImg.style.width = wrapper.offsetWidth + 'px';
+            }
+
+            function setPosition(x) {
+              var rect = wrapper.getBoundingClientRect();
+              var pct = Math.max(0, Math.min(1, (x - rect.left) / rect.width));
+              reveal.style.width = (pct * 100) + '%';
+              slider.style.left = (pct * 100) + '%';
+            }
+
+            // Initialize at 50%
+            reveal.style.width = '50%';
+            slider.style.left = '50%';
+            syncBeforeWidth();
+
+            window.addEventListener('resize', syncBeforeWidth);
+
+            slider.addEventListener('mousedown', function(e) { dragging = true; e.preventDefault(); });
+            slider.addEventListener('touchstart', function(e) { dragging = true; }, { passive: true });
+
+            document.addEventListener('mousemove', function(e) {
+              if (dragging) setPosition(e.clientX);
+            });
+            document.addEventListener('touchmove', function(e) {
+              if (dragging) setPosition(e.touches[0].clientX);
+            }, { passive: true });
+
+            document.addEventListener('mouseup', function() { dragging = false; });
+            document.addEventListener('touchend', function() { dragging = false; });
+
+            // Click anywhere on the wrapper to reposition
+            wrapper.addEventListener('click', function(e) {
+              setPosition(e.clientX);
+            });
+          })();
+          </script>
+
+          <h3>Applications</h3>
+          <ul>
+            <li>Adhesive bond quality verification in composites and laminates</li>
+            <li>Spot weld inspection &mdash; surface fusion vs. actual joint strength</li>
+            <li>Delamination detection in multi-layer structures</li>
+            <li>Seal integrity in packaging and medical devices</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Why Non-Contact Matters ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">Advantage</p>
+          <h2 class="section-header__title">Why Non-Contact Changes Everything</h2>
+        </div>
+        <div class="app-cards fade-in">
+          <div class="app-card">
+            <h3 class="app-card__title">Hot Parts</h3>
+            <p class="app-card__desc">Inspect components at elevated temperatures where couplant evaporates or contact sensors fail.</p>
+          </div>
+          <div class="app-card">
+            <h3 class="app-card__title">Delicate Surfaces</h3>
+            <p class="app-card__desc">Thin films, coatings, and fragile substrates that cannot tolerate physical contact or fluid.</p>
+          </div>
+          <div class="app-card">
+            <h3 class="app-card__title">Inline Automation</h3>
+            <p class="app-card__desc">No couplant application or cleanup. Compatible with conveyor-speed production inspection.</p>
+          </div>
+          <div class="app-card">
+            <h3 class="app-card__title">Sterile &amp; Clean Environments</h3>
+            <p class="app-card__desc">Medical device manufacturing and semiconductor fabs where contamination from gel or water is unacceptable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== How It Compares ====== -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="app-content fade-in">
+          <h2 style="margin-top: 0;">How BROADSONIC Compares for NDT</h2>
+
+          <h3>Conventional Contact Ultrasound</h3>
+          <p>Requires couplant (gel or water) and physical contact. Cannot inspect hot, moving, or delicate parts. Contact pressure affects measurement consistency. BROADSONIC operates entirely through air.</p>
+
+          <h3>Laser Ultrasonics (Generation + Detection)</h3>
+          <p>High resolution but extremely expensive ($200K+ systems). Generation laser can damage sensitive surfaces. BROADSONIC uses a low-power interrogation laser with no surface damage risk.</p>
+
+          <h3>Other Air-Coupled Transducers</h3>
+          <p>Conventional air-coupled sensors are narrowband (typically tuned to a single frequency) and have relatively large apertures that limit spatial resolution. BROADSONIC captures 0&ndash;5 MHz in a single pass with 100 &mu;m resolution.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Industries ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">Industries</p>
+          <h2 class="section-header__title">Who Needs This</h2>
+        </div>
+        <div class="app-cards fade-in">
+          <div class="app-card">
+            <h3 class="app-card__title">Aerospace &amp; Composites</h3>
+            <p class="app-card__desc">Bond inspection, delamination detection, and ply thickness verification in composite structures.</p>
+          </div>
+          <div class="app-card">
+            <h3 class="app-card__title">Automotive</h3>
+            <p class="app-card__desc">Spot weld inspection and adhesive bond verification in body-in-white and battery assembly.</p>
+          </div>
+          <div class="app-card">
+            <h3 class="app-card__title">Semiconductors &amp; Electronics</h3>
+            <p class="app-card__desc">Wafer thickness uniformity, thin-film metrology, and die-attach inspection with no contamination risk.</p>
+          </div>
+          <div class="app-card">
+            <h3 class="app-card__title">Medical Devices</h3>
+            <p class="app-card__desc">Seal integrity, bond verification, and component inspection in sterile manufacturing environments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Measurement Specs ====== -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="app-content fade-in">
+          <h2 style="margin-top: 0;">Measurement Capabilities</h2>
+          <table class="comparison-table" style="max-width: 640px;">
+            <tbody>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Detection Bandwidth</td>
+                <td>0&ndash;5 MHz, broadband, single pass</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Spatial Resolution</td>
+                <td>Down to 0.1 mm (100 &mu;m)</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Contact</td>
+                <td>None &mdash; air-coupled, no couplant</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Thickness Sensitivity</td>
+                <td>Sub-micron (demonstrated 7.4 &mu;m over 20 mm)</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Imaging Modes</td>
+                <td>C-scan, frequency-selective amplitude maps, ZGV resonance maps</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">EMI Immunity</td>
+                <td>Complete &mdash; fully optical sensor head</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Supporting Research ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="supporting-research fade-in">
+          <h2 class="supporting-research__title">Supporting Research</h2>
+
+          <div class="supporting-research__item">
+            <h3 class="supporting-research__item-title">Non-Contact Characterization of Plates Using a Turbulent Air-Jet Source and an Ultrasound Microphone</h3>
+            <p class="supporting-research__item-meta">MDPI NDT &middot; 2026</p>
+            <a href="assets/docs/Papers/Non-Contact%20Characterization%20of%20Plates%20Using%20a%20Turbulent%20Air-Jet%20Source%20and%20an%20Ultrasound%20Microphone.pdf" class="supporting-research__item-link">Download PDF &rarr;</a>
+          </div>
+
+          <div class="supporting-research__item">
+            <h3 class="supporting-research__item-title">Resonant Ultrasound Spectroscopy Detection Using a Non-Contact Ultrasound Microphone</h3>
+            <p class="supporting-research__item-meta">MDPI Sensors &middot; 2025</p>
+            <a href="assets/docs/Papers/Resonant%20Ultrasound%20Spectroscopy%20Detection%20Using%20a%20Non-Contact%20Ultrasound%20Microphone.pdf" class="supporting-research__item-link">Download PDF &rarr;</a>
+          </div>
+
+          <div class="supporting-research__item">
+            <h3 class="supporting-research__item-title">Air-Coupled Ultrasound Using Broadband Shock Waves from Piezoelectric Spark Igniters</h3>
+            <p class="supporting-research__item-meta">Applied Physics Letters &middot; 2024</p>
+            <a href="assets/docs/Papers/Air-coupled%20ultrasound%20using%20broadband%20shock%20waves%20from%20piezoelectric%20spark%20igniters.pdf" class="supporting-research__item-link">Download PDF &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CTA ====== -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container text-center">
+        <div class="section-header section-header--centered fade-in">
+          <h2 class="section-header__title">Working With Composites, Thin Materials, or Automation?</h2>
+          <p class="section-header__desc">We&rsquo;d love to hear what inspection challenges you&rsquo;re running into. Let&rsquo;s talk about whether non-contact ultrasonic imaging can solve them.</p>
+        </div>
+        <div class="fade-in">
+          <a href="contact.html" class="btn btn--primary btn--lg">Discuss Your Application</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">
+            <img src="assets/images/Logos/LogoMain.png" alt="Ultracoustics" style="height: 32px;">
+          </div>
+          <p class="footer__desc">Ultracoustics Technologies Ltd. Edmonton-based deep tech building the widest bandwidth air-coupled ultrasonic sensor commercially available.</p>
+          <div class="footer__social">
+            <a href="https://www.linkedin.com/company/ultracoustics/" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">
+              <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/ultracoustics/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">
+              <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Product</h4>
+          <a href="broadsonic.html" class="footer__link">BROADSONIC</a>
+          <a href="research.html" class="footer__link">Research</a>
+          <a href="broadsonic.html#datasheet" class="footer__link">Datasheet (PDF)</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Applications</h4>
+          <a href="leak-detection.html" class="footer__link">Leak Detection</a>
+          <a href="ultrasonic-cleaning.html" class="footer__link">Ultrasonic Cleaning</a>
+          <a href="partial-discharge.html" class="footer__link">Partial Discharge</a>
+          <a href="ndt.html" class="footer__link">Non-Destructive Testing</a>
+          <a href="transducer-characterization.html" class="footer__link">Transducer Characterization</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Contact</h4>
+          <a href="mailto:kyle@ultracoustics.ca" class="footer__link">kyle@ultracoustics.ca</a>
+          <p class="footer__link" style="cursor:default;color:var(--text-secondary);">Suite 4-263, 103 St NW<br>Edmonton, AB T5J 0B2</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Ultracoustics Technologies Ltd.</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/thickness-map.js"></script>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "59d9a760e0354897b598b7e213d1d1ec"}'></script>
+</body>
+</html>

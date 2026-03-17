@@ -4,6 +4,10 @@
             "approve": true,
             "matchCommandLine": true
         },
-        "&": true
+        "&": true,
+        "/^python -c \"f=open\\(r'c:\\\\Users\\\\scheu\\\\Documents\\\\UltracousticsWebsite\\\\assets\\\\Data\\\\GlassScan\\\\Interactive_Topography\\.html','r',encoding='utf-8'\\); c=f\\.read\\(\\); f\\.close\\(\\); print\\(c\\[-3000:\\]\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
     }
 }
