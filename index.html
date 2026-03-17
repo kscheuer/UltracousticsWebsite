@@ -283,6 +283,186 @@
       </div>
     </section>
 
+    <!-- ====== Radar Chart ====== -->
+    <section class="section" id="radar">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">At a Glance</p>
+          <h2 class="section-header__title">Technology Comparison</h2>
+        </div>
+        <div class="fade-in" style="max-width:600px; margin:0 auto;">
+          <canvas id="radarCanvas" style="width:100%; height:500px;"></canvas>
+          <div style="display:flex; justify-content:center; gap:28px; margin-top:12px; font-size:13px; flex-wrap:wrap;">
+            <span><span style="display:inline-block;width:14px;height:3px;background:#FF4FC9;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>BROADSONIC</span>
+            <span><span style="display:inline-block;width:14px;height:3px;background:#5EADFF;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Conventional Ultrasonic</span>
+            <span><span style="display:inline-block;width:14px;height:3px;background:#FFA64D;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Piezoelectric Contact</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+    (function() {
+      var canvas = document.getElementById('radarCanvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+
+      // 6 axes: Bandwidth, Sensitivity (sensor area inverse), EMI Immunity, Non-Contact, Omnidirectional, Dynamic Range
+      var axes = ['Bandwidth', 'Spatial\nResolution', 'EMI\nImmunity', 'Non-Contact', 'Omnidirectional', 'Dynamic\nRange'];
+      var n = axes.length;
+
+      // Normalized scores (0-1) for each technology
+      // BROADSONIC: 5 MHz BW, 100um area, full EMI, non-contact, >±60°, optical dynamic range
+      // Conventional: 100 kHz BW, 6mm area, partial EMI, non-contact, varies, moderate
+      // Piezo: 2 MHz BW, 10mm area, none EMI, contact, N/A, moderate
+      var techs = [
+        { name: 'BROADSONIC',   color: '#FF4FC9', scores: [1.0, 1.0, 1.0, 1.0, 1.0, 0.9] },
+        { name: 'Conventional', color: '#5EADFF', scores: [0.15, 0.15, 0.4, 1.0, 0.5, 0.5] },
+        { name: 'Piezoelectric', color: '#FFA64D', scores: [0.4, 0.1, 0.0, 0.0, 0.0, 0.6] }
+      ];
+
+      var animProgress = 0;
+      var animDone = false;
+      var hasStarted = false;
+
+      function resize() {
+        var rect = canvas.getBoundingClientRect();
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function draw() {
+        var rect = canvas.getBoundingClientRect();
+        var w = rect.width;
+        var h = rect.height;
+        var cx = w / 2;
+        var cy = h / 2 + 10;
+        var R = Math.min(w, h) * 0.38;
+
+        ctx.clearRect(0, 0, w, h);
+
+        // Grid rings
+        for (var ring = 1; ring <= 5; ring++) {
+          var r = R * ring / 5;
+          ctx.beginPath();
+          for (var i = 0; i <= n; i++) {
+            var a = (Math.PI * 2 * i / n) - Math.PI / 2;
+            var px = cx + r * Math.cos(a);
+            var py = cy + r * Math.sin(a);
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          }
+          ctx.strokeStyle = ring === 5 ? '#333' : '#1a1a1a';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        // Axis lines + labels
+        ctx.fillStyle = '#888';
+        ctx.font = '12px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        for (var j = 0; j < n; j++) {
+          var angle = (Math.PI * 2 * j / n) - Math.PI / 2;
+          var ex = cx + R * Math.cos(angle);
+          var ey = cy + R * Math.sin(angle);
+          ctx.strokeStyle = '#222';
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(ex, ey);
+          ctx.stroke();
+
+          // Label
+          var lx = cx + (R + 28) * Math.cos(angle);
+          var ly = cy + (R + 28) * Math.sin(angle);
+          var lines = axes[j].split('\n');
+          for (var l = 0; l < lines.length; l++) {
+            ctx.fillText(lines[l], lx, ly + (l - (lines.length - 1) / 2) * 14);
+          }
+        }
+
+        // Draw technology polygons (back to front: piezo, conv, BROADSONIC)
+        var order = [2, 1, 0];
+        for (var oi = 0; oi < order.length; oi++) {
+          var t = techs[order[oi]];
+          var p = order[oi] === 0 ? animProgress : Math.min(animProgress * 1.5, 1);
+          if (p < 0.01) continue;
+
+          ctx.beginPath();
+          for (var k = 0; k <= n; k++) {
+            var idx = k % n;
+            var ang = (Math.PI * 2 * idx / n) - Math.PI / 2;
+            var val = t.scores[idx] * p;
+            var px2 = cx + R * val * Math.cos(ang);
+            var py2 = cy + R * val * Math.sin(ang);
+            if (k === 0) ctx.moveTo(px2, py2);
+            else ctx.lineTo(px2, py2);
+          }
+          ctx.closePath();
+
+          // Fill
+          ctx.save();
+          ctx.globalAlpha = order[oi] === 0 ? 0.15 : 0.12;
+          ctx.fillStyle = t.color;
+          ctx.fill();
+          ctx.restore();
+
+          // Stroke
+          ctx.save();
+          ctx.globalAlpha = order[oi] === 0 ? 0.9 : 0.7;
+          ctx.strokeStyle = t.color;
+          ctx.lineWidth = order[oi] === 0 ? 2.5 : 1.5;
+          ctx.stroke();
+          ctx.restore();
+
+          // Dots on BROADSONIC only
+          if (order[oi] === 0 && animProgress > 0.9) {
+            for (var d = 0; d < n; d++) {
+              var da = (Math.PI * 2 * d / n) - Math.PI / 2;
+              var dv = t.scores[d] * animProgress;
+              var dx = cx + R * dv * Math.cos(da);
+              var dy = cy + R * dv * Math.sin(da);
+              ctx.beginPath();
+              ctx.arc(dx, dy, 4, 0, Math.PI * 2);
+              ctx.fillStyle = t.color;
+              ctx.fill();
+            }
+          }
+        }
+      }
+
+      function tick() {
+        if (animDone) return;
+        animProgress += 0.025;
+        if (animProgress >= 1) {
+          animProgress = 1;
+          animDone = true;
+        }
+        draw();
+        if (!animDone) requestAnimationFrame(tick);
+      }
+
+      function startAnim() {
+        if (hasStarted) return;
+        hasStarted = true;
+        requestAnimationFrame(tick);
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          startAnim();
+          observer.disconnect();
+        }
+      }, { threshold: 0.3 });
+      observer.observe(canvas);
+
+      window.addEventListener('resize', function() { resize(); draw(); });
+      resize();
+      draw();
+    })();
+    </script>
+
     <!-- ====== Interactive Demo ====== -->
     <section class="section">
       <div class="container">

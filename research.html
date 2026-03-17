@@ -83,6 +83,112 @@
           <h2 class="section-header__title">Publications</h2>
         </div>
 
+        <!-- Interactive Timeline -->
+        <div class="timeline-wrapper fade-in" id="pubTimeline">
+          <style>
+            .timeline-wrapper { position:relative; margin:0 0 48px; padding:28px 0 0; overflow:visible; }
+            .timeline-track { position:relative; height:180px; margin:0 40px; }
+            .timeline-line { position:absolute; top:90px; left:0; right:0; height:2px; background:#222; }
+            .timeline-year { position:absolute; top:100px; transform:translateX(-50%); color:#666; font-size:13px; font-weight:600; letter-spacing:0.5px; }
+            .timeline-year::before { content:''; position:absolute; top:-14px; left:50%; transform:translateX(-50%); width:2px; height:10px; background:#333; }
+            .tl-dot { position:absolute; top:90px; width:14px; height:14px; border-radius:50%; transform:translate(-50%,-50%); cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; opacity:0; z-index:2; }
+            .tl-dot.visible { opacity:1; }
+            .tl-dot:hover { transform:translate(-50%,-50%) scale(1.5); box-shadow:0 0 12px currentColor; z-index:10; }
+            .tl-tooltip { position:absolute; bottom:calc(100% + 14px); left:50%; transform:translateX(-50%); background:#1a1a1a; border:1px solid #333; border-radius:8px; padding:12px 16px; width:300px; max-width:90vw; opacity:0; pointer-events:none; transition:opacity 0.2s; z-index:20; font-size:12px; line-height:1.5; white-space:normal; word-wrap:break-word; }
+            .tl-dot:hover .tl-tooltip { opacity:1; }
+            .tl-tooltip__title { color:#fff; font-weight:600; margin-bottom:4px; }
+            .tl-tooltip__meta { color:#888; }
+            .tl-tooltip__badge { display:inline-block; margin-top:6px; padding:2px 6px; border-radius:4px; font-size:10px; font-weight:600; }
+            .timeline-legend { display:flex; justify-content:center; gap:20px; margin-top:8px; font-size:12px; color:#888; flex-wrap:wrap; }
+            .timeline-legend span::before { content:''; display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+            .tl-cat-leak::before { background:#FF4FC9 !important; }
+            .tl-cat-sensor::before { background:#4FC3FF !important; }
+            .tl-cat-nde::before { background:#4FFF8F !important; }
+            .tl-cat-micro::before { background:#C97FFF !important; }
+            @media (max-width:600px) { .tl-tooltip { width:220px; padding:8px 10px; } }
+          </style>
+          <div class="timeline-track">
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-legend">
+            <span class="tl-cat-leak">Leak Detection</span>
+            <span class="tl-cat-sensor">Sensor Fundamentals</span>
+            <span class="tl-cat-nde">Acoustics / NDE</span>
+            <span class="tl-cat-micro">Microfluidics</span>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var pubs = [
+            {year:2022,month:8, cat:'sensor', title:'Ultrasound Sensing at Thermomechanical Limits with Optomechanical Buckled-Dome Microcavities', journal:'Optics Express \u00b7 29 Aug 2022', pdf:'assets/docs/Papers/Ultrasound%20sensing%20at%20thermomechanical%20limits%20with%20optomechanical%20buckled-dome%20microcavities.pdf'},
+            {year:2023,month:6, cat:'leak',   title:'All-Optical, Air-Coupled Ultrasonic Detection of Low-Pressure Gas Leaks and Observation of Jet Tones in the MHz Range', journal:'MDPI Sensors \u00b7 17 Jun 2023', pdf:'assets/docs/Papers/All-Optical%2C%20Air-Coupled%20Ultrasonic%20Detection%20of%20Low-Pressure%20Gas%20Leaks%20and%20Observation%20of%20Jet%20Tones%20in%20the%20MHz%20Range.pdf'},
+            {year:2023,month:7, cat:'micro',  title:'Observation of Thermal Acoustic Modes of a Droplet Coupled to an Optomechanical Sensor', journal:'Applied Physics Letters \u00b7 Editor\'s Pick \u00b7 26 Jul 2023', pdf:'assets/docs/Papers/Observation%20of%20thermal%20acoustic%20modes%20of%20a%20droplet%20coupled%20to%20an%20optomechanical%20sensor.pdf'},
+            {year:2023,month:10, cat:'micro', title:'Ultrasonic Spectroscopy of Sessile Droplets Coupled to Optomechanical Sensors', journal:'RSC Lab on a Chip \u00b7 Oct 2023', pdf:'assets/docs/Papers/Ultrasonic%20spectroscopy%20of%20sessile%20droplets%20coupled%20to%20optomechanical%20sensors.pdf'},
+            {year:2024,month:7, cat:'sensor', title:'Spectroscopy of Substrate Thermal Vibrational Modes Using an Optomechanical Sensor', journal:'Optical Materials Express \u00b7 1 Jul 2024', pdf:'assets/docs/Papers/Spectroscopy%20of%20substrate%20thermal%20vibrational%20modes%20using%20an%20optomechanical%20sensor.pdf'},
+            {year:2024,month:8, cat:'nde',    title:'Air-Coupled Ultrasound Using Broadband Shock Waves from Piezoelectric Spark Igniters', journal:'Applied Physics Letters \u00b7 21 Aug 2024', pdf:'assets/docs/Papers/Air-coupled%20ultrasound%20using%20broadband%20shock%20waves%20from%20piezoelectric%20spark%20igniters.pdf'},
+            {year:2024,month:12, cat:'sensor',title:'Coupling the Thermal Acoustic Modes of a Bubble to an Optomechanical Sensor', journal:'Nature Microsystems & Nanoengineering \u00b7 26 Dec 2024', pdf:'assets/docs/Papers/Coupling%20the%20thermal%20acoustic%20modes%20of%20a%20bubble%20to%20an%20optomechanical%20sensor.pdf'},
+            {year:2025,month:7, cat:'leak',   title:'Characterization of Micro-Scale Gas Leaks Using an Optomechanical Ultrasound Sensor', journal:'Journal of the Acoustical Society of America \u00b7 11 Jul 2025', pdf:'assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf'},
+            {year:2025,month:10,cat:'nde',    title:'Resonant Ultrasound Spectroscopy Detection Using a Non-Contact Ultrasound Microphone', journal:'MDPI Sensors \u00b7 4 Oct 2025', pdf:'assets/docs/Papers/Resonant%20Ultrasound%20Spectroscopy%20Detection%20Using%20a%20Non-Contact%20Ultrasound%20Microphone.pdf'},
+            {year:2026,month:2, cat:'nde',    title:'Non-Contact Characterization of Plates Using a Turbulent Air-Jet Source and an Ultrasound Microphone', journal:'MDPI NDT \u00b7 1 Feb 2026', pdf:'assets/docs/Papers/Non-Contact%20Characterization%20of%20Plates%20Using%20a%20Turbulent%20Air-Jet%20Source%20and%20an%20Ultrasound%20Microphone.pdf'}
+          ];
+
+          var colors = {leak:'#FF4FC9', sensor:'#4FC3FF', nde:'#4FFF8F', micro:'#C97FFF'};
+          var track = document.querySelector('.timeline-track');
+          var minYear = 2022, maxYear = 2026;
+          var yearSpan = maxYear - minYear;
+
+          // Year markers
+          for (var y = minYear; y <= maxYear; y++) {
+            var pct = ((y - minYear) / yearSpan) * 100;
+            var ym = document.createElement('div');
+            ym.className = 'timeline-year';
+            ym.style.left = pct + '%';
+            ym.textContent = y;
+            track.appendChild(ym);
+          }
+
+          // Stagger dots vertically to avoid overlap
+          var yOffsets = [-28, -18, -44, -36, -28, -44, -18, -36, -28, -44];
+
+          pubs.forEach(function(p, i) {
+            var frac = (p.year - minYear + (p.month - 1) / 12) / yearSpan;
+            var pct = Math.max(0, Math.min(100, frac * 100));
+            var dot = document.createElement('a');
+            dot.className = 'tl-dot';
+            dot.href = p.pdf;
+            dot.target = '_blank';
+            dot.rel = 'noopener';
+            dot.style.left = pct + '%';
+            dot.style.marginTop = yOffsets[i] + 'px';
+            dot.style.background = colors[p.cat];
+            dot.style.color = colors[p.cat];
+            dot.style.transitionDelay = (i * 80) + 'ms';
+
+            var tip = document.createElement('div');
+            tip.className = 'tl-tooltip';
+            tip.innerHTML = '<div class="tl-tooltip__title">' + p.title + '</div>'
+              + '<div class="tl-tooltip__meta">' + p.journal + ' \u00b7 ' + p.year + '</div>'
+              + '<span class="tl-tooltip__badge" style="background:' + colors[p.cat] + '22;color:' + colors[p.cat] + ';">View PDF &rarr;</span>';
+            // Clamp tooltip to not overflow edges
+            var pctNum = parseFloat(pct);
+            if (pctNum < 20) { tip.style.left = '0'; tip.style.transform = 'translateX(0)'; }
+            else if (pctNum > 80) { tip.style.left = 'auto'; tip.style.right = '0'; tip.style.transform = 'translateX(0)'; }
+            dot.appendChild(tip);
+            track.appendChild(dot);
+          });
+
+          // Animate on scroll
+          var observer = new IntersectionObserver(function(entries) {
+            if (entries[0].isIntersecting) {
+              var dots = track.querySelectorAll('.tl-dot');
+              dots.forEach(function(d) { d.classList.add('visible'); });
+              observer.disconnect();
+            }
+          }, { threshold: 0.2 });
+          observer.observe(track);
+        })();
+        </script>
+
         <div class="research-list">
           <div class="research-item fade-in">
             <h3 class="research-item__title">Non-Contact Characterization of Plates Using a Turbulent Air-Jet Source and an Ultrasound Microphone</h3>

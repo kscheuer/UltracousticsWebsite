@@ -152,26 +152,26 @@
           <h2 class="section-header__title">Quantified Leak Detection Performance</h2>
           <p class="section-header__desc">Every claim below is backed by measured data published in peer-reviewed journals.</p>
         </div>
-        <div class="features-grid fade-in" style="margin-top: 32px;">
-          <div class="feature-card">
-            <div class="feature-card__icon" style="font-size: 2rem;">5&thinsp;&mu;m</div>
-            <h3 class="feature-card__title">Smallest Orifice Detected</h3>
-            <p class="feature-card__desc">Resolved leak signatures from a 5&thinsp;&mu;m pinhole &mdash; smaller than a red blood cell. Conventional ultrasonic detectors cannot resolve leaks at this scale.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
+        <div class="card-grid card-grid--2 fade-in" style="margin-top: 32px;">
+          <div class="card">
+            <div style="font-size:2.2rem; font-weight:700; color:var(--accent); margin-bottom:8px;">5&thinsp;&mu;m</div>
+            <h3 class="card__title" style="font-size:16px;">Smallest Orifice Detected</h3>
+            <p class="card__desc">Resolved leak signatures from a 5&thinsp;&mu;m pinhole — smaller than a red blood cell. Conventional ultrasonic detectors cannot resolve leaks at this scale.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
           </div>
-          <div class="feature-card">
-            <div class="feature-card__icon" style="font-size: 2rem;">0.6&thinsp;SCCM</div>
-            <h3 class="feature-card__title">Minimum Detectable Leak Rate</h3>
-            <p class="feature-card__desc">Detects leak rates as low as ~0.6&thinsp;SCCM &mdash; approximately 100&times; more sensitive than the ~60&thinsp;SCCM threshold of conventional ultrasonic leak detectors.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
+          <div class="card">
+            <div style="font-size:2.2rem; font-weight:700; color:var(--accent); margin-bottom:8px;">0.6&thinsp;SCCM</div>
+            <h3 class="card__title" style="font-size:16px;">Minimum Detectable Leak Rate</h3>
+            <p class="card__desc">Detects leak rates as low as ~0.6&thinsp;SCCM — approximately 100&times; more sensitive than the ~60&thinsp;SCCM threshold of conventional ultrasonic leak detectors.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
           </div>
-          <div class="feature-card">
-            <div class="feature-card__icon" style="font-size: 2rem;">5&thinsp;MHz</div>
-            <h3 class="feature-card__title">Detection Bandwidth</h3>
-            <p class="feature-card__desc">Leak spectra captured across the full 0&ndash;5&thinsp;MHz band, where conventional microphones capture only the low-frequency tail below ~100&thinsp;kHz.<sup><a href="assets/docs/Papers/All-Optical%2C%20Air-Coupled%20Ultrasonic%20Detection%20of%20Low-Pressure%20Gas%20Leaks%20and%20Observation%20of%20Jet%20Tones%20in%20the%20MHz%20Range.pdf" title="Sensors 2023" style="color:var(--accent);">[2]</a></sup></p>
+          <div class="card">
+            <div style="font-size:2.2rem; font-weight:700; color:var(--accent); margin-bottom:8px;">5&thinsp;MHz</div>
+            <h3 class="card__title" style="font-size:16px;">Detection Bandwidth</h3>
+            <p class="card__desc">Leak spectra captured across the full 0–5&thinsp;MHz band, where conventional microphones capture only the low-frequency tail below ~100&thinsp;kHz.<sup><a href="assets/docs/Papers/All-Optical%2C%20Air-Coupled%20Ultrasonic%20Detection%20of%20Low-Pressure%20Gas%20Leaks%20and%20Observation%20of%20Jet%20Tones%20in%20the%20MHz%20Range.pdf" title="Sensors 2023" style="color:var(--accent);">[2]</a></sup></p>
           </div>
-          <div class="feature-card">
-            <div class="feature-card__icon" style="font-size: 2rem;">Sizing</div>
-            <h3 class="feature-card__title">Quantitative Leak Sizing</h3>
-            <p class="feature-card__desc">Spectral signatures encode both the orifice size and leak rate, allowing quantitative estimation from a single measurement &mdash; not just detect/no-detect.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
+          <div class="card">
+            <div style="font-size:2.2rem; font-weight:700; color:var(--accent); margin-bottom:8px;">Sizing</div>
+            <h3 class="card__title" style="font-size:16px;">Quantitative Leak Sizing</h3>
+            <p class="card__desc">Spectral signatures encode both the orifice size and leak rate, allowing quantitative estimation from a single measurement — not just detect/no-detect.<sup><a href="assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf" title="JASA 2025" style="color:var(--accent);">[1]</a></sup></p>
           </div>
         </div>
       </div>
@@ -250,7 +250,7 @@
       var convCutoffMHz = 0.1;
 
       var convThreshold = 1800;
-      var broadThreshold = 300;
+      var broadThreshold = 150;
 
       // Auto-sweep state
       var autoSweeping = false;

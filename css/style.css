@@ -1806,7 +1806,7 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('../assets/images/Promotional/WaveformBackground.png') center/cover no-repeat;
+  background: url('../assets/images/Promotional/WaveformBackground.png') top center/cover no-repeat;
   opacity: 0.15;
   pointer-events: none;
 }
