@@ -177,6 +177,474 @@
       </div>
     </section>
 
+    <!-- ====== Interactive Demo ====== -->
+    <section class="section" id="demo" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">Measured Data</p>
+          <h2 class="section-header__title">See How Pressure Shapes the Leak Spectrum</h2>
+          <p class="section-header__desc">Real acoustic spectra measured from a 5&thinsp;&mu;m orifice at varying gauge pressures. Drag the slider and watch the signal emerge.</p>
+        </div>
+
+        <div class="fade-in" style="max-width: 860px; margin: 0 auto;">
+
+          <!-- Pressure Slider -->
+          <div style="text-align:center; margin-bottom:20px;">
+            <div style="display:inline-flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:center;">
+              <label style="font-size:14px; color:#aaa; font-weight:600;">Gauge Pressure</label>
+              <input type="range" id="pressureSlider" min="0" max="2500" step="1" value="0"
+                style="width:260px; accent-color:#FF4FC9; cursor:pointer;">
+              <span id="pressureLabel" style="font-size:22px; font-weight:700; color:#FF4FC9; min-width:110px; text-align:left;">0 PSI</span>
+            </div>
+          </div>
+
+          <!-- Detection Verdict -->
+          <div style="display:flex; justify-content:center; gap:32px; margin-bottom:20px; flex-wrap:wrap;">
+            <div id="verdictConv" style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; border-radius:8px; background:#1a1a1a; border:1px solid #333; font-size:13px; font-weight:600; transition:all 0.3s ease; min-width:260px; justify-content:center;">
+              <span style="color:#888;">Conventional Sensor:</span>
+              <span id="verdictConvStatus" style="color:#555; min-width:110px; text-align:center;">No Leak</span>
+            </div>
+            <div id="verdictBroad" style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; border-radius:8px; background:#1a1a1a; border:1px solid #333; font-size:13px; font-weight:600; transition:all 0.3s ease; min-width:220px; justify-content:center;">
+              <span style="color:#888;">BROADSONIC:</span>
+              <span id="verdictBroadStatus" style="color:#555; min-width:110px; text-align:center;">No Leak</span>
+            </div>
+          </div>
+
+          <!-- Canvas Chart -->
+          <div style="position:relative; background:#111; border-radius:12px; border:1px solid #222; padding:16px 16px 16px 16px;">
+            <canvas id="leakCanvas" style="width:100%; height:420px;"></canvas>
+            <!-- Legend -->
+            <div style="display:flex; justify-content:center; gap:24px; padding:8px 0 4px; font-size:13px; color:#888; flex-wrap:wrap;">
+              <span><span style="display:inline-block;width:14px;height:3px;background:#FF4FC9;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Leak Signal</span>
+              <span><span style="display:inline-block;width:14px;height:3px;background:#555;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Noise Floor</span>
+              <span><span style="display:inline-block;width:14px;height:3px;background:rgba(255,79,201,0.15);vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Measured Pressures</span>
+              <span><span style="display:inline-block;width:14px;height:2px;border-top:2px dashed #FF4FC966;vertical-align:middle;margin-right:6px;"></span>100 kHz Limit</span>
+            </div>
+          </div>
+
+          <p style="text-align:center; margin-top:16px; font-size:13px; color:var(--text-secondary);">
+            Acoustic amplitude spectrum &middot; 5&thinsp;&mu;m orifice &middot; Background-normalized &middot; 30-trace average
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+    (function() {
+      var canvas = document.getElementById('leakCanvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var slider = document.getElementById('pressureSlider');
+      var pressureLabel = document.getElementById('pressureLabel');
+      var verdictConvStatus = document.getElementById('verdictConvStatus');
+      var verdictBroadStatus = document.getElementById('verdictBroadStatus');
+      var verdictConv = document.getElementById('verdictConv');
+      var verdictBroad = document.getElementById('verdictBroad');
+
+      var data = null;
+      var currentPSI = 0;
+      var pad = { top: 20, right: 20, bottom: 52, left: 62 };
+      var logMin = -0.5;
+      var logMax = 2.5;
+      var xMax = 5;
+      var convCutoffMHz = 0.1;
+
+      var convThreshold = 1800;
+      var broadThreshold = 300;
+
+      // Auto-sweep state
+      var autoSweeping = false;
+      var autoRAF = null;
+      var autoVal = 0;
+      var hasAutoSwept = false;
+
+      var sup = ['\u2070','\u00B9','\u00B2','\u00B3','\u2074','\u2075','\u2076','\u2077','\u2078','\u2079'];
+
+      function resize() {
+        var rect = canvas.getBoundingClientRect();
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function xPos(f, w) {
+        return pad.left + (f / xMax) * (w - pad.left - pad.right);
+      }
+
+      function yPos(val, h) {
+        var lv = Math.log10(Math.max(val, 1e-8));
+        var t = (lv - logMin) / (logMax - logMin);
+        return pad.top + (1 - t) * (h - pad.top - pad.bottom);
+      }
+
+      function drawAxes(w, h) {
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 1;
+        ctx.fillStyle = '#888';
+        ctx.font = '12px Inter, sans-serif';
+
+        ctx.beginPath();
+        ctx.moveTo(pad.left, h - pad.bottom);
+        ctx.lineTo(w - pad.right, h - pad.bottom);
+        ctx.stroke();
+
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        for (var f = 0; f <= xMax; f += 1) {
+          var x = xPos(f, w);
+          ctx.beginPath();
+          ctx.moveTo(x, h - pad.bottom);
+          ctx.lineTo(x, h - pad.bottom + 5);
+          ctx.stroke();
+          ctx.fillText(f.toFixed(0), x, h - pad.bottom + 8);
+        }
+        ctx.fillText('Frequency (MHz)', w / 2, h - 12);
+
+        ctx.beginPath();
+        ctx.moveTo(pad.left, pad.top);
+        ctx.lineTo(pad.left, h - pad.bottom);
+        ctx.stroke();
+
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'middle';
+        for (var p = Math.ceil(logMin); p <= logMax; p++) {
+          var y = yPos(Math.pow(10, p), h);
+          ctx.strokeStyle = '#333';
+          ctx.beginPath();
+          ctx.moveTo(pad.left - 5, y);
+          ctx.lineTo(pad.left, y);
+          ctx.stroke();
+          ctx.save();
+          ctx.strokeStyle = '#1a1a1a';
+          ctx.beginPath();
+          ctx.moveTo(pad.left, y);
+          ctx.lineTo(w - pad.right, y);
+          ctx.stroke();
+          ctx.restore();
+          var label = '10' + (p < 0 ? '\u207B' : '') + sup[Math.abs(p)];
+          ctx.fillStyle = '#888';
+          ctx.fillText(label, pad.left - 8, y);
+        }
+
+        ctx.save();
+        ctx.translate(14, h / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#888';
+        ctx.fillText('Acoustic Power (a.u.)', 0, 0);
+        ctx.restore();
+      }
+
+      function drawConvCutoff(w, h) {
+        var xCut = xPos(convCutoffMHz, w);
+        ctx.save();
+        ctx.globalAlpha = 0.04;
+        ctx.fillStyle = '#888';
+        ctx.fillRect(pad.left, pad.top, xCut - pad.left, h - pad.top - pad.bottom);
+        ctx.restore();
+
+        ctx.save();
+        ctx.globalAlpha = 0.4;
+        ctx.strokeStyle = '#FF4FC9';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(xCut, pad.top);
+        ctx.lineTo(xCut, h - pad.bottom);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+
+        // Label below the chart area
+        ctx.save();
+        ctx.globalAlpha = 0.5;
+        ctx.fillStyle = '#888';
+        ctx.font = '10px Inter, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('\u2190 Conv.', xCut - 4, h - pad.bottom - 8);
+        ctx.restore();
+
+        ctx.save();
+        ctx.globalAlpha = 0.5;
+        ctx.fillStyle = '#FF4FC9';
+        ctx.font = '10px Inter, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('BROADSONIC \u2192', xCut + 4, h - pad.bottom - 8);
+        ctx.restore();
+      }
+
+      function drawLine(freq, vals, color, w, h, alpha, lineWidth) {
+        if (alpha < 0.01) return;
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.strokeStyle = color;
+        ctx.lineWidth = lineWidth || 1.4;
+        ctx.beginPath();
+        var started = false;
+        for (var i = 0; i < freq.length; i++) {
+          var x = xPos(freq[i], w);
+          var y = yPos(vals[i], h);
+          if (y < pad.top) y = pad.top;
+          if (y > h - pad.bottom) y = h - pad.bottom;
+          if (!started) { ctx.moveTo(x, y); started = true; }
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // Draw filled area between signal and noise floor
+      function drawFill(freq, signal, noise, w, h, alpha) {
+        if (alpha < 0.01) return;
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.beginPath();
+        // Forward along signal
+        var started = false;
+        for (var i = 0; i < freq.length; i++) {
+          var x = xPos(freq[i], w);
+          var y = yPos(signal[i], h);
+          if (y < pad.top) y = pad.top;
+          if (y > h - pad.bottom) y = h - pad.bottom;
+          if (!started) { ctx.moveTo(x, y); started = true; }
+          else ctx.lineTo(x, y);
+        }
+        // Back along noise floor
+        for (var j = freq.length - 1; j >= 0; j--) {
+          var x2 = xPos(freq[j], w);
+          var y2 = yPos(noise[j], h);
+          if (y2 < pad.top) y2 = pad.top;
+          if (y2 > h - pad.bottom) y2 = h - pad.bottom;
+          ctx.lineTo(x2, y2);
+        }
+        ctx.closePath();
+        var grad = ctx.createLinearGradient(0, pad.top, 0, h - pad.bottom);
+        grad.addColorStop(0, 'rgba(255,79,201,0.25)');
+        grad.addColorStop(1, 'rgba(255,79,201,0.02)');
+        ctx.fillStyle = grad;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Ghost trails: draw all measured curves faintly
+      function drawGhosts(w, h) {
+        if (!data) return;
+        var ghostColors = ['#FF4FC922', '#FF4FC928', '#FF4FC930', '#FF4FC938', '#FF4FC940'];
+        for (var idx = 0; idx < data.pressures.length; idx++) {
+          var key = String(data.pressures[idx]);
+          drawLine(data.freq_mhz, data.spectra[key], ghostColors[idx], w, h, 0.12, 0.8);
+        }
+      }
+
+      // Find peak frequency of a spectrum
+      function findPeak(freq, vals) {
+        var maxVal = 0;
+        var maxIdx = 0;
+        for (var i = 0; i < vals.length; i++) {
+          if (vals[i] > maxVal) { maxVal = vals[i]; maxIdx = i; }
+        }
+        return { freq: freq[maxIdx], val: maxVal };
+      }
+
+      // Draw peak frequency marker
+      function drawPeakMarker(freq, vals, w, h) {
+        var peak = findPeak(freq, vals);
+        var x = xPos(peak.freq, w);
+        var y = yPos(peak.val, h);
+        if (y < pad.top) y = pad.top;
+
+        // Vertical hairline
+        ctx.save();
+        ctx.globalAlpha = 0.3;
+        ctx.strokeStyle = '#FF4FC9';
+        ctx.lineWidth = 0.5;
+        ctx.setLineDash([2, 3]);
+        ctx.beginPath();
+        ctx.moveTo(x, y + 8);
+        ctx.lineTo(x, h - pad.bottom);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+
+        // Dot
+        ctx.save();
+        ctx.fillStyle = '#FF4FC9';
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 0.3;
+        ctx.beginPath();
+        ctx.arc(x, y, 8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        // Label
+        ctx.save();
+        ctx.fillStyle = '#FF4FC9';
+        ctx.font = '11px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Peak: ' + peak.freq.toFixed(1) + ' MHz', x, y - 14);
+        ctx.restore();
+      }
+
+      function getInterpolatedSpectrum(psi) {
+        if (!data) return null;
+        var pressures = data.pressures;
+        if (psi <= 0) return null;
+        if (psi <= pressures[0]) {
+          var t = psi / pressures[0];
+          var result = [];
+          for (var i = 0; i < data.noise_floor.length; i++) {
+            var logNF = Math.log10(Math.max(data.noise_floor[i], 1e-8));
+            var logS = Math.log10(Math.max(data.spectra[String(pressures[0])][i], 1e-8));
+            result.push(Math.pow(10, logNF + (logS - logNF) * t));
+          }
+          return result;
+        }
+        if (psi >= pressures[pressures.length - 1]) {
+          return data.spectra[String(pressures[pressures.length - 1])];
+        }
+        var lo = 0, hi = 1;
+        for (var j = 0; j < pressures.length - 1; j++) {
+          if (psi >= pressures[j] && psi <= pressures[j + 1]) {
+            lo = j; hi = j + 1; break;
+          }
+        }
+        var t2 = (psi - pressures[lo]) / (pressures[hi] - pressures[lo]);
+        var loKey = String(pressures[lo]);
+        var hiKey = String(pressures[hi]);
+        var result2 = [];
+        for (var k = 0; k < data.freq_mhz.length; k++) {
+          var logLo = Math.log10(Math.max(data.spectra[loKey][k], 1e-8));
+          var logHi = Math.log10(Math.max(data.spectra[hiKey][k], 1e-8));
+          result2.push(Math.pow(10, logLo + (logHi - logLo) * t2));
+        }
+        return result2;
+      }
+
+      function updateVerdicts(psi) {
+        if (psi >= broadThreshold) {
+          verdictBroadStatus.textContent = '\u2713 Detected';
+          verdictBroadStatus.style.color = '#00e676';
+          verdictBroad.style.borderColor = '#00e67644';
+        } else {
+          verdictBroadStatus.textContent = 'No Leak';
+          verdictBroadStatus.style.color = '#555';
+          verdictBroad.style.borderColor = '#333';
+        }
+        if (psi >= convThreshold) {
+          verdictConvStatus.textContent = '\u2713 Detected';
+          verdictConvStatus.style.color = '#e6b800';
+          verdictConv.style.borderColor = '#e6b80044';
+        } else if (psi > 0) {
+          verdictConvStatus.textContent = '\u2717 Below Threshold';
+          verdictConvStatus.style.color = '#e74c3c';
+          verdictConv.style.borderColor = '#e74c3c44';
+        } else {
+          verdictConvStatus.textContent = 'No Leak';
+          verdictConvStatus.style.color = '#555';
+          verdictConv.style.borderColor = '#333';
+        }
+      }
+
+      function draw() {
+        var rect = canvas.getBoundingClientRect();
+        var w = rect.width;
+        var h = rect.height;
+        ctx.clearRect(0, 0, w, h);
+        drawAxes(w, h);
+        if (!data) return;
+
+        drawConvCutoff(w, h);
+
+        // Ghost trails of all measured pressures
+        drawGhosts(w, h);
+
+        // Noise floor
+        drawLine(data.freq_mhz, data.noise_floor, '#555', w, h, 1, 1.4);
+
+        // Interpolated signal
+        if (currentPSI > 0) {
+          var spectrum = getInterpolatedSpectrum(currentPSI);
+          if (spectrum) {
+            drawFill(data.freq_mhz, spectrum, data.noise_floor, w, h, 0.6);
+            drawLine(data.freq_mhz, spectrum, '#FF4FC9', w, h, 1, 1.8);
+            drawPeakMarker(data.freq_mhz, spectrum, w, h);
+          }
+        }
+      }
+
+      function setSliderValue(val) {
+        currentPSI = val;
+        slider.value = val;
+        pressureLabel.textContent = val.toLocaleString() + ' PSI';
+        updateVerdicts(val);
+        draw();
+      }
+
+      // Auto-sweep animation on first scroll into view
+      function autoSweepTick() {
+        autoVal += 18;
+        if (autoVal >= 2500) {
+          autoVal = 2500;
+          setSliderValue(2500);
+          autoSweeping = false;
+          return;
+        }
+        setSliderValue(Math.round(autoVal));
+        autoRAF = requestAnimationFrame(autoSweepTick);
+      }
+
+      function startAutoSweep() {
+        if (hasAutoSwept || autoSweeping) return;
+        hasAutoSwept = true;
+        autoSweeping = true;
+        autoVal = 0;
+        autoRAF = requestAnimationFrame(autoSweepTick);
+      }
+
+      // Stop auto-sweep if user grabs slider
+      slider.addEventListener('mousedown', function() {
+        if (autoSweeping) { cancelAnimationFrame(autoRAF); autoSweeping = false; }
+      });
+      slider.addEventListener('touchstart', function() {
+        if (autoSweeping) { cancelAnimationFrame(autoRAF); autoSweeping = false; }
+      });
+
+      slider.addEventListener('input', function() {
+        if (autoSweeping) { cancelAnimationFrame(autoRAF); autoSweeping = false; }
+        currentPSI = parseInt(this.value, 10);
+        pressureLabel.textContent = currentPSI.toLocaleString() + ' PSI';
+        updateVerdicts(currentPSI);
+        draw();
+      });
+
+      window.addEventListener('resize', function() { resize(); draw(); });
+
+      // IntersectionObserver to trigger auto-sweep when section scrolls into view
+      var observer = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting && data && !hasAutoSwept) {
+          startAutoSweep();
+          observer.disconnect();
+        }
+      }, { threshold: 0.4 });
+      observer.observe(canvas);
+
+      fetch('assets/demos/data/leak_spectrum.json')
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          data = d;
+          resize();
+          draw();
+        })
+        .catch(function(e) { console.error('Leak spectrum load error:', e); });
+
+      resize();
+      draw();
+    })();
+    </script>
+
     <!-- ====== Content ====== -->
     <section class="section" style="padding-top: 0;">
       <div class="container">
