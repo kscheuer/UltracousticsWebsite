@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ultrasonic Cleaning Monitoring | Ultracoustics</title>
+  <meta name="theme-color" content="#FF4FC9">
   <meta name="description" content="Real-time, non-contact cavitation monitoring for ultrasonic cleaning baths. BROADSONIC detects transducer drift, degradation, and process anomalies from above the tank.">
 
   <meta property="og:title" content="Ultrasonic Cleaning Monitoring | Ultracoustics">
@@ -20,6 +21,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does the sensor need to be submerged in the cleaning tank?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. BROADSONIC monitors cavitation acoustically from above the cleaning tank with no submersion required. It operates in air and never contacts the cleaning fluid, so it requires no maintenance and does not interfere with the cleaning process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What cleaning problems can BROADSONIC detect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BROADSONIC detects transducer power degradation over time, uneven cavitation distribution across the tank, frequency drift in cleaning transducers, process anomalies from fluid level, temperature, or chemical changes, and sudden failures or intermittent transducer dropouts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does BROADSONIC compare to a hydrophone for cavitation monitoring?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A hydrophone must be submerged in the cleaning fluid, requires maintenance, and can interfere with the cleaning process. BROADSONIC operates entirely in air from above the tank with 20 Hz to 5 MHz bandwidth, providing richer spectral data with zero contact and no maintenance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can BROADSONIC enable predictive maintenance for cleaning tanks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Continuous acoustic monitoring transforms cleaning QA from reactive pass/fail inspection to predictive maintenance. Trends in cavitation intensity, spectral content, and spatial distribution provide early warning of degradation, allowing corrective action before cleaning quality is compromised."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -172,6 +215,46 @@
             <p class="supporting-research__item-meta">Nature Microsystems &amp; Nanoengineering &middot; December 2024</p>
             <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 8px;">Cavitation monitoring is fundamentally about bubble dynamics. This paper demonstrates optical sensing of individual bubble acoustic modes.</p>
             <a href="assets/docs/Papers/Coupling%20the%20thermal%20acoustic%20modes%20of%20a%20bubble%20to%20an%20optomechanical%20sensor.pdf" class="supporting-research__item-link">Download PDF &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">FAQ</p>
+          <h2 class="section-header__title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq fade-in">
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              Does the sensor need to be submerged in the cleaning tank?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>No. BROADSONIC monitors cavitation acoustically from above the cleaning tank with no submersion required. It operates in air and never contacts the cleaning fluid, so it requires no maintenance and does not interfere with the cleaning process.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              What cleaning problems can BROADSONIC detect?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>BROADSONIC detects transducer power degradation over time, uneven cavitation distribution across the tank, frequency drift in cleaning transducers, process anomalies from fluid level, temperature, or chemical changes, and sudden failures or intermittent transducer dropouts.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              How does BROADSONIC compare to a hydrophone for cavitation monitoring?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>A hydrophone must be submerged in the cleaning fluid, requires maintenance, and can interfere with the cleaning process. BROADSONIC operates entirely in air from above the tank with 20 Hz to 5 MHz bandwidth, providing richer spectral data with zero contact and no maintenance.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              Can BROADSONIC enable predictive maintenance for cleaning tanks?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>Yes. Continuous acoustic monitoring transforms cleaning QA from reactive pass/fail inspection to predictive maintenance. Trends in cavitation intensity, spectral content, and spatial distribution provide early warning of degradation, allowing corrective action before cleaning quality is compromised.</p></div>
           </div>
         </div>
       </div>

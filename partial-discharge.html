@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partial Discharge Monitoring | Ultracoustics</title>
+  <meta name="theme-color" content="#FF4FC9">
   <meta name="description" content="Non-contact acoustic partial discharge detection with BROADSONIC. Captures the full PD spectrum with complete EMI immunity.">
 
   <meta property="og:title" content="Partial Discharge Monitoring | Ultracoustics">
@@ -20,6 +21,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does acoustic PD detection compare to electrical methods?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Electrical PD sensors are susceptible to electromagnetic interference from the high-voltage equipment they monitor, causing false triggers from switching transients and RF noise. BROADSONIC detects PD acoustically through air using an entirely optical sensor with no electrical elements, providing inherent EMI immunity and eliminating false positives."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What equipment can BROADSONIC monitor for partial discharge?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BROADSONIC is suited for transformers, switchgear, high-voltage cable terminations, generators, motors, substations, and gas-insulated switchgear (GIS). Any asset where partial discharge produces airborne acoustic emissions can be monitored."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the sensor need to be attached to the high-voltage equipment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. BROADSONIC operates entirely through air with no physical contact to monitored equipment. This eliminates the need for direct sensor attachment to high-voltage assets, simplifying deployment and reducing risk to personnel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What detection range can BROADSONIC achieve for PD events?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In controlled testing using an arc lighter as a PD source, BROADSONIC achieved exceptional signal-to-noise ratio at 1 meter standoff distance. The omnidirectional response (greater than ±60°) allows monitoring of multiple discharge sources from a single sensor position."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -157,6 +200,46 @@
             <p class="supporting-research__item-meta">Whitepaper &middot; March 2026</p>
             <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 8px;">Related application exploring non-contact acoustic monitoring of electrical infrastructure components.</p>
             <a href="assets/docs/Whitepapers/BROADSONIC_AppNote_Magnetic_Components.pdf" class="supporting-research__item-link">Download PDF &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">FAQ</p>
+          <h2 class="section-header__title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq fade-in">
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              How does acoustic PD detection compare to electrical methods?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>Electrical PD sensors are susceptible to electromagnetic interference from the high-voltage equipment they monitor, causing false triggers from switching transients and RF noise. BROADSONIC detects PD acoustically through air using an entirely optical sensor with no electrical elements, providing inherent EMI immunity and eliminating false positives.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              What equipment can BROADSONIC monitor for partial discharge?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>BROADSONIC is suited for transformers, switchgear, high-voltage cable terminations, generators, motors, substations, and gas-insulated switchgear (GIS). Any asset where partial discharge produces airborne acoustic emissions can be monitored.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              Does the sensor need to be attached to high-voltage equipment?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>No. BROADSONIC operates entirely through air with no physical contact to monitored equipment. This eliminates the need for direct sensor attachment to high-voltage assets, simplifying deployment and reducing risk to personnel.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              What detection range can BROADSONIC achieve for PD events?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>In controlled testing using an arc lighter as a PD source, BROADSONIC achieved exceptional signal-to-noise ratio at 1 meter standoff distance. The omnidirectional response (greater than &pm;60&deg;) allows monitoring of multiple discharge sources from a single sensor position.</p></div>
           </div>
         </div>
       </div>

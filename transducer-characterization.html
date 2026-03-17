@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Transducer Characterization | Ultracoustics</title>
+  <meta name="theme-color" content="#FF4FC9">
   <meta name="description" content="Non-contact broadband beam profile mapping for ultrasonic transducers. Full 0-5 MHz spatial characterization at 0.1 mm resolution in a single scan pass.">
 
   <meta property="og:title" content="Transducer Characterization | Ultracoustics">
@@ -20,6 +21,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is BROADSONIC characterization different from hydrophone scanning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hydrophone scanning requires water immersion and typically captures only a single frequency per pass — characterizing a transducer across its bandwidth requires many separate scans. BROADSONIC captures the full 0–5 MHz spectrum at every spatial point in a single air-coupled pass, with no water tank or couplant needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What transducer types can be characterized?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BROADSONIC can characterize single-element piezoelectric transducers, phased arrays and multi-element transducers, CMUTs, PMUTs, and focused transducers. Any transducer that radiates acoustic energy into air within the 0–5 MHz band can be scanned."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does the characterization process take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You ship your transducer to Ultracoustics in Edmonton, Alberta. Scanning takes minutes per cm² at fine resolution, and you receive an interactive HTML report and raw data within one week. Your transducer is then shipped back safely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need special software to view the results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Results are delivered as a self-contained, browser-based interactive HTML report that opens in any web browser with zero software installation. Reports include spatial amplitude maps, per-pixel spectrum viewer, color scale controls, and exportable raw data."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -221,8 +264,8 @@
     <!-- ====== See It In Action ====== -->
     <section class="section video-bg-section">
       <video class="video-bg" autoplay muted loop playsinline preload="auto">
+        <source src="assets/Videos/TransducerScan.mp4" type="video/mp4">
         <source src="assets/Videos/TransducerScan.MOV" type="video/quicktime">
-        <source src="assets/Videos/TransducerScan.MOV" type="video/mp4">
       </video>
       <div class="video-bg-overlay"></div>
       <div class="container" style="position: relative; z-index: 2;">
@@ -322,6 +365,46 @@
             <h3 class="supporting-research__item-title">Air-Coupled Ultrasound Using Broadband Shock Waves from Piezoelectric Spark Igniters</h3>
             <p class="supporting-research__item-meta">Applied Physics Letters &middot; 2024</p>
             <a href="assets/docs/Papers/Air-coupled%20ultrasound%20using%20broadband%20shock%20waves%20from%20piezoelectric%20spark%20igniters.pdf" class="supporting-research__item-link">Download PDF &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">FAQ</p>
+          <h2 class="section-header__title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq fade-in">
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              How is BROADSONIC characterization different from hydrophone scanning?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>Hydrophone scanning requires water immersion and typically captures only a single frequency per pass — characterizing a transducer across its bandwidth requires many separate scans. BROADSONIC captures the full 0&ndash;5 MHz spectrum at every spatial point in a single air-coupled pass, with no water tank or couplant needed.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              What transducer types can be characterized?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>Single-element piezoelectric transducers, phased arrays and multi-element transducers, CMUTs, PMUTs, and focused transducers. Any transducer that radiates acoustic energy into air within the 0&ndash;5 MHz band can be scanned.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              How long does the characterization process take?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>You ship your transducer to Ultracoustics in Edmonton, Alberta. Scanning takes minutes per cm&sup2; at fine resolution, and you receive an interactive HTML report and raw data within one week. Your transducer is then shipped back safely.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              Do I need special software to view the results?
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq__answer"><p>No. Results are delivered as a self-contained, browser-based interactive HTML report that opens in any web browser with zero software installation. Reports include spatial amplitude maps, per-pixel spectrum viewer, color scale controls, and exportable raw data.</p></div>
           </div>
         </div>
       </div>
