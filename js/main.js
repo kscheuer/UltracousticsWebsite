@@ -441,6 +441,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // --- Auto-open datasheet modal from #datasheet hash ---
+  if (window.location.hash === '#datasheet') {
+    var modal = document.getElementById('datasheetModal');
+    if (modal) modal.classList.add('active');
+  }
+
   // --- Datasheet Gate Form ---
   var dsForm = document.getElementById('datasheetForm');
   if (dsForm) {

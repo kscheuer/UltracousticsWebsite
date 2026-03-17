@@ -1475,14 +1475,12 @@ h1, h2, h3, h4, h5, h6 {
 .product-hero-img {
   max-width: 800px;
   margin-left: auto;
-  overflow: hidden;
 }
 
 .product-hero-img img {
-  width: 110%;
+  width: 100%;
   height: auto;
   display: block;
-  margin: -2% -3% -4% -2%;
 }
 
 /* --- Scroll Progress Indicator --- */
