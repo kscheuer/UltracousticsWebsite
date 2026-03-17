@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { threshold: 0.3 });
 
     counters.forEach(function (counter) {
+      counter.textContent = '0';
       counterObserver.observe(counter);
     });
   }

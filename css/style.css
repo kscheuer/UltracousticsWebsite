@@ -836,6 +836,17 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-secondary);
   line-height: 1.6;
 }
+.team-card__linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.team-card__linkedin:hover {
+  color: var(--accent);
+}
 
 /* --- Partner Logos --- */
 .partners-grid {
