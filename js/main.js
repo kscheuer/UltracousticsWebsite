@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toggle.addEventListener('click', function (e) {
         if (window.innerWidth > 768) return;
         e.preventDefault();
+        e.stopPropagation();
         var dropdown = toggle.closest('.nav__dropdown');
         var wasOpen = dropdown.classList.contains('open');
         // Close all other dropdowns
@@ -40,6 +41,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         if (!wasOpen) dropdown.classList.add('open');
       });
+    });
+
+    // Also reset dropdowns when closing the mobile nav
+    navToggle.addEventListener('click', function () {
+      if (!navLinks.classList.contains('active')) {
+        document.querySelectorAll('.nav__dropdown.open').forEach(function (d) {
+          d.classList.remove('open');
+        });
+      }
     });
   }
 

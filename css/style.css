@@ -237,10 +237,12 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
 }
 
-.nav__dropdown:hover .nav__dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+@media (min-width: 769px) {
+  .nav__dropdown:hover .nav__dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 }
 
 .nav__dropdown-item {
@@ -2015,6 +2017,7 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
     padding: 0 0 0 20px;
     transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    min-width: 0;
   }
 
   .nav__dropdown.open .nav__dropdown-menu {
