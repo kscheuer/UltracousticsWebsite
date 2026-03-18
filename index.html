@@ -369,17 +369,16 @@
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
 
-      // 6 axes: Bandwidth, Sensitivity (sensor area inverse), EMI Immunity, Non-Contact, Omnidirectional, Dynamic Range
-      var axes = ['Bandwidth', 'Spatial\nResolution', 'EMI\nImmunity', 'Non-Contact', 'Omnidirectional', 'Dynamic\nRange'];
+      // 8 axes: Bandwidth, Spatial Resolution, EMI Immunity, Non-Contact, Omnidirectional, Dynamic Range, Cost, Maturity
+      var axes = ['Bandwidth', 'Spatial\nResolution', 'EMI\nImmunity', 'Non-Contact', 'Omnidirectional', 'Dynamic\nRange', 'Cost', 'Maturity'];
       var n = axes.length;
 
       // Normalized scores (0-1) for each technology
-      // BROADSONIC: 5 MHz BW, 100um area, full EMI, non-contact, >±60°, optical dynamic range
-      // Conventional: 100 kHz BW, 6mm area, partial EMI, non-contact, varies, moderate
-      // Piezo: 2 MHz BW, 10mm area, none EMI, contact, N/A, moderate
+      // BROADSONIC: 5 MHz BW, 100um area, full EMI, non-contact, >±60°, optical DR, higher cost, newer
+      // Conventional: 100 kHz BW, 6mm area, partial EMI, non-contact, varies, moderate DR, cheaper, established
       var techs = [
-        { name: 'BROADSONIC',   color: '#FF4FC9', scores: [1.0, 1.0, 1.0, 1.0, 1.0, 0.9] },
-        { name: 'Conventional', color: '#5EADFF', scores: [0.15, 0.15, 0.4, 1.0, 0.5, 0.5] }
+        { name: 'BROADSONIC',   color: '#FF4FC9', scores: [1.0, 1.0, 1.0, 1.0, 1.0, 0.9, 0.3, 0.3] },
+        { name: 'Conventional', color: '#5EADFF', scores: [0.15, 0.15, 0.4, 1.0, 0.5, 0.5, 0.9, 1.0] }
       ];
 
       var animProgress = 0;
@@ -436,8 +435,7 @@
           ctx.stroke();
 
           // Label
-          var labelPad = 28;
-          if (j === 1 || j === 2 || j === 4) labelPad = 40;
+          var labelPad = axes[j].indexOf('\n') >= 0 ? 40 : 28;
           var lx = cx + (R + labelPad) * Math.cos(angle);
           var ly = cy + (R + labelPad) * Math.sin(angle);
           var lines = axes[j].split('\n');
