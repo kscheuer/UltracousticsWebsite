@@ -101,7 +101,7 @@
       <div class="container hero__content">
         <div class="hero__grid">
           <div class="product-hero-img">
-            <video autoplay muted loop playsinline preload="auto" aria-label="BROADSONIC readout unit 3D render">
+            <video id="heroVideo" autoplay muted playsinline preload="auto" aria-label="BROADSONIC readout unit 3D render">
               <source src="assets/Videos/BoxRender.mp4" type="video/mp4">
             </video>
           </div>
@@ -456,6 +456,16 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to top">
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
+
+  <script>
+  (function() {
+    var v = document.getElementById('heroVideo');
+    if (!v) return;
+    v.addEventListener('ended', function() {
+      setTimeout(function() { v.play(); }, 1000);
+    });
+  })();
+  </script>
 
   <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "59d9a760e0354897b598b7e213d1d1ec"}'></script>

@@ -112,7 +112,7 @@
             <p class="hero__label">Optical Ultrasonic Sensor</p>
             <h1 class="hero__title">Hear What Other Sensors <span class="text-gradient">Can&rsquo;t</span></h1>
             <p class="hero__subtitle">Non-Contact. Unparalleled Bandwidth. Ultra-Sensitive.</p>
-            <p class="hero__desc">With 5 MHz bandwidth, BROADSONIC captures acoustic information that no other air-coupled sensor can reach.</p>
+            <p class="hero__desc">A broadband (5&nbsp;MHz), all-optical, omnidirectional point sensor (&lt;100&nbsp;&mu;m) providing unprecedented capabilities for air-coupled ultrasonics.</p>
             <p class="hero__desc" style="margin-bottom: 32px; font-size: 15px;">For <span class="hero__ticker"><span class="hero__ticker-word" id="heroTicker">Transducer Characterization</span></span></p>
             <div class="hero__actions">
               <a href="broadsonic.html" class="btn btn--primary btn--lg">Explore BROADSONIC</a>
@@ -308,7 +308,6 @@
                 <th>Feature</th>
                 <th>BROADSONIC</th>
                 <th>Conventional Ultrasonic Mic</th>
-                <th>Piezoelectric Contact Sensor</th>
               </tr>
             </thead>
             <tbody>
@@ -316,37 +315,31 @@
                 <td>Bandwidth</td>
                 <td class="highlight-col">5 MHz</td>
                 <td>20 Hz &ndash; 100 kHz</td>
-                <td>20 kHz &ndash; 2 MHz</td>
               </tr>
               <tr>
                 <td>Contact Required</td>
                 <td class="highlight-col">No (air-coupled)</td>
                 <td>No (air-coupled)</td>
-                <td>Yes (surface mount)</td>
               </tr>
               <tr class="row-highlight">
                 <td>EMI Immunity</td>
                 <td class="highlight-col">Complete</td>
                 <td>Partial</td>
-                <td>None</td>
               </tr>
               <tr>
                 <td>Sensing Principle</td>
                 <td class="highlight-col">Optical (Fabry-Perot)</td>
                 <td>Capacitive / MEMS</td>
-                <td>Piezoelectric</td>
               </tr>
               <tr class="row-highlight">
                 <td>Omnidirectional</td>
                 <td class="highlight-col">&gt; &pm;60&deg;</td>
                 <td>Varies</td>
-                <td>N/A</td>
               </tr>
               <tr>
                 <td>Active Sensor Area</td>
                 <td class="highlight-col">100 &mu;m</td>
                 <td>~6 mm</td>
-                <td>~10 mm</td>
               </tr>
             </tbody>
           </table>
@@ -366,7 +359,6 @@
           <div style="display:flex; justify-content:center; gap:28px; margin-top:12px; font-size:13px; flex-wrap:wrap;">
             <span><span style="display:inline-block;width:14px;height:3px;background:#FF4FC9;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>BROADSONIC</span>
             <span><span style="display:inline-block;width:14px;height:3px;background:#5EADFF;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Conventional Ultrasonic</span>
-            <span><span style="display:inline-block;width:14px;height:3px;background:#FFA64D;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Piezoelectric Contact</span>
           </div>
         </div>
       </div>
@@ -387,8 +379,7 @@
       // Piezo: 2 MHz BW, 10mm area, none EMI, contact, N/A, moderate
       var techs = [
         { name: 'BROADSONIC',   color: '#FF4FC9', scores: [1.0, 1.0, 1.0, 1.0, 1.0, 0.9] },
-        { name: 'Conventional', color: '#5EADFF', scores: [0.15, 0.15, 0.4, 1.0, 0.5, 0.5] },
-        { name: 'Piezoelectric', color: '#FFA64D', scores: [0.4, 0.1, 0.0, 0.0, 0.0, 0.6] }
+        { name: 'Conventional', color: '#5EADFF', scores: [0.15, 0.15, 0.4, 1.0, 0.5, 0.5] }
       ];
 
       var animProgress = 0;
