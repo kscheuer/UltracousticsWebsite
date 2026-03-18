@@ -132,12 +132,14 @@
                 </div>
                 <p class="stat__label">Resolution</p>
               </div>
-              <div>
-                <div class="stat" style="margin: 0;">
-                  <span class="stat__number" style="font-size: clamp(48px, 6vw, 72px); font-weight: 700; letter-spacing: -0.04em; color: var(--accent); line-height: 1;">0</span>
-                  <span class="stat__suffix" style="color: var(--accent);">Couplant</span>
+              <div style="display:flex;align-items:center;">
+                <div style="display:flex;align-items:center;gap:10px;background:rgba(255,79,201,0.1);border:1px solid var(--accent);border-radius:12px;padding:12px 20px;">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><line x1="4" y1="4" x2="20" y2="20" stroke="var(--accent)" stroke-width="2.5"/></svg>
+                  <div>
+                    <p style="color:var(--accent);font-weight:700;font-size:18px;margin:0;line-height:1.2;">Zero Couplant</p>
+                    <p style="color:var(--text-muted);font-size:13px;margin:0;">Non-contact, air-coupled</p>
+                  </div>
                 </div>
-                <p class="stat__label">Required</p>
               </div>
             </div>
             <div class="hero__actions">
@@ -202,10 +204,10 @@
 
           <h3>Where This Matters</h3>
           <ul>
+            <li><strong>Display glass</strong> &mdash; flatness verification (published data on microscope slides)</li>
+            <li><strong>Composite layups</strong> &mdash; ply thickness and uniformity</li>
             <li><strong>Semiconductor wafers</strong> &mdash; thickness uniformity across the wafer</li>
             <li><strong>Battery electrodes</strong> &mdash; coating thickness consistency</li>
-            <li><strong>Display glass</strong> &mdash; flatness verification</li>
-            <li><strong>Composite layups</strong> &mdash; ply thickness and uniformity</li>
           </ul>
           <p style="color: var(--text-secondary); font-size: 14px; margin-top: 16px;">If your process assumes &ldquo;flat,&rdquo; you might want to check.</p>
         </div>
@@ -445,6 +447,10 @@
               <tr>
                 <td style="font-weight: 600; color: var(--text-primary);">Imaging Modes</td>
                 <td>C-scan, frequency-selective amplitude maps, ZGV resonance maps</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600; color: var(--text-primary);">Standoff / Working Distance</td>
+                <td>mm to few cm (non-contact, air-coupled)</td>
               </tr>
               <tr>
                 <td style="font-weight: 600; color: var(--text-primary);">EMI Immunity</td>
