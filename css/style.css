@@ -390,6 +390,11 @@ h1, h2, h3, h4, h5, h6 {
   background: #000;
 }
 
+.hero--dark .hero__mesh,
+.hero--dark .hero__bg-glow {
+  display: none;
+}
+
 .hero-divider {
   height: 4px;
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
