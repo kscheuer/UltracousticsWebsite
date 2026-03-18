@@ -307,39 +307,46 @@
               <tr>
                 <th>Feature</th>
                 <th>BROADSONIC</th>
-                <th>Conventional Ultrasonic Mic</th>
+                <th>Contact Piezo</th>
+                <th>Air-Coupled Piezo</th>
               </tr>
             </thead>
             <tbody>
               <tr class="row-highlight">
                 <td>Bandwidth</td>
-                <td class="highlight-col">5 MHz</td>
-                <td>20 Hz &ndash; 100 kHz</td>
+                <td class="highlight-col">DC &ndash; 5 MHz (flat)</td>
+                <td>Narrowband (~50&ndash;75% fractional)</td>
+                <td>Narrowband (~30% fractional)</td>
               </tr>
               <tr>
                 <td>Contact Required</td>
                 <td class="highlight-col">No (air-coupled)</td>
+                <td>Yes (couplant required)</td>
                 <td>No (air-coupled)</td>
               </tr>
               <tr class="row-highlight">
                 <td>EMI Immunity</td>
-                <td class="highlight-col">Complete</td>
-                <td>Partial</td>
+                <td class="highlight-col">Complete (optical)</td>
+                <td>Poor</td>
+                <td>Poor</td>
               </tr>
               <tr>
                 <td>Sensing Principle</td>
                 <td class="highlight-col">Optical (Fabry-Perot)</td>
-                <td>Capacitive / MEMS</td>
+                <td>Piezoelectric</td>
+                <td>Piezoelectric / Composite</td>
               </tr>
               <tr class="row-highlight">
                 <td>Omnidirectional</td>
                 <td class="highlight-col">&gt; &pm;60&deg;</td>
-                <td>Varies</td>
+                <td>Directional</td>
+                <td>Directional</td>
               </tr>
               <tr>
-                <td>Active Sensor Area</td>
+                <td>Active Sensor Diameter</td>
                 <td class="highlight-col">100 &mu;m</td>
-                <td>~6 mm</td>
+                <td>3&ndash;25 mm</td>
+                <td>10&ndash;25 mm</td>
               </tr>
             </tbody>
           </table>
@@ -358,7 +365,8 @@
           <canvas id="radarCanvas" style="width:100%; height:500px;"></canvas>
           <div style="display:flex; justify-content:center; gap:28px; margin-top:12px; font-size:13px; flex-wrap:wrap;">
             <span><span style="display:inline-block;width:14px;height:3px;background:#FF4FC9;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>BROADSONIC</span>
-            <span><span style="display:inline-block;width:14px;height:3px;background:#5EADFF;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Conventional Ultrasonic</span>
+            <span><span style="display:inline-block;width:14px;height:3px;background:#5EADFF;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Contact Piezo</span>
+            <span><span style="display:inline-block;width:14px;height:3px;background:#FFA64D;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Air-Coupled Piezo</span>
           </div>
         </div>
       </div>
@@ -369,16 +377,18 @@
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
 
-      // 8 axes: Bandwidth, Spatial Resolution, EMI Immunity, Non-Contact, Omnidirectional, Dynamic Range, Cost, Maturity
-      var axes = ['Bandwidth', 'Spatial\nResolution', 'EMI\nImmunity', 'Non-Contact', 'Omnidirectional', 'Dynamic\nRange', 'Cost', 'Maturity'];
+      // 6 axes: Bandwidth, Spatial Resolution, EMI Immunity, Non-Contact, Omnidirectional, Dynamic Range
+      var axes = ['Bandwidth', 'Spatial\nResolution', 'EMI\nImmunity', 'Non-Contact', 'Omnidirectional', 'Dynamic\nRange'];
       var n = axes.length;
 
       // Normalized scores (0-1) for each technology
-      // BROADSONIC: 5 MHz BW, 100um area, full EMI, non-contact, >±60°, optical DR, higher cost, newer
-      // Conventional: 100 kHz BW, 6mm area, partial EMI, non-contact, varies, moderate DR, cheaper, established
+      // BROADSONIC: DC-5 MHz flat, 100µm diameter, full EMI immunity, non-contact, >±60°, >120 dB DR
+      // Contact Piezo: Narrowband 50-75% fractional BW, 3-25mm elements, poor EMI, requires couplant, directional, 60-80 dB DR
+      // Air-Coupled Piezo: ~30% fractional BW at 200 kHz-1.5 MHz, 10-25mm elements, poor EMI, non-contact but massive insertion loss, directional, up to 100 dB DR
       var techs = [
-        { name: 'BROADSONIC',   color: '#FF4FC9', scores: [1.0, 1.0, 1.0, 1.0, 1.0, 0.9, 0.3, 0.3] },
-        { name: 'Conventional', color: '#5EADFF', scores: [0.15, 0.15, 0.4, 1.0, 0.5, 0.5, 0.9, 1.0] }
+        { name: 'BROADSONIC',       color: '#FF4FC9', scores: [1.0, 1.0, 1.0, 1.0, 1.0, 0.9] },
+        { name: 'Contact Piezo',    color: '#5EADFF', scores: [0.3, 0.2, 0.1, 0.0, 0.1, 0.55] },
+        { name: 'Air-Coupled Piezo',color: '#FFA64D', scores: [0.15, 0.1, 0.1, 0.8, 0.15, 0.7] }
       ];
 
       var animProgress = 0;
@@ -444,8 +454,8 @@
           }
         }
 
-        // Draw technology polygons (back to front: conv, BROADSONIC)
-        var order = [1, 0];
+        // Draw technology polygons (back to front: air-coupled, contact, BROADSONIC)
+        var order = [2, 1, 0];
         for (var oi = 0; oi < order.length; oi++) {
           var t = techs[order[oi]];
           var p = order[oi] === 0 ? animProgress : Math.min(animProgress * 1.5, 1);
