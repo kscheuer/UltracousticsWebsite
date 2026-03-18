@@ -386,6 +386,15 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 60vh;
 }
 
+.hero--dark {
+  background: #000;
+}
+
+.hero-divider {
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
 .hero__bg-glow {
   position: absolute;
   top: -200px;
