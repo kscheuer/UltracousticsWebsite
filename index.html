@@ -446,8 +446,8 @@
           }
         }
 
-        // Draw technology polygons (back to front: piezo, conv, BROADSONIC)
-        var order = [2, 1, 0];
+        // Draw technology polygons (back to front: conv, BROADSONIC)
+        var order = [1, 0];
         for (var oi = 0; oi < order.length; oi++) {
           var t = techs[order[oi]];
           var p = order[oi] === 0 ? animProgress : Math.min(animProgress * 1.5, 1);
