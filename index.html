@@ -307,46 +307,46 @@
               <tr>
                 <th>Feature</th>
                 <th>BROADSONIC</th>
-                <th>Contact Piezo</th>
                 <th>Air-Coupled Piezo</th>
+                <th>Conventional Ultrasonic</th>
               </tr>
             </thead>
             <tbody>
               <tr class="row-highlight">
                 <td>Bandwidth</td>
                 <td class="highlight-col">DC &ndash; 5 MHz (flat)</td>
-                <td>Narrowband (~50&ndash;75% fractional)</td>
                 <td>Narrowband (~30% fractional)</td>
+                <td>20 Hz &ndash; 100 kHz</td>
               </tr>
               <tr>
                 <td>Contact Required</td>
                 <td class="highlight-col">No (air-coupled)</td>
-                <td>Yes (couplant required)</td>
+                <td>No (high insertion loss)</td>
                 <td>No (air-coupled)</td>
               </tr>
               <tr class="row-highlight">
                 <td>EMI Immunity</td>
                 <td class="highlight-col">Complete (optical)</td>
                 <td>Poor</td>
-                <td>Poor</td>
+                <td>Partial</td>
               </tr>
               <tr>
                 <td>Sensing Principle</td>
                 <td class="highlight-col">Optical (Fabry-Perot)</td>
-                <td>Piezoelectric</td>
                 <td>Piezoelectric / Composite</td>
+                <td>Capacitive / MEMS</td>
               </tr>
               <tr class="row-highlight">
                 <td>Omnidirectional</td>
                 <td class="highlight-col">&gt; &pm;60&deg;</td>
                 <td>Directional</td>
-                <td>Directional</td>
+                <td>Varies</td>
               </tr>
               <tr>
                 <td>Active Sensor Diameter</td>
                 <td class="highlight-col">100 &mu;m</td>
-                <td>3&ndash;25 mm</td>
                 <td>10&ndash;25 mm</td>
+                <td>~6 mm</td>
               </tr>
             </tbody>
           </table>
@@ -365,8 +365,8 @@
           <canvas id="radarCanvas" style="width:100%; height:500px;"></canvas>
           <div style="display:flex; justify-content:center; gap:28px; margin-top:12px; font-size:13px; flex-wrap:wrap;">
             <span><span style="display:inline-block;width:14px;height:3px;background:#FF4FC9;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>BROADSONIC</span>
-            <span><span style="display:inline-block;width:14px;height:3px;background:#5EADFF;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Contact Piezo</span>
             <span><span style="display:inline-block;width:14px;height:3px;background:#FFA64D;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Air-Coupled Piezo</span>
+            <span><span style="display:inline-block;width:14px;height:3px;background:#5EADFF;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Conventional Ultrasonic</span>
           </div>
         </div>
       </div>
@@ -381,14 +381,14 @@
       var axes = ['Bandwidth', 'Spatial\nResolution', 'EMI\nImmunity', 'Non-Contact', 'Omnidirectional', 'Dynamic\nRange'];
       var n = axes.length;
 
-      // Normalized scores (0-1) for each technology
-      // BROADSONIC: DC-5 MHz flat, 100µm diameter, full EMI immunity, non-contact, >±60°, >120 dB DR
-      // Contact Piezo: Narrowband 50-75% fractional BW, 3-25mm elements, poor EMI, requires couplant, directional, 60-80 dB DR
-      // Air-Coupled Piezo: ~30% fractional BW at 200 kHz-1.5 MHz, 10-25mm elements, poor EMI, non-contact but massive insertion loss, directional, up to 100 dB DR
+      // Normalized scores (0-1) for each technology (from 1-10 scale)
+      // BROADSONIC: BW 10, Spatial 10, EMI 10, Non-Contact 10, Omni 10, DR 9
+      // Air-Coupled Piezo: BW 2, Spatial 1, EMI 2, Non-Contact 7, Omni 2, DR 6
+      // Conventional Ultrasonic Mic: BW 5, Spatial 3, EMI 2, Non-Contact 10, Omni 7, DR 8
       var techs = [
-        { name: 'BROADSONIC',       color: '#FF4FC9', scores: [1.0, 1.0, 1.0, 1.0, 1.0, 0.9] },
-        { name: 'Contact Piezo',    color: '#5EADFF', scores: [0.3, 0.2, 0.1, 0.0, 0.1, 0.55] },
-        { name: 'Air-Coupled Piezo',color: '#FFA64D', scores: [0.15, 0.1, 0.1, 0.8, 0.15, 0.7] }
+        { name: 'BROADSONIC',        color: '#FF4FC9', scores: [1.0, 1.0, 1.0, 1.0, 1.0, 0.9] },
+        { name: 'Air-Coupled Piezo', color: '#FFA64D', scores: [0.2, 0.1, 0.2, 0.7, 0.2, 0.6] },
+        { name: 'Conventional',      color: '#5EADFF', scores: [0.5, 0.3, 0.2, 1.0, 0.7, 0.8] }
       ];
 
       var animProgress = 0;
