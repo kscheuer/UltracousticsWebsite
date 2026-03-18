@@ -1975,6 +1975,8 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
+    height: calc(100vh - var(--nav-height));
+    height: calc(100dvh - var(--nav-height));
     z-index: 9999;
     background: rgba(10, 10, 10, 1);
     backdrop-filter: blur(20px);
@@ -2026,23 +2028,22 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .nav__dropdown-menu {
-    position: static;
-    display: block;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
+    position: static !important;
+    display: none !important;
+    max-height: none;
+    overflow: visible;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
     box-shadow: none;
     background: transparent;
     border: none;
     padding: 0 0 0 20px;
-    transition: max-height 0.35s ease;
     min-width: 0;
   }
 
   .nav__dropdown.open .nav__dropdown-menu {
-    max-height: 500px;
+    display: block !important;
     padding-bottom: 8px;
   }
 
