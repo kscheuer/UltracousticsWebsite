@@ -26,6 +26,21 @@ document.addEventListener('DOMContentLoaded', function () {
         navToggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // Mobile dropdown tap-to-toggle
+    document.querySelectorAll('.nav__dropdown-toggle').forEach(function (toggle) {
+      toggle.addEventListener('click', function (e) {
+        if (window.innerWidth > 768) return;
+        e.preventDefault();
+        var dropdown = toggle.closest('.nav__dropdown');
+        var wasOpen = dropdown.classList.contains('open');
+        // Close all other dropdowns
+        document.querySelectorAll('.nav__dropdown.open').forEach(function (d) {
+          d.classList.remove('open');
+        });
+        if (!wasOpen) dropdown.classList.add('open');
+      });
+    });
   }
 
   // --- Animated Counters ---

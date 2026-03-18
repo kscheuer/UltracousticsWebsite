@@ -1987,17 +1987,37 @@ h1, h2, h3, h4, h5, h6 {
 
   .nav__dropdown-menu {
     position: static;
-    opacity: 1;
-    visibility: visible;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
     transform: none;
     box-shadow: none;
     background: transparent;
     border: none;
     padding: 0 0 0 16px;
+    transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .nav__dropdown.open .nav__dropdown-menu {
+    max-height: 300px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav__dropdown-toggle {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
   }
 
   .nav__dropdown-toggle::after {
-    display: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .nav__dropdown.open .nav__dropdown-toggle::after {
+    transform: rotate(180deg);
   }
 
   .card-grid {
@@ -2079,6 +2099,14 @@ h1, h2, h3, h4, h5, h6 {
 
   .hero__title {
     font-size: 32px;
+  }
+
+  .how-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .app-cards {
+    grid-template-columns: 1fr;
   }
 }
 

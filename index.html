@@ -362,7 +362,7 @@
           <h2 class="section-header__title">Technology Comparison</h2>
         </div>
         <div class="fade-in" style="max-width:600px; margin:0 auto;">
-          <canvas id="radarCanvas" style="width:100%; height:500px;"></canvas>
+          <canvas id="radarCanvas" style="width:100%; height:min(500px, 80vw);"></canvas>
           <div style="display:flex; justify-content:center; gap:28px; margin-top:12px; font-size:13px; flex-wrap:wrap;">
             <span><span style="display:inline-block;width:14px;height:3px;background:#FF4FC9;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>BROADSONIC</span>
             <span><span style="display:inline-block;width:14px;height:3px;background:#FFA64D;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Air-Coupled Piezo</span>
@@ -376,6 +376,7 @@
       var canvas = document.getElementById('radarCanvas');
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
+      var isMobile = window.innerWidth <= 768;
 
       // 6 axes: Bandwidth, Spatial Resolution, EMI Immunity, Non-Contact, Omnidirectional, Dynamic Range
       var axes = ['Bandwidth', 'Spatial\nResolution', 'EMI\nImmunity', 'Non-Contact', 'Omnidirectional', 'Dynamic\nRange'];
@@ -409,7 +410,7 @@
         var h = rect.height;
         var cx = w / 2;
         var cy = h / 2 + 10;
-        var R = Math.min(w, h) * 0.38;
+        var R = Math.min(w, h) * (isMobile ? 0.32 : 0.38);
 
         ctx.clearRect(0, 0, w, h);
 
@@ -431,7 +432,7 @@
 
         // Axis lines + labels
         ctx.fillStyle = '#888';
-        ctx.font = '12px Inter, sans-serif';
+        ctx.font = (isMobile ? '11px' : '12px') + ' Inter, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         for (var j = 0; j < n; j++) {
@@ -445,7 +446,7 @@
           ctx.stroke();
 
           // Label
-          var labelPad = axes[j].indexOf('\n') >= 0 ? 40 : 28;
+          var labelPad = axes[j].indexOf('\n') >= 0 ? (isMobile ? 30 : 40) : (isMobile ? 20 : 28);
           var lx = cx + (R + labelPad) * Math.cos(angle);
           var ly = cy + (R + labelPad) * Math.sin(angle);
           var lines = axes[j].split('\n');
@@ -529,7 +530,7 @@
       }, { threshold: 0.3 });
       observer.observe(canvas);
 
-      window.addEventListener('resize', function() { resize(); draw(); });
+      window.addEventListener('resize', function() { isMobile = window.innerWidth <= 768; resize(); draw(); });
       resize();
       draw();
     })();
