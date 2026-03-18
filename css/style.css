@@ -386,6 +386,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero--short {
   min-height: 60vh;
+  align-items: flex-end;
 }
 
 .hero--dark {
