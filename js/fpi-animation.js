@@ -23,11 +23,11 @@
   var TEXT_BRIGHT = '#fff';
   var CAVITY_GLOW = 'rgba(255, 79, 201, 0.04)';
 
-  // Step highlighting
+  // Step highlighting — slower cycle
   var steps = document.querySelectorAll('.fpi-step');
   var activeStep = 0;
   var stepTimer = 0;
-  var STEP_DURATION = 120;
+  var STEP_DURATION = 300; // ~5 seconds per step at 60fps
 
   function resize() {
     var rect = canvas.parentElement.getBoundingClientRect();
@@ -49,6 +49,27 @@
     steps.forEach(function (s, i) {
       s.classList.toggle('fpi-step--active', i === activeStep);
     });
+  }
+
+  // Compute per-step opacity: active region = 1.0, inactive = dimmed
+  function stepOpacity(stepIndex) {
+    if (activeStep === stepIndex) return 1.0;
+    return 0.35;
+  }
+
+  // Draw a highlight glow box around a region
+  function highlightRegion(x, y, w, h) {
+    // Pulsing glow intensity
+    var pulse = 0.35 + 0.15 * Math.sin(time * 0.06);
+    ctx.save();
+    ctx.shadowColor = ACCENT;
+    ctx.shadowBlur = 18;
+    ctx.strokeStyle = 'rgba(255, 79, 201, ' + pulse + ')';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.roundRect(x, y, w, h, 6);
+    ctx.stroke();
+    ctx.restore();
   }
 
   // Helper: draw a thin leader line from (x1,y1) to (x2,y2)
@@ -81,7 +102,15 @@
     var memX = cavityRight + membraneDeflection;
     var gapW = memX - cavityLeft;
 
-    // === FIBER OPTIC ===
+    // Per-step opacities
+    var oFiber = stepOpacity(0);    // Step 1: Laser enters fiber
+    var oCavity = stepOpacity(1);   // Step 2: Light reflects in cavity
+    var oSound = stepOpacity(2);    // Step 3: Sound deflects membrane
+    var oSignal = stepOpacity(3);   // Step 4: Interference shift → signal
+
+    // === STEP 1: FIBER OPTIC ===
+    ctx.globalAlpha = oFiber;
+
     // Cladding with rounded end
     var cladH = fiberH * 2 + 6;
     ctx.fillStyle = '#2a2a2a';
@@ -106,7 +135,28 @@
     ctx.fillStyle = grad;
     ctx.fillRect(fiberLeft + 6, centerY - fiberH - 2, fiberRight - fiberLeft - 4, fiberH * 2 + 4);
 
-    // === CAVITY ===
+    // Step 1 highlight box
+    if (activeStep === 0) {
+      ctx.globalAlpha = 1;
+      highlightRegion(fiberLeft - 6, centerY - cladH / 2 - 24, fiberRight - fiberLeft + 14, cladH + 40);
+    }
+
+    // "1550 nm laser" label
+    ctx.globalAlpha = oFiber;
+    ctx.font = '11px Inter, sans-serif';
+    ctx.fillStyle = LASER_RED;
+    ctx.textAlign = 'center';
+    ctx.fillText('1550 nm laser', (fiberLeft + fiberRight) / 2, centerY - cladH / 2 - 10);
+
+    // "Fiber optic" label
+    ctx.font = '10px Inter, sans-serif';
+    ctx.fillStyle = TEXT_MED;
+    ctx.textAlign = 'left';
+    ctx.fillText('Fiber optic', fiberLeft + 8, centerY + cladH / 2 + 16);
+
+    // === STEP 2: CAVITY ===
+    ctx.globalAlpha = oCavity;
+
     // Background glow
     ctx.fillStyle = CAVITY_GLOW;
     ctx.fillRect(cavityLeft + 3, centerY - mirrorH / 2 + 2, cavityW - 6, mirrorH - 4);
@@ -122,7 +172,8 @@
     ctx.roundRect(cavityLeft - 2, centerY - mirrorH / 2, 5, mirrorH, [2, 0, 0, 2]);
     ctx.fill();
 
-    // Front membrane (convex curve)
+    // Front membrane (convex curve) — also used in step 3
+    ctx.globalAlpha = Math.max(oCavity, oSound);
     ctx.fillStyle = MEMBRANE_COL;
     ctx.beginPath();
     ctx.moveTo(memX - 2, centerY - mirrorH / 2);
@@ -131,6 +182,8 @@
     ctx.quadraticCurveTo(memX + 14, centerY, memX + 1, centerY - mirrorH / 2);
     ctx.closePath();
     ctx.fill();
+
+    ctx.globalAlpha = oCavity;
 
     // Bouncing photons
     for (var b = 0; b < 6; b++) {
@@ -157,14 +210,52 @@
     for (var f = 0; f < 8; f++) {
       var fx = cavityLeft + 14 + f * ((gapW - 28) / 7);
       var fIntensity = 0.2 + 0.8 * Math.pow(Math.cos((f + soundPhase * 2) * 0.8), 2);
-      // Glow behind fringe
       ctx.fillStyle = 'rgba(255, 51, 51, ' + (fIntensity * 0.15) + ')';
       ctx.fillRect(fx - 3, fringeY - 1, 6, 10);
       ctx.fillStyle = 'rgba(255, 51, 51, ' + fIntensity + ')';
       ctx.fillRect(fx - 1, fringeY, 2, 8);
     }
 
-    // === SOUND WAVES (Step 3) ===
+    // Step 2 highlight box
+    if (activeStep === 1) {
+      ctx.globalAlpha = 1;
+      highlightRegion(cavityLeft - 8, centerY - mirrorH / 2 - 24, cavityW + 20, mirrorH + 40);
+    }
+
+    // "Mirror" label
+    ctx.globalAlpha = oCavity;
+    var mirrorLabelX = cavityLeft;
+    var mirrorLabelY = centerY + mirrorH / 2 + 36;
+    leaderLine(cavityLeft, centerY + mirrorH / 2 + 2, mirrorLabelX, mirrorLabelY - 4);
+    ctx.fillStyle = TEXT_MED;
+    ctx.font = '10px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Mirror', mirrorLabelX, mirrorLabelY);
+
+    // "Membrane" label
+    var membraneLabelX = memX + 4;
+    var membraneLabelY = centerY + mirrorH / 2 + 36;
+    leaderLine(memX, centerY + mirrorH / 2 + 2, membraneLabelX, membraneLabelY - 4);
+    ctx.fillStyle = TEXT_MED;
+    ctx.textAlign = 'center';
+    ctx.fillText('Membrane', membraneLabelX, membraneLabelY);
+
+    // "Fabry-Perot cavity" label
+    var indicatorY = centerY + mirrorH / 2 + 14;
+    ctx.fillStyle = TEXT_DIM;
+    ctx.font = '10px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Fabry-Perot cavity', (cavityLeft + memX) / 2, indicatorY + 14);
+
+    // "interference pattern" label
+    ctx.fillStyle = TEXT_DIM;
+    ctx.font = '9px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('interference pattern', (cavityLeft + memX) / 2, fringeY - 6);
+
+    // === STEP 3: SOUND WAVES ===
+    ctx.globalAlpha = oSound;
+
     var waveStartX = W * 0.90;
     ctx.lineWidth = 1.5;
     for (var w = 0; w < 5; w++) {
@@ -194,8 +285,7 @@
     ctx.lineTo(memX + 30, centerY + 4);
     ctx.fill();
 
-    // === Δd indicator ===
-    var indicatorY = centerY + mirrorH / 2 + 14;
+    // Δd indicator
     ctx.strokeStyle = 'rgba(255, 79, 201, 0.35)';
     ctx.lineWidth = 1;
     ctx.setLineDash([3, 3]);
@@ -209,7 +299,23 @@
     ctx.textAlign = 'center';
     ctx.fillText('Δd', (cavityLeft + memX) / 2, indicatorY - 3);
 
-    // === OUTPUT SIGNAL (Step 4) ===
+    // Step 3 highlight box
+    if (activeStep === 2) {
+      ctx.globalAlpha = 1;
+      highlightRegion(memX - 10, centerY - mirrorH / 2 - 10, waveStartX - memX + 32, mirrorH + 20);
+    }
+
+    // "Sound pressure" label
+    ctx.globalAlpha = oSound;
+    ctx.fillStyle = TEXT_MED;
+    ctx.font = '11px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Sound', waveStartX, centerY - 42);
+    ctx.fillText('pressure', waveStartX, centerY - 30);
+
+    // === STEP 4: OUTPUT SIGNAL ===
+    ctx.globalAlpha = oSignal;
+
     var sigX = fiberLeft + 16;
     var sigY = H * 0.84;
     var sigW = W * 0.56;
@@ -239,62 +345,21 @@
     }
     ctx.stroke();
 
-    // ====== LABELS (spread out, no overlap) ======
-    ctx.lineWidth = 1;
+    // Step 4 highlight box
+    if (activeStep === 3) {
+      ctx.globalAlpha = 1;
+      highlightRegion(sigX - 10, sigY - 28, sigW + 20, 46);
+    }
 
-    // "1550 nm laser" — above fiber
-    ctx.font = '11px Inter, sans-serif';
-    ctx.fillStyle = LASER_RED;
-    ctx.textAlign = 'center';
-    ctx.fillText('1550 nm laser', (fiberLeft + fiberRight) / 2, centerY - cladH / 2 - 10);
-
-    // "Fiber optic" — below fiber, left-aligned
-    ctx.font = '10px Inter, sans-serif';
-    ctx.fillStyle = TEXT_MED;
-    ctx.textAlign = 'left';
-    ctx.fillText('Fiber optic', fiberLeft + 8, centerY + cladH / 2 + 16);
-
-    // "Mirror" — below left side, with tiny leader
-    var mirrorLabelX = cavityLeft;
-    var mirrorLabelY = centerY + mirrorH / 2 + 36;
-    leaderLine(cavityLeft, centerY + mirrorH / 2 + 2, mirrorLabelX, mirrorLabelY - 4);
-    ctx.fillStyle = TEXT_MED;
-    ctx.font = '10px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('Mirror', mirrorLabelX, mirrorLabelY);
-
-    // "Membrane" — below right side, with leader
-    var membraneLabelX = memX + 4;
-    var membraneLabelY = centerY + mirrorH / 2 + 36;
-    leaderLine(memX, centerY + mirrorH / 2 + 2, membraneLabelX, membraneLabelY - 4);
-    ctx.fillStyle = TEXT_MED;
-    ctx.textAlign = 'center';
-    ctx.fillText('Membrane', membraneLabelX, membraneLabelY);
-
-    // "Fabry-Perot cavity" — centered below Δd
-    ctx.fillStyle = TEXT_DIM;
-    ctx.font = '10px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('Fabry-Perot cavity', (cavityLeft + memX) / 2, indicatorY + 14);
-
-    // "interference pattern" — above fringes
-    ctx.fillStyle = TEXT_DIM;
-    ctx.font = '9px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('interference pattern', (cavityLeft + memX) / 2, fringeY - 6);
-
-    // "Sound pressure" — above wave source
-    ctx.fillStyle = TEXT_MED;
-    ctx.font = '11px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('Sound', waveStartX, centerY - 42);
-    ctx.fillText('pressure', waveStartX, centerY - 30);
-
-    // "Output signal" — above signal trace
+    // "Output signal" label
+    ctx.globalAlpha = oSignal;
     ctx.fillStyle = TEXT_MED;
     ctx.font = '10px Inter, sans-serif';
     ctx.textAlign = 'left';
     ctx.fillText('Output signal', sigX, sigY - 16);
+
+    // Reset alpha
+    ctx.globalAlpha = 1;
 
     animId = requestAnimationFrame(draw);
   }
