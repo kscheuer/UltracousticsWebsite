@@ -310,21 +310,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var freq = t * fMax;
         var x = padL + t * plotW;
 
-        // Sensitivity curve: ramps up through low freq, strong mid-high, peaks around 1-3 MHz
+        // Sensitivity curve: clean sine wave across full band
         var fMHz = freq / 1000000;
-        var baseLevel = 0.25;
-
-        // Low-frequency roll-up (0 - 0.2 MHz)
-        if (fMHz < 0.2) {
-          baseLevel = 0.15 + 0.1 * (fMHz / 0.2);
-        } else {
-          // Main sensitivity region with resonance character
-          baseLevel = 0.5 + 0.15 * Math.sin(fMHz * 1.8);
-          // Broad peak around 1-2 MHz
-          baseLevel += 0.18 * Math.exp(-Math.pow((fMHz - 1.5) * 0.8, 2));
-          // Secondary peak around 3.5 MHz
-          baseLevel += 0.12 * Math.exp(-Math.pow((fMHz - 3.5) * 1.2, 2));
-        }
+        var baseLevel = 0.50 + 0.12 * Math.sin(fMHz * 2 * Math.PI);
 
         // Animated noise
         var noise = 0.03 * Math.sin(animTime * 2.5 + i * 0.25) +
