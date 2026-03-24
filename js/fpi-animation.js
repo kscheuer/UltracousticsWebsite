@@ -420,26 +420,9 @@
       }
     }
 
-    // Arrow from time signal to FFT
+    // "FFT" label positioned between signal and spectrum
     var arrowFromX = sigX + sigW + 6;
     var arrowToX = fftX - 10;
-    ctx.strokeStyle = 'rgba(255, 79, 201, 0.45)';
-    ctx.lineWidth = 1.5;
-    ctx.setLineDash([5, 4]);
-    ctx.beginPath();
-    ctx.moveTo(arrowFromX, sigY);
-    ctx.lineTo(arrowToX, fftBaseY - fftH * 0.5);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    // Arrowhead
-    ctx.fillStyle = 'rgba(255, 79, 201, 0.6)';
-    ctx.beginPath();
-    ctx.moveTo(arrowToX, fftBaseY - fftH * 0.5);
-    ctx.lineTo(arrowToX - 7, fftBaseY - fftH * 0.5 - 5);
-    ctx.lineTo(arrowToX - 7, fftBaseY - fftH * 0.5 + 5);
-    ctx.fill();
-
-    // "FFT" label on arrow
     ctx.fillStyle = ACCENT;
     ctx.font = '600 11px Inter, sans-serif';
     ctx.textAlign = 'center';
