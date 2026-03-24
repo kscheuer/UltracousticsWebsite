@@ -44,7 +44,7 @@
     stepTimer++;
     if (stepTimer >= STEP_DURATION) {
       stepTimer = 0;
-      activeStep = (activeStep + 1) % 4;
+      activeStep = (activeStep + 1) % 5;
     }
     steps.forEach(function (s, i) {
       s.classList.toggle('fpi-step--active', i === activeStep);
@@ -107,6 +107,7 @@
     var oCavity = stepOpacity(1);   // Step 2: Light reflects in cavity
     var oSound = stepOpacity(2);    // Step 3: Sound deflects membrane
     var oSignal = stepOpacity(3);   // Step 4: Interference shift → signal
+    var oFFT = stepOpacity(4);       // Step 5: Signal split into frequencies
 
     // === STEP 1: FIBER OPTIC ===
     ctx.globalAlpha = oFiber;
@@ -318,7 +319,7 @@
 
     var sigX = fiberLeft + 16;
     var sigY = H * 0.84;
-    var sigW = W * 0.56;
+    var sigW = W * 0.36;
 
     ctx.strokeStyle = ACCENT;
     ctx.lineWidth = 2;
@@ -357,6 +358,99 @@
     ctx.font = '10px Inter, sans-serif';
     ctx.textAlign = 'left';
     ctx.fillText('Output signal', sigX, sigY - 16);
+
+    // === STEP 5: FFT — SIGNAL SPLIT INTO FREQUENCIES ===
+    ctx.globalAlpha = oFFT;
+
+    var fftX = W * 0.56;
+    var fftY = H * 0.84;
+    var fftW = W * 0.36;
+    var fftH = 40;
+    var barCount = 16;
+    var barGap = 2;
+    var barWidth = (fftW - barGap * (barCount - 1)) / barCount;
+
+    // Axis line
+    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(fftX, fftY);
+    ctx.lineTo(fftX + fftW, fftY);
+    ctx.stroke();
+
+    // Frequency bars with animated peaks
+    var peakFreqs = [2, 5, 9, 13]; // indices of dominant peaks
+    for (var fb = 0; fb < barCount; fb++) {
+      var bx = fftX + fb * (barWidth + barGap);
+      var isPeak = peakFreqs.indexOf(fb) !== -1;
+      var baseH = isPeak ? (0.5 + 0.4 * Math.sin(time * 0.04 + fb)) : (0.1 + 0.12 * Math.sin(time * 0.03 + fb * 0.7));
+      var bh = baseH * fftH;
+
+      // Bar fill
+      var barGrad = ctx.createLinearGradient(bx, fftY - bh, bx, fftY);
+      if (isPeak) {
+        barGrad.addColorStop(0, ACCENT);
+        barGrad.addColorStop(1, 'rgba(255, 79, 201, 0.3)');
+      } else {
+        barGrad.addColorStop(0, 'rgba(255, 79, 201, 0.5)');
+        barGrad.addColorStop(1, 'rgba(255, 79, 201, 0.1)');
+      }
+      ctx.fillStyle = barGrad;
+      ctx.fillRect(bx, fftY - bh, barWidth, bh);
+
+      // Glow on peaks
+      if (isPeak) {
+        ctx.shadowColor = ACCENT;
+        ctx.shadowBlur = 6;
+        ctx.fillRect(bx, fftY - bh, barWidth, 2);
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    // Arrow from time signal to FFT
+    var arrowFromX = sigX + sigW + 4;
+    var arrowToX = fftX - 4;
+    ctx.strokeStyle = 'rgba(255, 79, 201, 0.3)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(arrowFromX, sigY);
+    ctx.lineTo(arrowToX, fftY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    // Arrowhead
+    ctx.fillStyle = 'rgba(255, 79, 201, 0.45)';
+    ctx.beginPath();
+    ctx.moveTo(arrowToX, fftY);
+    ctx.lineTo(arrowToX - 6, fftY - 4);
+    ctx.lineTo(arrowToX - 6, fftY + 4);
+    ctx.fill();
+
+    // "FFT" label on arrow
+    ctx.fillStyle = ACCENT;
+    ctx.font = '600 10px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('FFT', (arrowFromX + arrowToX) / 2, sigY - 8);
+
+    // "Frequency spectrum" label
+    ctx.fillStyle = TEXT_MED;
+    ctx.font = '10px Inter, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('Frequency spectrum', fftX, fftY - fftH - 6);
+
+    // Axis labels
+    ctx.fillStyle = TEXT_DIM;
+    ctx.font = '9px Inter, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('0 Hz', fftX, fftY + 12);
+    ctx.textAlign = 'right';
+    ctx.fillText('5 MHz', fftX + fftW, fftY + 12);
+
+    // Step 5 highlight box
+    if (activeStep === 4) {
+      ctx.globalAlpha = 1;
+      highlightRegion(fftX - 10, fftY - fftH - 20, fftW + 20, fftH + 40);
+    }
 
     // Reset alpha
     ctx.globalAlpha = 1;
