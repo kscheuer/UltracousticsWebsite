@@ -108,7 +108,7 @@ Card 3 - Ultrasonic Cleaning:
 **Footer:**
 - Logo
 - Email: kyle@ultracoustics.ca
-- Address: Suite 4-263, 103 St NW, Edmonton, AB T5J 0B2
+- Address: 10230 Jasper Avenue North-West, Suite 4-263, Edmonton, AB T5J 4P6
 - Social links: LinkedIn, Instagram
 - Privacy Policy link
 
