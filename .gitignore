@@ -1,2 +1,9 @@
 # Source data (too large for GitHub)
 assets/Data/
+
+# Distributable binaries — hosted on GitHub Releases, not in git
+ReadoutGUI/
+*.exe
+*.msi
+*.dmg
+*.pkg
