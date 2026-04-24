@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { threshold: 0.3 });
 
     counters.forEach(function (counter) {
-      counter.textContent = '0';
       counterObserver.observe(counter);
     });
   }
@@ -77,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var duration = 1600;
     var start = 0;
     var startTime = null;
+    el.textContent = '0';
 
     function easeOutCubic(t) {
       return 1 - Math.pow(1 - t, 3);
