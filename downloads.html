@@ -210,7 +210,7 @@
           <div class="dl-meta">
             <div class="dl-meta__item">
               <span class="dl-meta__label">Version</span>
-              <span class="dl-meta__value">v1.0</span>
+              <span class="dl-meta__value">v1.1</span>
             </div>
             <div class="dl-meta__item">
               <span class="dl-meta__label">Released</span>
@@ -230,10 +230,10 @@
             <!--
               The download asset is hosted on GitHub Releases, NOT in this repository.
               The URL below auto-resolves to the most recent release's asset with the
-              given filename. Upload the exe to a release named (for example) "readoutgui-v1.0"
-              with the asset filename exactly matching "Ultracoustics-BROADSONIC-Setup-v1.0.exe".
+              given filename. Upload the exe to a release named (for example) "readoutgui-v1.1"
+              with the asset filename exactly matching "Ultracoustics-BROADSONIC-Setup-v1.1.exe".
             -->
-            <a href="https://github.com/kscheuer/UltracousticsWebsite/releases/latest/download/Ultracoustics-BROADSONIC-Setup-v1.0.exe"
+            <a href="https://github.com/kscheuer/UltracousticsWebsite/releases/latest/download/Ultracoustics-BROADSONIC-Setup-v1.1.exe"
                class="btn btn--primary btn--lg"
                download
                rel="noopener">
@@ -250,11 +250,11 @@
           <div style="margin-top: 24px;">
             <span class="dl-meta__label">SHA-256 Checksum</span>
             <div class="dl-checksum" id="dl-sha256">
-              CC4B7D392EF821A1A462AB1B0F750A7E68A5FE4998E9EC27524D44F185848539
+              8783BE7154EAABB7E99C0877197C2842E9F98B8262414E5D0AB3B3C9A6284097
             </div>
             <p style="font-size: 0.8rem; color: var(--text-secondary, #a0a0aa); margin-top: 8px;">
               Verify with PowerShell:
-              <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">Get-FileHash .\Ultracoustics-BROADSONIC-Setup-v1.0.exe -Algorithm SHA256</code>
+              <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">Get-FileHash .\Ultracoustics-BROADSONIC-Setup-v1.1.exe -Algorithm SHA256</code>
             </p>
           </div>
         </div>
@@ -294,7 +294,11 @@
 
         <!-- ====== Changelog ====== -->
         <div class="dl-changelog">
-          <h3>Release Notes &mdash; v1.0</h3>
+          <h3>Release Notes &mdash; v1.1</h3>
+          <ul>
+            <li>Improved data throughput calculation.</li>
+          </ul>
+          <h3 style="margin-top: 24px;">v1.0</h3>
           <ul>
             <li>Initial public release of ReadoutGUI.</li>
             <li>Live streaming and recording from BROADSONIC hardware.</li>
