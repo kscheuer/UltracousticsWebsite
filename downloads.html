@@ -210,11 +210,11 @@
           <div class="dl-meta">
             <div class="dl-meta__item">
               <span class="dl-meta__label">Version</span>
-              <span class="dl-meta__value">v1.1</span>
+              <span class="dl-meta__value">v1.2.0</span>
             </div>
             <div class="dl-meta__item">
               <span class="dl-meta__label">Released</span>
-              <span class="dl-meta__value">April 2026</span>
+              <span class="dl-meta__value">April 30 2026</span>
             </div>
             <div class="dl-meta__item">
               <span class="dl-meta__label">Size</span>
@@ -230,10 +230,10 @@
             <!--
               The download asset is hosted on GitHub Releases, NOT in this repository.
               The URL below auto-resolves to the most recent release's asset with the
-              given filename. Upload the exe to a release named (for example) "readoutgui-v1.1"
-              with the asset filename exactly matching "Ultracoustics-BROADSONIC-Setup-v1.1.exe".
+              given filename. Upload the exe to a release named (for example) "readoutgui-v1.2.0"
+              with the asset filename exactly matching "BROADSONIC-ReadoutGUI-v1.2.0.exe".
             -->
-            <a href="https://github.com/kscheuer/UltracousticsWebsite/releases/latest/download/Ultracoustics-BROADSONIC-Setup-v1.1.exe"
+            <a href="https://github.com/kscheuer/UltracousticsWebsite/releases/latest/download/BROADSONIC-ReadoutGUI-v1.2.0.exe"
                class="btn btn--primary btn--lg"
                download
                rel="noopener">
@@ -250,11 +250,11 @@
           <div style="margin-top: 24px;">
             <span class="dl-meta__label">SHA-256 Checksum</span>
             <div class="dl-checksum" id="dl-sha256">
-              8783BE7154EAABB7E99C0877197C2842E9F98B8262414E5D0AB3B3C9A6284097
+              DEF68BC1DBC1434393173528E86983DE97BFDF54B2152DCACB4A0B0926D62AFE
             </div>
             <p style="font-size: 0.8rem; color: var(--text-secondary, #a0a0aa); margin-top: 8px;">
               Verify with PowerShell:
-              <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">Get-FileHash .\Ultracoustics-BROADSONIC-Setup-v1.1.exe -Algorithm SHA256</code>
+              <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">Get-FileHash .\BROADSONIC-ReadoutGUI-v1.2.0.exe -Algorithm SHA256</code>
             </p>
           </div>
         </div>
@@ -294,7 +294,20 @@
 
         <!-- ====== Changelog ====== -->
         <div class="dl-changelog">
-          <h3>Release Notes &mdash; v1.1</h3>
+          <h3>Release Notes &mdash; v1.2.0</h3>
+          <p><strong>What's new</strong></p>
+          <ul>
+            <li><strong>New USB engine:</strong> acquisition runs in a dedicated background process using async USB transfers — no more dropped samples when the UI is busy.</li>
+            <li><strong>Lock-free shared-memory pipeline:</strong> samples flow straight from USB into a shared ring buffer.</li>
+            <li><strong>Hardware-accelerated plots:</strong> time-domain and FFT views use OpenGL by default for smoother updates at high sample rates.</li>
+            <li>More accurate live MSPS readout via rolling average.</li>
+          </ul>
+          <p><strong>Compatibility</strong></p>
+          <ul>
+            <li>Requires firmware version with 8-byte USB headers — needed to ensure correct data alignment.</li>
+            <li>Firmware with expanded FIFO (commit <code>b5c5021</code> or later) will enable true 10 MSPS throughput. Without expanded FIFO there will be hardware-side loss.</li>
+          </ul>
+          <h3 style="margin-top: 24px;">v1.1</h3>
           <ul>
             <li>Improved data throughput calculation.</li>
           </ul>
