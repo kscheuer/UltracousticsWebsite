@@ -1533,20 +1533,31 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Media Grid --- */
 .media-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
 
 .media-item__title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  margin-top: 16px;
-  margin-bottom: 6px;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+
+.media-item__date {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent, #FF4FC9);
+  margin-top: 12px;
 }
 
 .media-item__desc {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 /* --- Product Images --- */
@@ -2107,7 +2118,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .media-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 
   .comparison-table {
