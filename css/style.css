@@ -1533,7 +1533,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Media Grid --- */
 .media-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 24px;
 }
 
@@ -2118,7 +2118,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .media-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 
