@@ -132,7 +132,8 @@
             {year:2024,month:12, cat:'sensor',title:'Coupling the Thermal Acoustic Modes of a Bubble to an Optomechanical Sensor', journal:'Nature Microsystems & Nanoengineering \u00b7 26 Dec 2024', pdf:'assets/docs/Papers/Coupling%20the%20thermal%20acoustic%20modes%20of%20a%20bubble%20to%20an%20optomechanical%20sensor.pdf'},
             {year:2025,month:7, cat:'leak',   title:'Characterization of Micro-Scale Gas Leaks Using an Optomechanical Ultrasound Sensor', journal:'Journal of the Acoustical Society of America \u00b7 11 Jul 2025', pdf:'assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf'},
             {year:2025,month:10,cat:'nde',    title:'Resonant Ultrasound Spectroscopy Detection Using a Non-Contact Ultrasound Microphone', journal:'MDPI Sensors \u00b7 4 Oct 2025', pdf:'assets/docs/Papers/Resonant%20Ultrasound%20Spectroscopy%20Detection%20Using%20a%20Non-Contact%20Ultrasound%20Microphone.pdf'},
-            {year:2026,month:2, cat:'nde',    title:'Non-Contact Characterization of Plates Using a Turbulent Air-Jet Source and an Ultrasound Microphone', journal:'MDPI NDT \u00b7 Featured Article \u00b7 1 Feb 2026', pdf:'assets/docs/Papers/Non-Contact%20Characterization%20of%20Plates%20Using%20a%20Turbulent%20Air-Jet%20Source%20and%20an%20Ultrasound%20Microphone.pdf'}
+            {year:2026,month:2, cat:'nde',    title:'Non-Contact Characterization of Plates Using a Turbulent Air-Jet Source and an Ultrasound Microphone', journal:'MDPI NDT \u00b7 Featured Article \u00b7 1 Feb 2026', pdf:'assets/docs/Papers/Non-Contact%20Characterization%20of%20Plates%20Using%20a%20Turbulent%20Air-Jet%20Source%20and%20an%20Ultrasound%20Microphone.pdf'},
+            {year:2026,month:10,cat:'nde',    title:'Non-Contact Vibration Detection of Power Converter Magnetics Using an Optical-Based Broadband Ultrasonic Microphone', journal:'IEEE ECCE 2026 \u00b7 Lecture \u00b7 Vancouver, BC \u00b7 Oct 4\u20138, 2026', pdf:null, upcoming:true}
           ];
 
           var colors = {leak:'#FF4FC9', sensor:'#4FC3FF', nde:'#4FFF8F', micro:'#C97FFF'};
@@ -151,27 +152,40 @@
           }
 
           // Stagger dots vertically to avoid overlap
-          var yOffsets = [-28, -18, -44, -36, -28, -44, -18, -36, -28, -44];
+          var yOffsets = [-28, -18, -44, -36, -28, -44, -18, -36, -28, -44, -20];
 
           pubs.forEach(function(p, i) {
             var frac = (p.year - minYear + (p.month - 1) / 12) / yearSpan;
             var pct = Math.max(0, Math.min(100, frac * 100));
-            var dot = document.createElement('a');
-            dot.className = 'tl-dot';
-            dot.href = p.pdf;
-            dot.target = '_blank';
-            dot.rel = 'noopener';
+            var dot = document.createElement(p.upcoming ? 'span' : 'a');
+            dot.className = 'tl-dot' + (p.upcoming ? ' tl-dot--upcoming' : '');
+            if (!p.upcoming) {
+              dot.href = p.pdf;
+              dot.target = '_blank';
+              dot.rel = 'noopener';
+            } else {
+              dot.setAttribute('role', 'note');
+              dot.setAttribute('tabindex', '0');
+            }
             dot.style.left = pct + '%';
             dot.style.marginTop = yOffsets[i] + 'px';
-            dot.style.background = colors[p.cat];
-            dot.style.color = colors[p.cat];
+            if (p.upcoming) {
+              // Hollow ring style for upcoming/unpublished
+              dot.style.background = 'transparent';
+              dot.style.boxShadow = 'inset 0 0 0 2px ' + colors[p.cat];
+              dot.style.color = colors[p.cat];
+            } else {
+              dot.style.background = colors[p.cat];
+              dot.style.color = colors[p.cat];
+            }
             dot.style.transitionDelay = (i * 80) + 'ms';
 
             var tip = document.createElement('div');
             tip.className = 'tl-tooltip';
+            var badgeLabel = p.upcoming ? 'Upcoming presentation' : 'View PDF &rarr;';
             tip.innerHTML = '<div class="tl-tooltip__title">' + p.title + '</div>'
               + '<div class="tl-tooltip__meta">' + p.journal + '</div>'
-              + '<span class="tl-tooltip__badge" style="background:' + colors[p.cat] + '22;color:' + colors[p.cat] + ';">View PDF &rarr;</span>';
+              + '<span class="tl-tooltip__badge" style="background:' + colors[p.cat] + '22;color:' + colors[p.cat] + ';">' + badgeLabel + '</span>';
             // Clamp tooltip to not overflow edges
             var pctNum = parseFloat(pct);
             if (pctNum < 20) { tip.style.left = '0'; tip.style.transform = 'translateX(0)'; }
