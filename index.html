@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ultracoustics | Hear the Full Picture</title>
+  <title>Ultracoustics | Hear What Other Sensors Can't</title>
   <meta name="theme-color" content="#FF4FC9">
   <meta name="description" content="BROADSONIC optical ultrasonic sensor with 5 MHz bandwidth. Non-contact air-coupled sensing for leak detection, partial discharge monitoring, and ultrasonic cleaning QA.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Ultracoustics | Hear the Full Picture">
+  <meta property="og:title" content="Ultracoustics | Hear What Other Sensors Can't">
   <meta property="og:description" content="BROADSONIC: 5 MHz bandwidth optical ultrasonic sensor. Non-contact, air-coupled, ultra-sensitive.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ultracoustics.ca/">
@@ -27,6 +27,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Preload LCP hero image for faster first paint -->
+  <link rel="preload" as="image" href="assets/images/Product/Transparent/Transparent_Box.webp" type="image/webp" imagesrcset="assets/images/Product/Transparent/Transparent_Box.webp" fetchpriority="high">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -81,7 +84,7 @@
         <a href="broadsonic.html" class="nav__link">BROADSONIC</a>
         <a href="transducer-characterization.html" class="nav__link">Characterization</a>
         <div class="nav__dropdown">
-          <span class="nav__link nav__dropdown-toggle">Applications</span>
+          <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">Applications</button>
           <div class="nav__dropdown-menu">
             <a href="leak-detection.html" class="nav__dropdown-item">Leak Detection</a>
             <a href="ultrasonic-cleaning.html" class="nav__dropdown-item">Ultrasonic Cleaning</a>
@@ -92,8 +95,9 @@
         <a href="research.html" class="nav__link">Research</a>
         <a href="downloads.html" class="nav__link">Downloads</a>
         <div class="nav__dropdown">
-          <span class="nav__link nav__dropdown-toggle">About Us</span>
+          <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">About Us</button>
           <div class="nav__dropdown-menu">
+            <a href="about.html" class="nav__dropdown-item">Company</a>
             <a href="team.html" class="nav__dropdown-item">Team</a>
             <a href="media.html" class="nav__dropdown-item">Media</a>
           </div>
@@ -120,7 +124,7 @@
             </div>
           </div>
           <div class="product-hero-img">
-            <picture><source srcset="assets/images/Product/Transparent/Transparent_Box.webp" type="image/webp"><source srcset="assets/images/Product/Transparent/Transparent_Box.png" type="image/png"><img src="assets/images/Product/Transparent/Transparent_Box.png" alt="BROADSONIC control unit and sensor head"></picture>
+            <picture><source srcset="assets/images/Product/Transparent/Transparent_Box.webp" type="image/webp"><source srcset="assets/images/Product/Transparent/Transparent_Box.png" type="image/png"><img src="assets/images/Product/Transparent/Transparent_Box.png" alt="BROADSONIC control unit and optical ultrasonic sensor head" fetchpriority="high" decoding="async"></picture>
           </div>
         </div>
       </div>
@@ -584,6 +588,42 @@
           <picture><source srcset="assets/images/Logos/National_Research_Council_Canada_logo.svg_-1.webp" type="image/webp"><source srcset="assets/images/Logos/National_Research_Council_Canada_logo.svg_-1.png" type="image/png"><img src="assets/images/Logos/National_Research_Council_Canada_logo.svg_-1.png" alt="National Research Council Canada" class="partner-logo" loading="lazy" style="background: #e8e8e8; border-radius: 8px; padding: 16px; border: 1px solid #ddd; object-fit: contain;"></picture>
           <img src="assets/images/Logos/Mitacs_logo_blue-scaled-1.webp" alt="Mitacs" class="partner-logo" loading="lazy" style="background: #e8e8e8; border-radius: 8px; padding: 16px; border: 1px solid #ddd; object-fit: contain;">
           <picture><source srcset="assets/images/Logos/NANOFAB-CMYK_UofA_flat.webp" type="image/webp"><source srcset="assets/images/Logos/NANOFAB-CMYK_UofA_flat.png" type="image/png"><img src="assets/images/Logos/NANOFAB-CMYK_UofA_flat.png" alt="nanoFAB" class="partner-logo" loading="lazy" style="background: #e8e8e8; border-radius: 8px; padding: 16px; border: 1px solid #ddd; object-fit: contain;"></picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Latest News ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header--centered fade-in">
+          <p class="section-header__label">Momentum</p>
+          <h2 class="section-header__title">Latest News</h2>
+        </div>
+
+        <div class="media-grid media-grid--two fade-in" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); max-width: 900px; margin: 0 auto;">
+          <!-- Jun 2026 - Built World Tech Cohort 2 -->
+          <div class="media-item">
+            <a href="https://lnkd.in/gqjaUzqN" target="_blank" rel="noopener" class="video-thumb">
+              <img src="assets/images/Promotional/Edmonton.jpg" alt="Ultracoustics selected for Built World Tech Cohort 2 in Edmonton" loading="lazy">
+            </a>
+            <p class="media-item__date">Jun 2026 &middot; News</p>
+            <h3 class="media-item__title">Ultracoustics Joins Built World Tech Cohort 2</h3>
+            <p class="media-item__desc">One of four Edmonton companies advancing pilots through the Venture Pilots program &mdash; partnering with AIMS (PIP360) on pipeline integrity monitoring.</p>
+          </div>
+
+          <!-- May 2026 - SBS Ecoclean Collaboration -->
+          <div class="media-item">
+            <a href="https://www.linkedin.com/company/ultracoustics/" target="_blank" rel="noopener" class="video-thumb">
+              <img src="assets/images/Promotional/ecoclean.jpg" alt="Ultracoustics and SBS Ecoclean Group collaboration on megasonic wafer cleaning" loading="lazy">
+            </a>
+            <p class="media-item__date">May 2026 &middot; News</p>
+            <h3 class="media-item__title">Ultracoustics + SBS Ecoclean: Megasonic Wafer Cleaning</h3>
+            <p class="media-item__desc">Integrating BROADSONIC into Ecoclean's UCMPerformanceLine to extend Acoustic Performance Measurement into the megahertz range for semiconductor wafer cleaning.</p>
+          </div>
+        </div>
+
+        <div class="text-center fade-in" style="margin-top: 32px;">
+          <a href="media.html" class="btn btn--outline">See All News &amp; Media &rarr;</a>
         </div>
       </div>
     </section>

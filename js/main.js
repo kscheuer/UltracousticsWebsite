@@ -27,29 +27,57 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    // Mobile dropdown tap-to-toggle
+    // Dropdown toggle (mobile: tap to open; desktop: keyboard/click support)
     document.querySelectorAll('.nav__dropdown-toggle').forEach(function (toggle) {
-      toggle.addEventListener('click', function (e) {
-        if (window.innerWidth > 768) return;
-        e.preventDefault();
-        e.stopPropagation();
-        var dropdown = toggle.closest('.nav__dropdown');
-        var wasOpen = dropdown.classList.contains('open');
-        // Close all other dropdowns
-        document.querySelectorAll('.nav__dropdown.open').forEach(function (d) {
-          d.classList.remove('open');
-        });
-        if (!wasOpen) dropdown.classList.add('open');
-      });
-    });
+      var dropdown = toggle.closest('.nav__dropdown');
+      if (!dropdown) return;
 
-    // Also reset dropdowns when closing the mobile nav
-    navToggle.addEventListener('click', function () {
-      if (!navLinks.classList.contains('active')) {
-        document.querySelectorAll('.nav__dropdown.open').forEach(function (d) {
-          d.classList.remove('open');
-        });
-      }
+      // Sync aria-expanded when hover/focus opens the menu on desktop
+      dropdown.addEventListener('mouseenter', function () {
+        if (window.innerWidth > 768) toggle.setAttribute('aria-expanded', 'true');
+      });
+      dropdown.addEventListener('mouseleave', function () {
+        if (window.innerWidth > 768) toggle.setAttribute('aria-expanded', 'false');
+      });
+      dropdown.addEventListener('focusin', function () {
+        if (window.innerWidth > 768) toggle.setAttribute('aria-expanded', 'true');
+      });
+      dropdown.addEventListener('focusout', function (e) {
+        if (window.innerWidth > 768 && !dropdown.contains(e.relatedTarget)) {
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      toggle.addEventListener('click', function (e) {
+        // Mobile: tap-to-toggle
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          e.stopPropagation();
+          var wasOpen = dropdown.classList.contains('open');
+          document.querySelectorAll('.nav__dropdown.open').forEach(function (d) {
+            d.classList.remove('open');
+            var t = d.querySelector('.nav__dropdown-toggle');
+            if (t) t.setAttribute('aria-expanded', 'false');
+          });
+          if (!wasOpen) {
+            dropdown.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
+          return;
+        }
+        // Desktop: click also toggles (keyboard users)
+        var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      });
+
+      // Escape closes the dropdown and returns focus to the toggle
+      dropdown.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          toggle.setAttribute('aria-expanded', 'false');
+          dropdown.classList.remove('open');
+          toggle.focus();
+        }
+      });
     });
   }
 

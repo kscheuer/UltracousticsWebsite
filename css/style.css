@@ -207,6 +207,14 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 4px;
   cursor: pointer;
+  /* Button reset — allows semantic <button> without visual change */
+  background: transparent;
+  border: 0;
+  padding: 8px 12px;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
 }
 
 .nav__dropdown-toggle::after {
@@ -217,7 +225,9 @@ h1, h2, h3, h4, h5, h6 {
   transition: transform var(--transition);
 }
 
-.nav__dropdown:hover .nav__dropdown-toggle::after {
+.nav__dropdown:hover .nav__dropdown-toggle::after,
+.nav__dropdown:focus-within .nav__dropdown-toggle::after,
+.nav__dropdown-toggle[aria-expanded="true"]::after {
   transform: rotate(180deg);
 }
 
@@ -238,7 +248,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 769px) {
-  .nav__dropdown:hover .nav__dropdown-menu {
+  .nav__dropdown:hover .nav__dropdown-menu,
+  .nav__dropdown:focus-within .nav__dropdown-menu,
+  .nav__dropdown-toggle[aria-expanded="true"] + .nav__dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
