@@ -108,6 +108,7 @@
             .tl-cat-sensor::before { background:#4FC3FF !important; }
             .tl-cat-nde::before { background:#4FFF8F !important; }
             .tl-cat-micro::before { background:#C97FFF !important; }
+            .tl-cat-mag::before { background:#FFC24F !important; }
             @media (max-width:600px) { .tl-tooltip { width:220px; padding:8px 10px; } }
           </style>
           <div class="timeline-track">
@@ -118,6 +119,7 @@
             <span class="tl-cat-sensor">Sensor Fundamentals</span>
             <span class="tl-cat-nde">Acoustics / NDE</span>
             <span class="tl-cat-micro">Microfluidics</span>
+            <span class="tl-cat-mag">Magnetometry</span>
           </div>
         </div>
         <script>
@@ -133,10 +135,11 @@
             {year:2025,month:7, cat:'leak',   title:'Characterization of Micro-Scale Gas Leaks Using an Optomechanical Ultrasound Sensor', journal:'Journal of the Acoustical Society of America \u00b7 11 Jul 2025', pdf:'assets/docs/Papers/Characterization%20of%20micro-scale%20gas%20leaks%20using%20an%20optomechanical%20ultrasound%20sensor.pdf'},
             {year:2025,month:10,cat:'nde',    title:'Resonant Ultrasound Spectroscopy Detection Using a Non-Contact Ultrasound Microphone', journal:'MDPI Sensors \u00b7 4 Oct 2025', pdf:'assets/docs/Papers/Resonant%20Ultrasound%20Spectroscopy%20Detection%20Using%20a%20Non-Contact%20Ultrasound%20Microphone.pdf'},
             {year:2026,month:2, cat:'nde',    title:'Non-Contact Characterization of Plates Using a Turbulent Air-Jet Source and an Ultrasound Microphone', journal:'MDPI NDT \u00b7 Featured Article \u00b7 1 Feb 2026', pdf:'assets/docs/Papers/Non-Contact%20Characterization%20of%20Plates%20Using%20a%20Turbulent%20Air-Jet%20Source%20and%20an%20Ultrasound%20Microphone.pdf'},
+            {year:2026,month:7, cat:'mag',    title:'Cavity Optomechanical Magnetometer Actuated by Substrate Bending', journal:'arXiv preprint · 21 Jul 2026', pdf:'assets/docs/Papers/Cavity%20optomechanical%20magnetometer%20actuated%20by%20substrate%20bending.pdf'},
             {year:2026,month:10,cat:'nde',    title:'Non-Contact Vibration Detection of Power Converter Magnetics Using an Optical-Based Broadband Ultrasonic Microphone', journal:'IEEE ECCE 2026 \u00b7 Lecture \u00b7 Vancouver, BC \u00b7 Oct 4\u20138, 2026', pdf:null, upcoming:true}
           ];
 
-          var colors = {leak:'#FF4FC9', sensor:'#4FC3FF', nde:'#4FFF8F', micro:'#C97FFF'};
+          var colors = {leak:'#FF4FC9', sensor:'#4FC3FF', nde:'#4FFF8F', micro:'#C97FFF', mag:'#FFC24F'};
           var track = document.querySelector('.timeline-track');
           var minYear = 2022, maxYear = 2027;
           var yearSpan = maxYear - minYear;
@@ -152,7 +155,7 @@
           }
 
           // Stagger dots vertically to avoid overlap
-          var yOffsets = [-28, -18, -44, -36, -28, -44, -18, -36, -28, -44, -20];
+          var yOffsets = [-28, -18, -44, -36, -28, -44, -18, -36, -28, -44, -30, -18];
 
           pubs.forEach(function(p, i) {
             var frac = (p.year - minYear + (p.month - 1) / 12) / yearSpan;
@@ -215,6 +218,16 @@
             <p class="research-item__meta">IEEE Energy Conversion Congress &amp; Exposition (ECCE 2026) &middot; Lecture Presentation &middot; Vancouver, BC &middot; Oct 4&ndash;8, 2026</p>
             <p class="research-item__desc">Accepted for lecture presentation at ECCE 2026. Demonstrates that an optical ultrasonic microphone can non-invasively detect switching harmonics emitted by magnetic components in power converters &mdash; opening a pathway to non-contact condition monitoring and fault detection for power electronics.</p>
             <span class="research-item__link" style="opacity:0.55;cursor:default;">PDF available after conference</span>
+          </div>
+
+          <div class="research-item fade-in">
+            <div style="margin-bottom: 10px;">
+              <span style="display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(255,194,79,0.15);color:#FFC24F;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">Preprint &middot; Jul 2026</span>
+            </div>
+            <h3 class="research-item__title">Cavity Optomechanical Magnetometer Actuated by Substrate Bending</h3>
+            <p class="research-item__meta">arXiv preprint &middot; Submitted 21 July 2026</p>
+            <p class="research-item__desc">Extends the buckled-dome cavity platform from acoustics to magnetic field sensing. A fused-silica chip carrying the optical cavity is bonded to a giant magnetostrictive material, so external fields drive flexural modes of the assembly and the resulting bending stress maps directly onto cavity height &mdash; decoupling the size of the transducing material from the size of the optical cavity. Achieves ~2 pT/&radic;Hz in an unshielded lab environment, with a predicted ~0.1 pT/&radic;Hz thermomechanical limit.</p>
+            <a href="assets/docs/Papers/Cavity%20optomechanical%20magnetometer%20actuated%20by%20substrate%20bending.pdf" class="research-item__link">Download PDF &rarr;</a>
           </div>
 
           <div class="research-item fade-in">
@@ -381,6 +394,8 @@
   <script>
   (function() {
     var bibtex = {
+      'Cavity Optomechanical Magnetometer Actuated by Substrate Bending':
+        '@article{florizone2026magnetometer,\n  title={Cavity Optomechanical Magnetometer Actuated by Substrate Bending},\n  author={Florizone, D. D. and Rabuka, I. E. and Hiltz, K. D. and Grobbellaar, I. and DeCorby, E. F. and Chen, A. and Scheuer, K. G. and DeCorby, R. G.},\n  journal={arXiv preprint},\n  year={2026}\n}',
       'Non-Contact Characterization of Plates Using a Turbulent Air-Jet Source and an Ultrasound Microphone':
         '@article{scheuer2026noncontact,\n  title={Non-Contact Characterization of Plates Using a Turbulent Air-Jet Source and an Ultrasound Microphone},\n  author={Scheuer, Kyle and Hornig, Graham J.},\n  journal={NDT},\n  year={2026},\n  publisher={MDPI}\n}',
       'Characterization of Micro-Scale Gas Leaks Using an Optomechanical Ultrasound Sensor':
