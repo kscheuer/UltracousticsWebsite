@@ -28,9 +28,6 @@
 
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Preload LCP hero image for faster first paint -->
-  <link rel="preload" as="image" href="assets/images/Product/Transparent/Transparent_Box.webp" type="image/webp" imagesrcset="assets/images/Product/Transparent/Transparent_Box.webp" fetchpriority="high">
-
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -123,8 +120,11 @@
               <a href="broadsonic.html" class="btn btn--primary btn--lg">Explore BROADSONIC</a>
             </div>
           </div>
-          <div class="product-hero-img">
-            <picture><source srcset="assets/images/Product/Transparent/Transparent_Box.webp" type="image/webp"><source srcset="assets/images/Product/Transparent/Transparent_Box.png" type="image/png"><img src="assets/images/Product/Transparent/Transparent_Box.png" alt="BROADSONIC control unit and optical ultrasonic sensor head" fetchpriority="high" decoding="async"></picture>
+          <div class="product-hero-img product-hero-img--orbit">
+            <video autoplay loop muted playsinline preload="auto" aria-label="BROADSONIC optical ultrasonic sensor orbit animation">
+              <source src="assets/Videos/orbit-1080.av1.mp4" type='video/mp4; codecs="av01"'>
+              <source src="assets/Videos/orbit-1080.h264.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
       </div>
