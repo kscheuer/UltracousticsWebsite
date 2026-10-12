@@ -1626,20 +1626,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.5;
 }
 
-.media-item__event-image {
-  display: block;
-  aspect-ratio: 16 / 9;
-  background: #1d3658;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.media-item__event-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 /* --- Product Images --- */
 .product-hero-img {
   max-width: 800px;
@@ -1834,40 +1820,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   color: var(--text-secondary);
   font-weight: 500;
-}
-
-/* --- Featured Event --- */
-.event-promo {
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.event-promo__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  align-items: center;
-  gap: 40px;
-}
-
-.event-promo__image {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-}
-
-.event-promo__title {
-  font-size: clamp(26px, 3vw, 34px);
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-
-.event-promo__date {
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.event-promo__desc {
-  color: var(--text-secondary);
-  margin-bottom: 24px;
 }
 
 /* --- Animated Hero Gradient Mesh --- */
@@ -2165,11 +2117,6 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .section {
     padding: 60px 0;
-  }
-
-  .event-promo__grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
   }
 
   .trust-bar__grid {
