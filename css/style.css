@@ -580,6 +580,30 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
 }
 
+/* --- Electrical Measurements Homepage Feature --- */
+.electrical-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.electrical-feature .section-header__desc {
+  margin-bottom: 24px;
+}
+
+.electrical-feature .btn {
+  white-space: normal;
+  text-align: center;
+  justify-content: center;
+}
+
+.electrical-feature img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+}
+
 /* --- Cards --- */
 .card-grid {
   display: grid;
@@ -2117,6 +2141,11 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .section {
     padding: 60px 0;
+  }
+
+  .electrical-feature {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   .trust-bar__grid {

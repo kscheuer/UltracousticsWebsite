@@ -25,6 +25,7 @@ The repository is connected to Cloudflare Pages, which builds and deploys automa
 /
 ├── index.html                  # Homepage / landing page
 ├── broadsonic.html             # BROADSONIC product page
+├── electrical-measurements.html # Electrical characterization & ECCE results
 ├── leak-detection.html         # Application: leak detection
 ├── partial-discharge.html      # Application: partial discharge
 ├── ultrasonic-cleaning.html    # Application: ultrasonic cleaning
@@ -40,7 +41,8 @@ The repository is connected to Cloudflare Pages, which builds and deploys automa
 ├── sitemap.xml
 │
 ├── css/
-│   └── style.css               # Single shared stylesheet
+│   ├── style.css               # Shared stylesheet
+│   └── electrical-measurements.css # Electrical application page styles
 │
 ├── js/
 │   ├── main.js                 # Shared JS (mobile nav, scroll animations, counters)

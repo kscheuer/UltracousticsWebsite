@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrical Measurements &amp; Power Electronics QA | Ultracoustics</title>
+  <meta name="theme-color" content="#FF4FC9">
+  <meta name="description" content="Measure airborne ultrasound from operating electronics with BROADSONIC. Explore non-contact component characterization, QA/QC, and power-magnetics results from IEEE ECCE 2026.">
+  <meta property="og:title" content="Hear How Your Electronics Behave | Ultracoustics">
+  <meta property="og:description" content="Non-contact acoustic measurements for power electronics and component QA/QC. Explore the results presented at IEEE ECCE 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ultracoustics.ca/electrical-measurements.html">
+  <meta property="og:image" content="https://ultracoustics.ca/assets/images/Electrical/pcb-probe-hero.png">
+  <meta property="og:image:alt" content="Illustration of a BROADSONIC optical probe above electronic components on a circuit board.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ultracoustics.ca/assets/images/Electrical/pcb-probe-hero.png">
+  <link rel="icon" type="image/png" href="assets/images/Logos/UltracousticsSquareLogo.png?v=2">
+  <link rel="apple-touch-icon" href="assets/images/Logos/UltracousticsSquareLogo.png?v=2">
+  <link rel="canonical" href="https://ultracoustics.ca/electrical-measurements.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/electrical-measurements.css">
+</head>
+<body class="electrical-page">
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ultracoustics home">
+        <picture><source srcset="assets/images/Logos/LogoMain.webp" type="image/webp"><source srcset="assets/images/Logos/LogoMain.png" type="image/png"><img src="assets/images/Logos/LogoMain.png" alt="Ultracoustics" style="height: 32px;"></picture>
+      </a>
+      <button class="nav__toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="broadsonic.html" class="nav__link">BROADSONIC</a>
+        <a href="transducer-characterization.html" class="nav__link">Characterization</a>
+        <div class="nav__dropdown">
+          <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">Applications</button>
+          <div class="nav__dropdown-menu">
+            <a href="electrical-measurements.html" class="nav__dropdown-item">Electrical Measurements</a>
+            <a href="leak-detection.html" class="nav__dropdown-item">Leak Detection</a>
+            <a href="ultrasonic-cleaning.html" class="nav__dropdown-item">Ultrasonic Cleaning</a>
+            <a href="partial-discharge.html" class="nav__dropdown-item">Partial Discharge</a>
+            <a href="ndt.html" class="nav__dropdown-item">Non-Destructive Testing</a>
+          </div>
+        </div>
+        <a href="research.html" class="nav__link">Research</a>
+        <a href="downloads.html" class="nav__link">Downloads</a>
+        <div class="nav__dropdown">
+          <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">About Us</button>
+          <div class="nav__dropdown-menu">
+            <a href="about.html" class="nav__dropdown-item">Company</a>
+            <a href="team.html" class="nav__dropdown-item">Team</a>
+            <a href="media.html" class="nav__dropdown-item">Media</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav__cta">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="electrical-hero" aria-labelledby="electrical-title">
+      <div class="container electrical-hero__grid">
+        <div>
+          <p class="hero__label">Electrical Measurements</p>
+          <h1 id="electrical-title">Hear how your<br>electronics behave.</h1>
+          <p class="electrical-hero__lead">Measure the mechanical response of operating electronics through airborne ultrasound. BROADSONIC brings non-contact acoustic insight to component characterization and QA/QC.</p>
+          <div class="hero__actions">
+            <a href="contact.html" class="btn btn--primary">Discuss Your Application</a>
+            <a href="#ecce-results" class="btn btn--secondary">Explore the ECCE Results</a>
+          </div>
+          <p class="electrical-hero__context">Power-magnetics research presented at IEEE ECCE 2026.</p>
+        </div>
+        <figure>
+          <img class="electrical-hero__image" src="assets/images/Electrical/pcb-probe-hero.png" alt="BROADSONIC optical probe above a circuit board, with illustrated acoustic waves from electronic components." width="640" height="360" fetchpriority="high">
+          <figcaption>BROADSONIC above a PCB &middot; Application illustration</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="electrical-specs" aria-label="BROADSONIC sensor capabilities">
+      <dl class="container electrical-specs__grid">
+        <div><dt>5 MHz</dt><dd>Sensor bandwidth</dd></div>
+        <div><dt>100 &micro;m</dt><dd>Active sensor diameter</dd></div>
+        <div><dt>Non-contact</dt><dd>Air-coupled optical sensing</dd></div>
+      </dl>
+    </section>
+
+    <section class="section" aria-labelledby="mechanical-insight-title">
+      <div class="container">
+        <div class="electrical-intro">
+          <div>
+            <p class="section-header__label">A Mechanical View</p>
+            <h2 class="section-header__title" id="mechanical-insight-title">Electrical excitation.<br>Mechanical insight.</h2>
+          </div>
+          <div class="electrical-copy">
+            <p>Electrical components vibrate as they operate. Their airborne acoustic emissions carry information about switching harmonics, mechanical resonances, and the way their structure responds to excitation.</p>
+            <p>BROADSONIC records those emissions without attaching a sensor to the component. Its optical sensing head provides electrical isolation and inherent immunity to electromagnetic interference.</p>
+            <p>Voltage, current, and magnetic-field measurements describe the electrical excitation. Acoustic measurements add a view of the resulting mechanical response, helping you investigate features those measurements alone do not directly reveal.</p>
+          </div>
+        </div>
+        <ol class="electrical-process" aria-label="From electrical excitation to acoustic measurement">
+          <li><span>01</span><h3>Electrical excitation</h3><p>Operating current drives the component.</p></li>
+          <li><span>02</span><h3>Magnetic forces</h3><p>In power magnetics, excitation acts on the core and windings.</p></li>
+          <li><span>03</span><h3>Mechanical response</h3><p>Structure and resonances shape the vibration.</p></li>
+          <li><span>04</span><h3>Airborne ultrasound</h3><p>BROADSONIC records the emitted acoustic signature.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section electrical-section--muted" aria-labelledby="applications-title">
+      <div class="container">
+        <div class="electrical-heading">
+          <p class="section-header__label">Characterization &amp; QA/QC</p>
+          <h2 class="section-header__title" id="applications-title">Add a mechanical view to your test bench.</h2>
+          <p class="section-header__desc">Capture spectra, compare resonance features, and establish repeatable acoustic references using the commercial BROADSONIC system.</p>
+        </div>
+        <div class="electrical-cards">
+          <article class="electrical-card">
+            <h3>Compare components</h3>
+            <p>Compare acoustic signatures from inductors, transformers, and board-mounted components. Investigate differences in peak amplitudes and resonance features between units or design revisions.</p>
+          </article>
+          <article class="electrical-card">
+            <h3>Explore operating conditions</h3>
+            <p>Measure how emissions change with load, switching settings, and excitation. Relate the acoustic spectrum to the electrical behavior of your converter or power-supply board.</p>
+          </article>
+          <article class="electrical-card">
+            <h3>Build a reference baseline</h3>
+            <p>Record a known reference under controlled conditions, then compare production or repaired units. Use spectral differences to guide further inspection and develop application-specific QA criteria.</p>
+          </article>
+        </div>
+        <p class="electrical-note">Meaningful comparisons use repeatable excitation, loading, probe position, and acquisition settings.</p>
+      </div>
+    </section>
+
+    <section class="section" id="ecce-results" aria-labelledby="results-title">
+      <div class="container">
+        <div class="electrical-heading">
+          <p class="section-header__label">Evidence from IEEE ECCE 2026</p>
+          <h2 class="section-header__title" id="results-title">Measured on a working power converter.</h2>
+          <p class="section-header__desc">Our research with the University of Alberta compared a filter inductor&rsquo;s airborne ultrasound with its squared-current spectrum. The results connect electrical excitation to measured mechanical behavior.</p>
+        </div>
+        <ul class="electrical-setup" aria-label="Experimental conditions">
+          <li><strong>1.5 kW</strong> three-phase converter</li>
+          <li><strong>200 V</strong> DC link</li>
+          <li><strong>10 kHz</strong> switching / <strong>60 Hz</strong> output</li>
+          <li><strong>2.5 mH</strong> filter inductor</li>
+          <li><strong>&asymp;1 cm</strong> probe standoff</li>
+        </ul>
+        <div class="electrical-results">
+          <div><strong>&asymp;260 kHz</strong><h3>Observed harmonic content</h3><p>The presentation reports detectable harmonics up to approximately 260 kHz in this converter test. The sensor bandwidth extends to 5 MHz.</p></div>
+          <div><strong>120 Hz</strong><h3>Resolved modulation sidebands</h3><p>Sidebands around the 20 kHz and 100 kHz harmonics reveal modulation associated with the 60 Hz electrical output.</p></div>
+          <div><strong>100 s</strong><h3>Steady-state acquisition</h3><p>Stable harmonic signatures provided a healthy reference for investigating changes in subsequent measurements.</p></div>
+        </div>
+        <div class="electrical-evidence">
+          <figure class="electrical-figure">
+            <a href="assets/images/Electrical/ecce-electrical-acoustic-correlation.png" target="_blank" rel="noopener" aria-label="Open the full-size electrical and acoustic correlation figure">
+              <img src="assets/images/Electrical/ecce-electrical-acoustic-correlation.png" alt="Four measured plots compare the squared-current spectrum and acoustic spectrum, with detailed overlays near 20 kHz and 100 kHz." width="1374" height="1649" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Electrical and acoustic comparison from the ECCE oral presentation, slide 9. Peak locations align while relative amplitudes reflect the component&rsquo;s mechanical response. <span class="electrical-figure__link">Select the figure to view it full size.</span></figcaption>
+          </figure>
+          <div class="electrical-findings">
+            <div><h3>Harmonics linked to excitation</h3><p>The measured acoustic peaks follow the harmonic structure predicted by the squared inductor current. This is consistent with the magnetic-force model used in the study.</p></div>
+            <div><h3>Resonances shape the response</h3><p>Acoustic amplitudes do not simply copy the electrical spectrum. The component&rsquo;s mechanical-acoustic response shapes them, including a strong response near 100 kHz.</p></div>
+            <div><h3>Placement reveals different features</h3><p>Measurements near the winding, core side, and core top share harmonic structure but differ in amplitude. Probe placement is therefore part of the measurement method, especially when comparing units.</p></div>
+          </div>
+        </div>
+        <details class="electrical-details">
+          <summary>View the winding and core measurements</summary>
+          <figure class="electrical-figure">
+            <a href="assets/images/Electrical/ecce-measurement-positions.png" target="_blank" rel="noopener" aria-label="Open the full-size winding and core measurement figure">
+              <img src="assets/images/Electrical/ecce-measurement-positions.png" alt="Measured acoustic spectra at the winding, core side, and core top show position-dependent amplitudes, with expanded views near 10 kHz and 130 kHz." width="2652" height="1817" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Spatial measurements from the ECCE oral presentation, slide 11. Each row is a different probe location; the expanded views show the regions around 10 kHz and 130 kHz. Select the figure to view it full size.</figcaption>
+          </figure>
+        </details>
+        <p class="electrical-note">These results characterize a healthy converter under steady-state conditions. Fault-specific diagnosis and automated pass/fail thresholds require validation against the components and failure modes of interest.</p>
+        <div class="electrical-reference" id="ecce-reference">
+          <p><strong>Research reference:</strong> B. Li, T. Senavirathna, K. Scheuer, R. DeCorby, and G. Kish, &ldquo;Non-Contact Acoustic Vibration Measurement of Power Magnetic Components Using an Optical Ultrasonic Microphone.&rdquo; IEEE Energy Conversion Congress and Exposition, 2026, paper #2009, oral Session 61. Results above draw on the conference presentation, slides 7&ndash;13.</p>
+          <p><a href="https://www.ieee-ecce.org/2026/wp-content/uploads/sites/24/2026/10/Program_2026ECCE_FINALWebversion10.5.pdf#page=73" target="_blank" rel="noopener">View the conference program (PDF)</a> &middot; <a href="assets/docs/Whitepapers/BROADSONIC_AppNote_Magnetic_Components.pdf" target="_blank" rel="noopener">Read the magnetic-components application note (PDF)</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section electrical-section--muted" aria-labelledby="questions-title">
+      <div class="container">
+        <div class="electrical-heading">
+          <p class="section-header__label">Planning a Measurement</p>
+          <h2 class="section-header__title" id="questions-title">Questions from the test bench.</h2>
+        </div>
+        <div class="electrical-faq">
+          <details><summary>Does BROADSONIC measure voltage or current?</summary><p>BROADSONIC measures airborne acoustic pressure from component vibration. Use it alongside voltage, current, or magnetic-field measurements to understand how electrical excitation translates into mechanical behavior.</p></details>
+          <details><summary>Does the probe touch the component?</summary><p>No. The optical probe receives sound through air. The ECCE experiment used approximately 1 cm standoff; suitable placement depends on the component, frequency range, acoustic access, and test conditions. No reflective target surface or attached accelerometer is required.</p></details>
+          <details><summary>Can this be used for production QA/QC?</summary><p>The commercial system can record and compare component emissions, spectra, and resonance features. A repeatable fixture and reference samples support those comparisons. Automated acceptance thresholds or diagnosis of a particular defect need to be developed and validated for your application.</p></details>
+          <details><summary>Can measurements be extended to acoustic maps?</summary><p>We have demonstrated acoustic mapping of transducers. Integrating scanning and production-test fixtures into circuit-board and power-equipment QA/QC is a next development step. <a href="transducer-characterization.html">Explore our transducer characterization work.</a></p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section electrical-cta" id="discuss" aria-labelledby="discuss-title">
+      <div class="container">
+        <p class="section-header__label">Continue the ECCE Conversation</p>
+        <h2 class="section-header__title" id="discuss-title">What would you like to measure?</h2>
+        <p class="section-header__desc">Tell us about your component, operating conditions, and the differences you need to resolve. We&rsquo;ll help you plan an acoustic measurement and assess where BROADSONIC fits into your test process.</p>
+        <div class="hero__actions">
+          <a href="contact.html" class="btn btn--primary">Discuss Your Application</a>
+          <a href="mailto:kyle@ultracoustics.ca?subject=Electrical%20measurements%20%E2%80%94%20ECCE%20follow-up" class="btn btn--secondary">Email Kyle</a>
+          <a href="broadsonic.html" class="btn btn--secondary">Explore BROADSONIC</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">
+            <picture><source srcset="assets/images/Logos/LogoMain.webp" type="image/webp"><source srcset="assets/images/Logos/LogoMain.png" type="image/png"><img src="assets/images/Logos/LogoMain.png" alt="Ultracoustics" style="height: 32px;"></picture>
+          </div>
+          <p class="footer__desc">Ultracoustics Technologies Ltd. Edmonton-based deep tech building the widest bandwidth air-coupled ultrasonic sensor commercially available.</p>
+          <div class="footer__social">
+            <a href="https://www.linkedin.com/company/ultracoustics/" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">
+              <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/ultracoustics/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">
+              <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Product</h4>
+          <a href="broadsonic.html" class="footer__link">BROADSONIC</a>
+          <a href="research.html" class="footer__link">Research</a>
+          <a href="broadsonic.html#datasheet" class="footer__link">Datasheet (PDF)</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Applications</h4>
+          <a href="electrical-measurements.html" class="footer__link">Electrical Measurements</a>
+          <a href="leak-detection.html" class="footer__link">Leak Detection</a>
+          <a href="ultrasonic-cleaning.html" class="footer__link">Ultrasonic Cleaning</a>
+          <a href="partial-discharge.html" class="footer__link">Partial Discharge</a>
+          <a href="ndt.html" class="footer__link">Non-Destructive Testing</a>
+          <a href="transducer-characterization.html" class="footer__link">Transducer Characterization</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Contact</h4>
+          <a href="mailto:kyle@ultracoustics.ca" class="footer__link">kyle@ultracoustics.ca</a>
+          <p class="footer__link" style="cursor:default;color:var(--text-secondary);">10230 Jasper Avenue North-West, Suite 4-263<br>Edmonton, AB T5J 4P6</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Ultracoustics Technologies Ltd.</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "59d9a760e0354897b598b7e213d1d1ec"}'></script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+/* Electrical measurements application page. */
+.electrical-page section[id] {
+  scroll-margin-top: calc(var(--nav-height) + 24px);
+}
+
+.electrical-hero {
+  padding: calc(var(--nav-height) + 80px) 0 64px;
+  background: #000;
+}
+
+.electrical-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 40px;
+}
+
+.electrical-hero h1 {
+  font-size: clamp(36px, 4.5vw, 58px);
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  margin-bottom: 24px;
+}
+
+.electrical-hero__lead {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+.electrical-hero__image {
+  width: 100%;
+  height: auto;
+}
+
+.electrical-hero figcaption {
+  margin-top: 12px;
+  font-size: 12px;
+  text-align: right;
+  color: var(--text-secondary);
+}
+
+.electrical-hero__context {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-top: 24px;
+}
+
+.electrical-page .btn {
+  white-space: normal;
+  justify-content: center;
+  text-align: center;
+}
+
+.electrical-specs {
+  border-block: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  padding: 30px 0;
+}
+
+.electrical-specs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.electrical-specs dt {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.electrical-specs dd {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.electrical-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.electrical-copy p + p {
+  margin-top: 18px;
+}
+
+.electrical-copy p,
+.electrical-card p,
+.electrical-findings p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.electrical-process {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 44px;
+}
+
+.electrical-process li {
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.electrical-process span {
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.electrical-process h3 {
+  font-size: 17px;
+  margin: 10px 0 8px;
+}
+
+.electrical-process p {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.electrical-section--muted {
+  background: var(--bg-secondary);
+}
+
+.electrical-heading {
+  max-width: 760px;
+  margin-bottom: 40px;
+}
+
+.electrical-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.electrical-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.electrical-card h3 {
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+.electrical-card p {
+  font-size: 15px;
+}
+
+.electrical-note {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-top: 24px;
+}
+
+.electrical-setup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  padding: 20px 0;
+  border-block: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.electrical-setup strong {
+  color: var(--text-primary);
+}
+
+.electrical-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin: 36px 0 52px;
+}
+
+.electrical-results strong {
+  display: block;
+  font-size: clamp(30px, 4vw, 44px);
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+.electrical-results h3 {
+  font-size: 16px;
+  margin: 6px 0 10px;
+}
+
+.electrical-results p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.electrical-evidence {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.electrical-figure a {
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+.electrical-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  background: #fff;
+}
+
+.electrical-figure figcaption {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 14px;
+}
+
+.electrical-figure__link {
+  display: block;
+  color: var(--accent);
+  margin-top: 6px;
+}
+
+.electrical-findings h3 {
+  font-size: 23px;
+  margin-bottom: 14px;
+}
+
+.electrical-findings > div + div {
+  margin-top: 32px;
+}
+
+.electrical-details {
+  margin-top: 36px;
+  padding: 24px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.electrical-details summary,
+.electrical-faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.electrical-details summary::marker,
+.electrical-faq summary::marker {
+  color: var(--accent);
+}
+
+.electrical-details .electrical-figure {
+  max-width: 920px;
+  margin: 24px auto 0;
+}
+
+.electrical-reference {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.electrical-reference p + p {
+  margin-top: 10px;
+}
+
+.electrical-faq {
+  max-width: 880px;
+}
+
+.electrical-faq details {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.electrical-faq p {
+  margin-top: 16px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.electrical-cta {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.electrical-cta .section-header__desc {
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+
+.electrical-page a:focus-visible,
+.electrical-page summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+@media (max-width: 1000px) {
+  .electrical-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .electrical-hero__grid > div {
+    max-width: 700px;
+  }
+
+  .electrical-hero figure {
+    width: 100%;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .electrical-intro,
+  .electrical-evidence {
+    gap: 32px;
+  }
+
+  .electrical-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 700px) {
+  .electrical-hero {
+    padding: calc(var(--nav-height) + 48px) 0 40px;
+  }
+
+  .electrical-hero__lead {
+    font-size: 17px;
+  }
+
+  .electrical-specs dt {
+    font-size: 20px;
+  }
+
+  .electrical-specs dd {
+    font-size: 12px;
+  }
+
+  .electrical-specs__grid {
+    gap: 16px;
+  }
+
+  .electrical-intro,
+  .electrical-cards,
+  .electrical-evidence,
+  .electrical-results {
+    grid-template-columns: 1fr;
+  }
+
+  .electrical-process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .electrical-results {
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+
+  .electrical-findings {
+    grid-row: 1;
+  }
+
+  .electrical-details {
+    padding: 18px;
+  }
+
+  .electrical-page .hero__actions .btn {
+    width: 100%;
+  }
+}

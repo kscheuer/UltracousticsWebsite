@@ -46,6 +46,7 @@
         <div class="nav__dropdown">
           <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">Applications</button>
           <div class="nav__dropdown-menu">
+            <a href="electrical-measurements.html" class="nav__dropdown-item">Electrical Measurements</a>
             <a href="leak-detection.html" class="nav__dropdown-item">Leak Detection</a>
             <a href="ultrasonic-cleaning.html" class="nav__dropdown-item">Ultrasonic Cleaning</a>
             <a href="partial-discharge.html" class="nav__dropdown-item">Partial Discharge</a>
@@ -136,7 +137,7 @@
             {year:2025,month:10,cat:'nde',    title:'Resonant Ultrasound Spectroscopy Detection Using a Non-Contact Ultrasound Microphone', journal:'MDPI Sensors \u00b7 4 Oct 2025', pdf:'assets/docs/Papers/Resonant%20Ultrasound%20Spectroscopy%20Detection%20Using%20a%20Non-Contact%20Ultrasound%20Microphone.pdf'},
             {year:2026,month:2, cat:'nde',    title:'Non-Contact Characterization of Plates Using a Turbulent Air-Jet Source and an Ultrasound Microphone', journal:'MDPI NDT \u00b7 Featured Article \u00b7 1 Feb 2026', pdf:'assets/docs/Papers/Non-Contact%20Characterization%20of%20Plates%20Using%20a%20Turbulent%20Air-Jet%20Source%20and%20an%20Ultrasound%20Microphone.pdf'},
             {year:2026,month:7, cat:'mag',    title:'Cavity Optomechanical Magnetometer Actuated by Substrate Bending', journal:'arXiv preprint · 21 Jul 2026', pdf:'assets/docs/Papers/Cavity%20optomechanical%20magnetometer%20actuated%20by%20substrate%20bending.pdf'},
-            {year:2026,month:10,cat:'nde',    title:'Non-Contact Vibration Detection of Power Converter Magnetics Using an Optical-Based Broadband Ultrasonic Microphone', journal:'IEEE ECCE 2026 \u00b7 Lecture \u00b7 Vancouver, BC \u00b7 Oct 4\u20138, 2026', pdf:null, upcoming:true}
+            {year:2026,month:10,cat:'nde',    title:'Non-Contact Acoustic Vibration Measurement of Power Magnetic Components Using an Optical Ultrasonic Microphone', journal:'IEEE ECCE 2026 \u00b7 Oral Session 61 \u00b7 Vancouver, BC \u00b7 Oct 2026', url:'electrical-measurements.html#ecce-results'}
           ];
 
           var colors = {leak:'#FF4FC9', sensor:'#4FC3FF', nde:'#4FFF8F', micro:'#C97FFF', mag:'#FFC24F'};
@@ -163,7 +164,7 @@
             var dot = document.createElement(p.upcoming ? 'span' : 'a');
             dot.className = 'tl-dot' + (p.upcoming ? ' tl-dot--upcoming' : '');
             if (!p.upcoming) {
-              dot.href = p.pdf;
+              dot.href = p.url || p.pdf;
               dot.target = '_blank';
               dot.rel = 'noopener';
             } else {
@@ -185,7 +186,7 @@
 
             var tip = document.createElement('div');
             tip.className = 'tl-tooltip';
-            var badgeLabel = p.upcoming ? 'Upcoming presentation' : 'View PDF &rarr;';
+            var badgeLabel = p.upcoming ? 'Upcoming presentation' : (p.url ? 'Explore the results &rarr;' : 'View PDF &rarr;');
             tip.innerHTML = '<div class="tl-tooltip__title">' + p.title + '</div>'
               + '<div class="tl-tooltip__meta">' + p.journal + '</div>'
               + '<span class="tl-tooltip__badge" style="background:' + colors[p.cat] + '22;color:' + colors[p.cat] + ';">' + badgeLabel + '</span>';
@@ -212,12 +213,12 @@
         <div class="research-list">
           <div class="research-item fade-in">
             <div style="margin-bottom: 10px;">
-              <span style="display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(255,79,201,0.15);color:var(--accent);font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">Upcoming · Oct 2026</span>
+              <span style="display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(255,79,201,0.15);color:var(--accent);font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">Presented · Oct 2026</span>
             </div>
-            <h3 class="research-item__title">Non-Contact Vibration Detection of Power Converter Magnetics Using an Optical-Based Broadband Ultrasonic Microphone</h3>
+            <h3 class="research-item__title">Non-Contact Acoustic Vibration Measurement of Power Magnetic Components Using an Optical Ultrasonic Microphone</h3>
             <p class="research-item__meta">IEEE Energy Conversion Congress &amp; Exposition (ECCE 2026) &middot; Lecture Presentation &middot; Vancouver, BC &middot; Oct 4&ndash;8, 2026</p>
-            <p class="research-item__desc">Accepted for lecture presentation at ECCE 2026. Demonstrates that an optical ultrasonic microphone can non-invasively detect switching harmonics emitted by magnetic components in power converters &mdash; opening a pathway to non-contact condition monitoring and fault detection for power electronics.</p>
-            <span class="research-item__link" style="opacity:0.55;cursor:default;">PDF available after conference</span>
+            <p class="research-item__desc">Presented at ECCE 2026, paper #2009, oral Session 61. Non-contact measurements connect a power inductor&rsquo;s acoustic harmonics to its squared-current spectrum, with position-dependent responses, modulation sidebands, and steady-state baseline measurements.</p>
+            <a href="electrical-measurements.html#ecce-results" class="research-item__link">Explore the measurements and results &rarr;</a>
           </div>
 
           <div class="research-item fade-in">
@@ -369,6 +370,7 @@
         </div>
         <div>
           <h4 class="footer__heading">Applications</h4>
+          <a href="electrical-measurements.html" class="footer__link">Electrical Measurements</a>
           <a href="leak-detection.html" class="footer__link">Leak Detection</a>
           <a href="ultrasonic-cleaning.html" class="footer__link">Ultrasonic Cleaning</a>
           <a href="partial-discharge.html" class="footer__link">Partial Discharge</a>
