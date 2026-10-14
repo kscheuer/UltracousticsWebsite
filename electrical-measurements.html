@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electrical Measurements &amp; Power Electronics QA | Ultracoustics</title>
+  <title>Electrical Measurements &amp; Partial Discharge | Ultracoustics</title>
   <meta name="theme-color" content="#FF4FC9">
-  <meta name="description" content="Measure airborne ultrasound from operating electronics with BROADSONIC. Explore non-contact component characterization, QA/QC, and power-magnetics results from IEEE ECCE 2026.">
+  <meta name="description" content="Non-contact acoustic measurements for electrical component characterization and partial discharge. Explore BROADSONIC demonstrations and power-magnetics results from IEEE ECCE 2026.">
   <meta property="og:title" content="Hear How Your Electronics Behave | Ultracoustics">
-  <meta property="og:description" content="Non-contact acoustic measurements for power electronics and component QA/QC. Explore the results presented at IEEE ECCE 2026.">
+  <meta property="og:description" content="Non-contact acoustic measurements for electrical components and partial discharge, with results presented at IEEE ECCE 2026.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ultracoustics.ca/electrical-measurements.html">
   <meta property="og:image" content="https://ultracoustics.ca/assets/images/Electrical/pcb-probe-hero.png">
@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/electrical-measurements.css">
+  <link rel="stylesheet" href="css/electrical-measurements.css?v=20261014">
 </head>
 <body class="electrical-page">
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -36,19 +36,23 @@
       <div class="nav__links">
         <a href="index.html" class="nav__link">Home</a>
         <a href="broadsonic.html" class="nav__link">BROADSONIC</a>
-        <a href="transducer-characterization.html" class="nav__link">Characterization</a>
         <div class="nav__dropdown">
           <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">Applications</button>
           <div class="nav__dropdown-menu">
             <a href="electrical-measurements.html" class="nav__dropdown-item">Electrical Measurements</a>
+            <a href="transducer-characterization.html" class="nav__dropdown-item">Transducer Characterization</a>
             <a href="leak-detection.html" class="nav__dropdown-item">Leak Detection</a>
             <a href="ultrasonic-cleaning.html" class="nav__dropdown-item">Ultrasonic Cleaning</a>
-            <a href="partial-discharge.html" class="nav__dropdown-item">Partial Discharge</a>
             <a href="ndt.html" class="nav__dropdown-item">Non-Destructive Testing</a>
           </div>
         </div>
-        <a href="research.html" class="nav__link">Research</a>
-        <a href="downloads.html" class="nav__link">Downloads</a>
+        <div class="nav__dropdown">
+          <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">Resources</button>
+          <div class="nav__dropdown-menu">
+            <a href="research.html" class="nav__dropdown-item">Research &amp; Whitepapers</a>
+            <a href="downloads.html" class="nav__dropdown-item">Software Downloads</a>
+          </div>
+        </div>
         <div class="nav__dropdown">
           <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">About Us</button>
           <div class="nav__dropdown-menu">
@@ -68,7 +72,7 @@
         <div class="electrical-hero__copy">
           <p class="hero__label">Electrical Measurements</p>
           <h1 id="electrical-title">Hear how your<br>electronics behave.</h1>
-          <p class="electrical-hero__lead">Measure the mechanical response of operating electronics through airborne ultrasound. BROADSONIC brings non-contact acoustic insight to component characterization and QA/QC.</p>
+          <p class="electrical-hero__lead">Measure component vibrations and electrical discharge through airborne ultrasound. BROADSONIC brings non-contact acoustic insight to characterization, QA/QC, and partial discharge investigations.</p>
           <div class="hero__actions">
             <a href="contact.html" class="btn btn--primary">Discuss Your Application</a>
             <a href="#ecce-results" class="btn btn--secondary">Explore the ECCE Results</a>
@@ -89,6 +93,15 @@
         <div><dt>Non-contact</dt><dd>Air-coupled optical sensing</dd></div>
       </dl>
     </section>
+
+    <nav class="electrical-topics" aria-label="Electrical measurement topics">
+      <div class="container">
+        <span>Explore:</span>
+        <a href="#applications-title">Component measurements</a>
+        <a href="#ecce-results">ECCE results</a>
+        <a href="#partial-discharge">Partial discharge</a>
+      </div>
+    </nav>
 
     <section class="section" aria-labelledby="mechanical-insight-title">
       <div class="container">
@@ -186,7 +199,37 @@
       </div>
     </section>
 
-    <section class="section electrical-section--muted" aria-labelledby="questions-title">
+    <section class="section electrical-section--muted" id="partial-discharge" aria-labelledby="partial-discharge-title">
+      <div class="container">
+        <div class="electrical-intro">
+          <div class="electrical-copy">
+            <p class="section-header__label">Partial Discharge</p>
+            <h2 class="section-header__title" id="partial-discharge-title">Listen for electrical discharge.</h2>
+            <p>BROADSONIC records airborne acoustic pulses from electrical discharges without attaching a sensor to the equipment. Its optical sensing head is inherently immune to electromagnetic interference.</p>
+            <p>Use acoustic measurements alongside electrical diagnostics when investigating transformers, switchgear, or cable terminations. Detection depends on acoustic access, source strength, distance, and background noise.</p>
+          </div>
+          <figure class="electrical-figure">
+            <a href="https://www.youtube.com/watch?v=TPuigJZ0_ek" target="_blank" rel="noopener" class="video-thumb" aria-label="Watch the arc-lighter acoustic demonstration on YouTube">
+              <img src="https://img.youtube.com/vi/TPuigJZ0_ek/hqdefault.jpg" alt="BROADSONIC arc-lighter acoustic demonstration." width="480" height="360" loading="lazy">
+              <div class="video-thumb__play">
+                <svg aria-hidden="true" viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.64 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#FF0000"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
+              </div>
+            </a>
+            <figcaption>Arc-lighter demonstration of an impulsive acoustic source. Watch the demonstration on YouTube.</figcaption>
+          </figure>
+        </div>
+        <details class="electrical-details">
+          <summary>Demonstration and measurement limits</summary>
+          <div class="electrical-copy">
+            <p>The arc-lighter demonstration recorded more than 40 dB signal-to-noise ratio at a 1 m standoff. It illustrates sensitivity to an impulsive source analogous to airborne discharge emissions; it does not establish a detection range or fault-classification performance for high-voltage assets.</p>
+            <p>Application-specific assessment is needed to establish suitable placement and distinguish discharge events from other acoustic sources.</p>
+            <p><a href="assets/docs/Papers/Air-coupled%20ultrasound%20using%20broadband%20shock%20waves%20from%20piezoelectric%20spark%20igniters.pdf" target="_blank" rel="noopener">Related research: broadband spark-generated ultrasound (PDF)</a></p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="questions-title">
       <div class="container">
         <div class="electrical-heading">
           <p class="section-header__label">Planning a Measurement</p>
@@ -203,7 +246,7 @@
 
     <section class="section electrical-cta" id="discuss" aria-labelledby="discuss-title">
       <div class="container">
-        <p class="section-header__label">Continue the ECCE Conversation</p>
+        <p class="section-header__label">Discuss Your Measurement</p>
         <h2 class="section-header__title" id="discuss-title">What would you like to measure?</h2>
         <p class="section-header__desc">Tell us about your component, operating conditions, and the differences you need to resolve. We&rsquo;ll help you plan an acoustic measurement and assess where BROADSONIC fits into your test process.</p>
         <div class="hero__actions">
@@ -244,7 +287,6 @@
           <a href="electrical-measurements.html" class="footer__link">Electrical Measurements</a>
           <a href="leak-detection.html" class="footer__link">Leak Detection</a>
           <a href="ultrasonic-cleaning.html" class="footer__link">Ultrasonic Cleaning</a>
-          <a href="partial-discharge.html" class="footer__link">Partial Discharge</a>
           <a href="ndt.html" class="footer__link">Non-Destructive Testing</a>
           <a href="transducer-characterization.html" class="footer__link">Transducer Characterization</a>
         </div>

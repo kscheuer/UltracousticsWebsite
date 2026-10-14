@@ -25,9 +25,9 @@ The repository is connected to Cloudflare Pages, which builds and deploys automa
 /
 ├── index.html                  # Homepage / landing page
 ├── broadsonic.html             # BROADSONIC product page
-├── electrical-measurements.html # Electrical characterization & ECCE results
+├── electrical-measurements.html # Electrical characterization, partial discharge & ECCE results
 ├── leak-detection.html         # Application: leak detection
-├── partial-discharge.html      # Application: partial discharge
+├── partial-discharge.html      # Redirect to the electrical measurements page
 ├── ultrasonic-cleaning.html    # Application: ultrasonic cleaning
 ├── ndt.html                    # Application: non-destructive testing
 ├── transducer-characterization.html  # Transducer characterization service

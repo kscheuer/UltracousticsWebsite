@@ -79,19 +79,23 @@
       <div class="nav__links">
         <a href="index.html" class="nav__link">Home</a>
         <a href="broadsonic.html" class="nav__link">BROADSONIC</a>
-        <a href="transducer-characterization.html" class="nav__link">Characterization</a>
         <div class="nav__dropdown">
           <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">Applications</button>
           <div class="nav__dropdown-menu">
             <a href="electrical-measurements.html" class="nav__dropdown-item">Electrical Measurements</a>
+            <a href="transducer-characterization.html" class="nav__dropdown-item">Transducer Characterization</a>
             <a href="leak-detection.html" class="nav__dropdown-item">Leak Detection</a>
             <a href="ultrasonic-cleaning.html" class="nav__dropdown-item">Ultrasonic Cleaning</a>
-            <a href="partial-discharge.html" class="nav__dropdown-item">Partial Discharge</a>
             <a href="ndt.html" class="nav__dropdown-item">Non-Destructive Testing</a>
           </div>
         </div>
-        <a href="research.html" class="nav__link">Research</a>
-        <a href="downloads.html" class="nav__link">Downloads</a>
+        <div class="nav__dropdown">
+          <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">Resources</button>
+          <div class="nav__dropdown-menu">
+            <a href="research.html" class="nav__dropdown-item">Research &amp; Whitepapers</a>
+            <a href="downloads.html" class="nav__dropdown-item">Software Downloads</a>
+          </div>
+        </div>
         <div class="nav__dropdown">
           <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">About Us</button>
           <div class="nav__dropdown-menu">
@@ -157,9 +161,10 @@
         <div class="hero__grid">
           <div class="fade-in">
             <h2 class="section-header__title">Hear the Full Picture</h2>
-            <p class="section-header__desc">With up to 5 MHz bandwidth, BROADSONIC captures signals that human ears and standard sensors miss. It delivers real-time data for acoustic analysis, gas leak detection, ultrasonic cleaning monitoring, and partial discharge detection.</p>
+            <p class="section-header__desc">BROADSONIC measures airborne ultrasound up to 5 MHz without touching the source. Included software provides real-time waveforms, frequency analysis, and data export.</p>
             <br>
             <a href="broadsonic.html" class="btn btn--outline">Learn About BROADSONIC</a>
+            <p style="margin-top: 16px;"><a href="broadsonic.html#included-software">Included software &rarr;</a></p>
           </div>
           <div class="fade-in" style="display:flex;align-items:center;justify-content:center;">
             <picture><source srcset="assets/images/Product/Transparent/Transparent_Probe.webp" type="image/webp"><source srcset="assets/images/Product/Transparent/Transparent_Probe.png" type="image/png"><img src="assets/images/Product/Transparent/Transparent_Probe.png" alt="BROADSONIC optical ultrasonic sensor" loading="lazy" style="max-width:100%;height:auto;"></picture>
@@ -237,7 +242,7 @@
               <svg aria-hidden="true" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
             </div>
             <h3 class="card__title">Leak Detection</h3>
-            <p class="card__desc">Omnidirectional, gas-agnostic detection of micro-scale leaks through broadband ultrasonic sensing, even in high-noise industrial environments.</p>
+            <p class="card__desc">Detect the ultrasonic signatures of gas leaks without contacting the source.</p>
             <span class="card__link">Learn More</span>
           </a>
 
@@ -247,17 +252,17 @@
               <svg aria-hidden="true" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5-2 4-2 4 2 4 2"/><path d="M8 16s1.5-2 4-2 4 2 4 2"/></svg>
             </div>
             <h3 class="card__title">Ultrasonic Cleaning</h3>
-            <p class="card__desc">Real-time, non-contact cavitation monitoring from above the tank. Detect transducer drift, degradation, and process anomalies before they affect part quality.</p>
+            <p class="card__desc">Monitor cavitation and changes in ultrasonic cleaning performance from above the tank.</p>
             <span class="card__link">Learn More</span>
           </a>
 
-          <!-- Partial Discharge -->
-          <a href="partial-discharge.html" class="card" style="text-decoration:none;">
+          <!-- Electrical Measurements -->
+          <a href="electrical-measurements.html" class="card" style="text-decoration:none;">
             <div class="card__icon">
               <svg aria-hidden="true" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
-            <h3 class="card__title">Partial Discharge</h3>
-            <p class="card__desc">Non-contact acoustic detection of partial discharge events. Captures the full PD spectrum up to 5 MHz with complete immunity to electromagnetic interference.</p>
+            <h3 class="card__title">Electrical Measurements</h3>
+            <p class="card__desc">Characterize component vibrations and partial discharge through airborne ultrasound.</p>
             <span class="card__link">Learn More</span>
           </a>
 
@@ -267,7 +272,7 @@
               <svg aria-hidden="true" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 12h10M12 7v10"/></svg>
             </div>
             <h3 class="card__title">Non-Destructive Testing</h3>
-            <p class="card__desc">Non-contact ultrasonic C-scans, bond inspection, and sub-micron thickness mapping. See defects traditional inspection misses.</p>
+            <p class="card__desc">Explore non-contact inspection through acoustic imaging, resonance analysis, and thickness mapping.</p>
             <span class="card__link">Learn More</span>
           </a>
         </div>
@@ -281,31 +286,12 @@
           <div>
             <p class="section-header__label">Electrical Measurements</p>
             <h2 class="section-header__title" id="electrical-feature-title">Hear How Your Electronics Behave</h2>
-            <p class="section-header__desc">Non-contact acoustic insight for power electronics, component characterization, and QA/QC. Explore our measurements presented at IEEE ECCE 2026.</p>
+            <p class="section-header__desc">Explore component characterization and partial discharge, including power-magnetics measurements presented at IEEE ECCE 2026.</p>
             <a href="electrical-measurements.html" class="btn btn--primary">Explore Electrical Measurements</a>
           </div>
           <a href="electrical-measurements.html" aria-label="Explore electrical measurements with BROADSONIC">
             <img src="assets/images/Electrical/pcb-probe-hero.png" alt="Illustration of a BROADSONIC optical probe measuring acoustic emissions above a circuit board." width="640" height="360" loading="lazy" decoding="async">
           </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====== Included Software ====== -->
-    <section class="section">
-      <div class="container">
-        <div class="hero__grid">
-          <div class="fade-in">
-            <picture><source srcset="assets/images/Software/SoftwareNormalized.webp" type="image/webp"><source srcset="assets/images/Software/SoftwareNormalized.png" type="image/png"><img src="assets/images/Software/SoftwareNormalized.png" alt="Ultracoustics Data Visualizer showing real-time time-domain and FFT frequency plots on a laptop" loading="lazy" style="width: 100%; border-radius: 12px; display: block; box-shadow: 0 20px 60px rgba(0,0,0,0.4);"></picture>
-          </div>
-          <div class="fade-in">
-            <p class="section-header__label">Included Software</p>
-            <h2 class="section-header__title">Ready Out of the Box</h2>
-            <p class="section-header__desc">Every BROADSONIC ships with the Ultracoustics Data Visualizer &mdash; real-time time-domain and FFT streaming, broadband analysis, and one-click data export.</p>
-            <div style="margin-top: 24px;">
-              <a href="broadsonic.html#included-software" class="btn btn--primary">See Full Software Details &rarr;</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -317,7 +303,7 @@
           <div class="fade-in">
             <p class="section-header__label">Available Now</p>
             <h2 class="section-header__title">Transducer Characterization Service</h2>
-            <p class="section-header__desc">Ship us your transducer. Get a full broadband beam profile &mdash; 0 to 5 MHz at 0.1 mm resolution &mdash; delivered as an interactive report within one week. No couplant, no water tank, no repeat scans.</p>
+            <p class="section-header__desc">Send us your transducer for an air-coupled scan. Receive spatial acoustic field maps and an interactive report.</p>
             <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px;">
               <a href="transducer-characterization.html" class="btn btn--primary">Request a Scan</a>
               <a href="assets/demos/transducer_characterization_1p5MHz.html" target="_blank" rel="noopener" class="btn btn--secondary">See Example Report &rarr;</a>
@@ -331,248 +317,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ====== Comparison Table ====== -->
-    <section class="section comparison-section">
-      <div class="container">
-        <div class="section-header section-header--centered fade-in">
-          <p class="section-header__label">Why BROADSONIC</p>
-          <h2 class="section-header__title">How We Compare</h2>
-        </div>
-        <div class="fade-in">
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Feature</th>
-                <th>BROADSONIC</th>
-                <th>Air-Coupled Piezo</th>
-                <th>Conventional Ultrasonic</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="row-highlight">
-                <td>Bandwidth</td>
-                <td class="highlight-col">DC &ndash; 5 MHz (flat)</td>
-                <td>Narrowband (~30% fractional)</td>
-                <td>20 Hz &ndash; 100 kHz</td>
-              </tr>
-              <tr>
-                <td>Contact Required</td>
-                <td class="highlight-col">No (air-coupled)</td>
-                <td>No (high insertion loss)</td>
-                <td>No (air-coupled)</td>
-              </tr>
-              <tr class="row-highlight">
-                <td>EMI Immunity</td>
-                <td class="highlight-col">Complete (optical)</td>
-                <td>Poor</td>
-                <td>Partial</td>
-              </tr>
-              <tr>
-                <td>Sensing Principle</td>
-                <td class="highlight-col">Optical (Fabry-Perot)</td>
-                <td>Piezoelectric / Composite</td>
-                <td>Capacitive / MEMS</td>
-              </tr>
-              <tr class="row-highlight">
-                <td>Omnidirectional</td>
-                <td class="highlight-col">&gt; &pm;60&deg;</td>
-                <td>Directional</td>
-                <td>Varies</td>
-              </tr>
-              <tr>
-                <td>Active Sensor Diameter</td>
-                <td class="highlight-col">100 &mu;m</td>
-                <td>10&ndash;25 mm</td>
-                <td>~6 mm</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====== Radar Chart ====== -->
-    <section class="section" id="radar">
-      <div class="container">
-        <div class="section-header section-header--centered fade-in">
-          <p class="section-header__label">At a Glance</p>
-          <h2 class="section-header__title">Technology Comparison</h2>
-        </div>
-        <div class="fade-in" style="max-width:600px; margin:0 auto;">
-          <canvas id="radarCanvas" style="width:100%; height:min(500px, 80vw);"></canvas>
-          <div style="display:flex; justify-content:center; gap:28px; margin-top:12px; font-size:13px; flex-wrap:wrap;">
-            <span><span style="display:inline-block;width:14px;height:3px;background:#FF4FC9;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>BROADSONIC</span>
-            <span><span style="display:inline-block;width:14px;height:3px;background:#FFA64D;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Air-Coupled Piezo</span>
-            <span><span style="display:inline-block;width:14px;height:3px;background:#5EADFF;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>Conventional Ultrasonic</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <script>
-    (function() {
-      var canvas = document.getElementById('radarCanvas');
-      if (!canvas) return;
-      var ctx = canvas.getContext('2d');
-      var isMobile = window.innerWidth <= 768;
-
-      // 6 axes: Bandwidth, Spatial Resolution, EMI Immunity, Non-Contact, Omnidirectional, Dynamic Range
-      var axes = ['Bandwidth', 'Spatial\nResolution', 'EMI\nImmunity', 'Non-Contact', 'Omnidirectional', 'Dynamic\nRange'];
-      var n = axes.length;
-
-      // Normalized scores (0-1) for each technology (from 1-10 scale)
-      // BROADSONIC: BW 10, Spatial 10, EMI 10, Non-Contact 10, Omni 10, DR 9
-      // Air-Coupled Piezo: BW 2, Spatial 1, EMI 2, Non-Contact 7, Omni 2, DR 6
-      // Conventional Ultrasonic Mic: BW 5, Spatial 3, EMI 2, Non-Contact 10, Omni 7, DR 8
-      var techs = [
-        { name: 'BROADSONIC',        color: '#FF4FC9', scores: [1.0, 1.0, 1.0, 1.0, 1.0, 0.9] },
-        { name: 'Air-Coupled Piezo', color: '#FFA64D', scores: [0.2, 0.1, 0.2, 0.7, 0.2, 0.6] },
-        { name: 'Conventional',      color: '#5EADFF', scores: [0.5, 0.3, 0.2, 1.0, 0.7, 0.8] }
-      ];
-
-      var animProgress = 0;
-      var animDone = false;
-      var hasStarted = false;
-
-      function resize() {
-        var rect = canvas.getBoundingClientRect();
-        var dpr = Math.min(window.devicePixelRatio || 1, 2);
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-
-      function draw() {
-        var rect = canvas.getBoundingClientRect();
-        var w = rect.width;
-        var h = rect.height;
-        var cx = w / 2;
-        var cy = h / 2 + 10;
-        var R = Math.min(w, h) * (isMobile ? 0.32 : 0.38);
-
-        ctx.clearRect(0, 0, w, h);
-
-        // Grid rings
-        for (var ring = 1; ring <= 5; ring++) {
-          var r = R * ring / 5;
-          ctx.beginPath();
-          for (var i = 0; i <= n; i++) {
-            var a = (Math.PI * 2 * i / n) - Math.PI / 2;
-            var px = cx + r * Math.cos(a);
-            var py = cy + r * Math.sin(a);
-            if (i === 0) ctx.moveTo(px, py);
-            else ctx.lineTo(px, py);
-          }
-          ctx.strokeStyle = ring === 5 ? '#333' : '#1a1a1a';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-
-        // Axis lines + labels
-        ctx.fillStyle = '#888';
-        ctx.font = (isMobile ? '11px' : '12px') + ' Inter, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        for (var j = 0; j < n; j++) {
-          var angle = (Math.PI * 2 * j / n) - Math.PI / 2;
-          var ex = cx + R * Math.cos(angle);
-          var ey = cy + R * Math.sin(angle);
-          ctx.strokeStyle = '#222';
-          ctx.beginPath();
-          ctx.moveTo(cx, cy);
-          ctx.lineTo(ex, ey);
-          ctx.stroke();
-
-          // Label
-          var labelPad = axes[j].indexOf('\n') >= 0 ? (isMobile ? 30 : 40) : (isMobile ? 20 : 28);
-          var lx = cx + (R + labelPad) * Math.cos(angle);
-          var ly = cy + (R + labelPad) * Math.sin(angle);
-          var lines = axes[j].split('\n');
-          for (var l = 0; l < lines.length; l++) {
-            ctx.fillText(lines[l], lx, ly + (l - (lines.length - 1) / 2) * 14);
-          }
-        }
-
-        // Draw technology polygons (back to front: air-coupled, contact, BROADSONIC)
-        var order = [2, 1, 0];
-        for (var oi = 0; oi < order.length; oi++) {
-          var t = techs[order[oi]];
-          var p = order[oi] === 0 ? animProgress : Math.min(animProgress * 1.5, 1);
-          if (p < 0.01) continue;
-
-          ctx.beginPath();
-          for (var k = 0; k <= n; k++) {
-            var idx = k % n;
-            var ang = (Math.PI * 2 * idx / n) - Math.PI / 2;
-            var val = t.scores[idx] * p;
-            var px2 = cx + R * val * Math.cos(ang);
-            var py2 = cy + R * val * Math.sin(ang);
-            if (k === 0) ctx.moveTo(px2, py2);
-            else ctx.lineTo(px2, py2);
-          }
-          ctx.closePath();
-
-          // Fill
-          ctx.save();
-          ctx.globalAlpha = order[oi] === 0 ? 0.15 : 0.12;
-          ctx.fillStyle = t.color;
-          ctx.fill();
-          ctx.restore();
-
-          // Stroke
-          ctx.save();
-          ctx.globalAlpha = order[oi] === 0 ? 0.9 : 0.7;
-          ctx.strokeStyle = t.color;
-          ctx.lineWidth = order[oi] === 0 ? 2.5 : 1.5;
-          ctx.stroke();
-          ctx.restore();
-
-          // Dots on BROADSONIC only
-          if (order[oi] === 0 && animProgress > 0.9) {
-            for (var d = 0; d < n; d++) {
-              var da = (Math.PI * 2 * d / n) - Math.PI / 2;
-              var dv = t.scores[d] * animProgress;
-              var dx = cx + R * dv * Math.cos(da);
-              var dy = cy + R * dv * Math.sin(da);
-              ctx.beginPath();
-              ctx.arc(dx, dy, 4, 0, Math.PI * 2);
-              ctx.fillStyle = t.color;
-              ctx.fill();
-            }
-          }
-        }
-      }
-
-      function tick() {
-        if (animDone) return;
-        animProgress += 0.025;
-        if (animProgress >= 1) {
-          animProgress = 1;
-          animDone = true;
-        }
-        draw();
-        if (!animDone) requestAnimationFrame(tick);
-      }
-
-      function startAnim() {
-        if (hasStarted) return;
-        hasStarted = true;
-        requestAnimationFrame(tick);
-      }
-
-      var observer = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting) {
-          startAnim();
-          observer.disconnect();
-        }
-      }, { threshold: 0.3 });
-      observer.observe(canvas);
-
-      window.addEventListener('resize', function() { isMobile = window.innerWidth <= 768; resize(); draw(); });
-      resize();
-      draw();
-    })();
-    </script>
 
     <!-- ====== Research / Credibility ====== -->
     <section class="section waveform-bg-section" style="background: var(--bg-secondary);">
@@ -606,41 +350,6 @@
       </div>
     </section>
 
-    <!-- ====== Latest News ====== -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header section-header--centered fade-in">
-          <p class="section-header__label">Momentum</p>
-          <h2 class="section-header__title">Latest News</h2>
-        </div>
-
-        <div class="media-grid media-grid--two fade-in" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); max-width: 900px; margin: 0 auto;">
-          <!-- Jun 2026 - Built World Tech Cohort 2 -->
-          <div class="media-item">
-            <a href="https://lnkd.in/gqjaUzqN" target="_blank" rel="noopener" class="video-thumb">
-              <img src="assets/images/Promotional/Edmonton.jpg" alt="Ultracoustics selected for Built World Tech Cohort 2 in Edmonton" loading="lazy">
-            </a>
-            <p class="media-item__date">Jun 2026 &middot; News</p>
-            <h3 class="media-item__title">Ultracoustics Joins Built World Tech Cohort 2</h3>
-            <p class="media-item__desc">One of four Edmonton companies advancing pilots through the Venture Pilots program &mdash; partnering with AIMS (PIP360) on pipeline integrity monitoring.</p>
-          </div>
-
-          <!-- May 2026 - SBS Ecoclean Collaboration -->
-          <div class="media-item">
-            <a href="https://www.linkedin.com/company/ultracoustics/" target="_blank" rel="noopener" class="video-thumb">
-              <img src="assets/images/Promotional/ecoclean.jpg" alt="Ultracoustics and SBS Ecoclean Group collaboration on megasonic wafer cleaning" loading="lazy">
-            </a>
-            <p class="media-item__date">May 2026 &middot; News</p>
-            <h3 class="media-item__title">Ultracoustics + SBS Ecoclean: Megasonic Wafer Cleaning</h3>
-            <p class="media-item__desc">Integrating BROADSONIC into Ecoclean's UCMPerformanceLine to extend Acoustic Performance Measurement into the megahertz range for semiconductor wafer cleaning.</p>
-          </div>
-        </div>
-
-        <div class="text-center fade-in" style="margin-top: 32px;">
-          <a href="media.html" class="btn btn--outline">See All News &amp; Media &rarr;</a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- ====== Footer ====== -->
@@ -672,7 +381,6 @@
           <a href="electrical-measurements.html" class="footer__link">Electrical Measurements</a>
           <a href="leak-detection.html" class="footer__link">Leak Detection</a>
           <a href="ultrasonic-cleaning.html" class="footer__link">Ultrasonic Cleaning</a>
-          <a href="partial-discharge.html" class="footer__link">Partial Discharge</a>
           <a href="ndt.html" class="footer__link">Non-Destructive Testing</a>
           <a href="transducer-characterization.html" class="footer__link">Transducer Characterization</a>
         </div>

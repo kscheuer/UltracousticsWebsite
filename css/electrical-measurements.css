@@ -1,6 +1,23 @@
 /* Electrical measurements application page. */
-.electrical-page section[id] {
+.electrical-page section[id],
+.electrical-page h2[id] {
   scroll-margin-top: calc(var(--nav-height) + 24px);
+}
+
+.electrical-topics {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.electrical-topics .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  font-size: 14px;
+}
+
+.electrical-topics span {
+  color: var(--text-secondary);
 }
 
 .electrical-hero {
@@ -115,6 +132,10 @@
 
 .electrical-copy p + p {
   margin-top: 18px;
+}
+
+.electrical-copy .section-header__label {
+  color: var(--accent);
 }
 
 .electrical-copy p,
@@ -291,6 +312,10 @@
 .electrical-details .electrical-figure {
   max-width: 920px;
   margin: 24px auto 0;
+}
+
+.electrical-details .electrical-copy {
+  margin-top: 20px;
 }
 
 .electrical-reference {

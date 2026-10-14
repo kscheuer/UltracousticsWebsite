@@ -19,14 +19,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ultracoustics.ca/partial-discharge.html</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://ultracoustics.ca/electrical-measurements.html</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -74,7 +68,7 @@
   </url>
   <url>
     <loc>https://ultracoustics.ca/media.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
