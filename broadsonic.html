@@ -123,7 +123,7 @@
             <p class="stat__label">the frequency range of human hearing (5 MHz vs. 20 kHz)</p>
             <div class="hero__actions" style="margin-top: 32px;">
               <a href="contact.html" class="btn btn--primary btn--lg">Get a Quote</a>
-              <button class="btn btn--secondary btn--lg" onclick="document.getElementById('datasheetModal').classList.add('active')">Download Datasheet</button>
+              <a href="assets/docs/UltracousticsBroadsonicDatasheet.pdf" download="BROADSONIC_Datasheet.pdf" class="btn btn--secondary btn--lg">Download Datasheet</a>
             </div>
           </div>
         </div>
@@ -375,7 +375,7 @@
     </section>
 
     <!-- ====== Downloads & CTA ====== -->
-    <section class="section">
+    <section class="section" id="datasheet">
       <div class="container text-center">
         <div class="section-header section-header--centered fade-in">
           <h2 class="section-header__title">Ready to Evaluate BROADSONIC?</h2>
@@ -383,7 +383,7 @@
         </div>
         <div class="fade-in" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
               <a href="contact.html" class="btn btn--primary btn--lg">Get a Quote</a>
-              <button class="btn btn--secondary btn--lg" onclick="document.getElementById('datasheetModal').classList.add('active')">Download Datasheet</button>
+              <a href="assets/docs/UltracousticsBroadsonicDatasheet.pdf" download="BROADSONIC_Datasheet.pdf" class="btn btn--secondary btn--lg">Download Datasheet</a>
         </div>
       </div>
     </section>
@@ -411,7 +411,7 @@
           <h4 class="footer__heading">Product</h4>
           <a href="broadsonic.html" class="footer__link">BROADSONIC</a>
           <a href="research.html" class="footer__link">Research</a>
-          <a href="#datasheet" class="footer__link" onclick="document.getElementById('datasheetModal').classList.add('active');return false;">Datasheet (PDF)</a>
+          <a href="assets/docs/UltracousticsBroadsonicDatasheet.pdf" download="BROADSONIC_Datasheet.pdf" class="footer__link">Datasheet (PDF)</a>
         </div>
         <div>
           <h4 class="footer__heading">Applications</h4>
@@ -437,31 +437,13 @@
   <script src="js/main.js"></script>
   <script src="js/fpi-animation.js"></script>
 
-  <!-- Datasheet Gate Modal -->
-  <div class="ds-modal" id="datasheetModal">
-    <div class="ds-modal__backdrop" onclick="this.parentElement.classList.remove('active')"></div>
-    <div class="ds-modal__card">
-      <button class="ds-modal__close" onclick="this.closest('.ds-modal').classList.remove('active')" aria-label="Close">&times;</button>
-      <h3 class="ds-modal__title">Download the BROADSONIC Datasheet</h3>
-      <p class="ds-modal__desc">Enter your email to receive the full technical datasheet. We won't spam you — just useful updates about BROADSONIC.</p>
-      <form class="ds-modal__form" id="datasheetForm">
-        <input type="text" name="name" placeholder="Name" required class="ds-modal__input" autocomplete="name">
-        <input type="email" name="email" placeholder="Work email" required class="ds-modal__input" autocomplete="email">
-        <input type="text" name="company" placeholder="Company (optional)" class="ds-modal__input" autocomplete="organization">
-        <input type="hidden" name="_subject" value="Datasheet Download Request">
-        <button type="submit" class="btn btn--primary" style="width:100%">Download Datasheet (PDF)</button>
-      </form>
-      <p class="ds-modal__status" id="dsStatus"></p>
-    </div>
-  </div>
-
   <!-- Sticky CTA Bar -->
   <div class="sticky-cta" id="stickyCta">
     <div class="sticky-cta__inner">
       <div class="sticky-cta__text"><strong>BROADSONIC</strong> &mdash; 5 MHz optical ultrasonic sensor. Ready to evaluate?</div>
       <div class="sticky-cta__actions">
         <a href="contact.html" class="btn btn--primary btn--sm">Request a Demo</a>
-        <button class="btn btn--secondary btn--sm" onclick="document.getElementById('datasheetModal').classList.add('active')">Datasheet</button>
+        <a href="assets/docs/UltracousticsBroadsonicDatasheet.pdf" download="BROADSONIC_Datasheet.pdf" class="btn btn--secondary btn--sm">Datasheet</a>
       </div>
     </div>
   </div>

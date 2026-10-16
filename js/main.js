@@ -486,55 +486,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Auto-open datasheet modal from #datasheet hash ---
-  if (window.location.hash === '#datasheet') {
-    var modal = document.getElementById('datasheetModal');
-    if (modal) modal.classList.add('active');
-  }
-
-  // --- Datasheet Gate Form ---
-  var dsForm = document.getElementById('datasheetForm');
-  if (dsForm) {
-    dsForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var statusEl = document.getElementById('dsStatus');
-      var btn = dsForm.querySelector('button[type="submit"]');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-
-      fetch('https://formspree.io/f/mgonnryz', {
-        method: 'POST',
-        body: new FormData(dsForm),
-        headers: { 'Accept': 'application/json' }
-      }).then(function (res) {
-        if (res.ok) {
-          statusEl.textContent = 'Downloading...';
-          statusEl.style.color = '#4ade80';
-          var a = document.createElement('a');
-          a.href = 'assets/docs/UltracousticsBroadsonicDatasheet.pdf';
-          a.download = 'BROADSONIC_Datasheet.pdf';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          setTimeout(function () {
-            document.getElementById('datasheetModal').classList.remove('active');
-            dsForm.reset();
-            statusEl.textContent = '';
-            btn.textContent = 'Download Datasheet (PDF)';
-            btn.disabled = false;
-          }, 1500);
-        } else {
-          throw new Error('fail');
-        }
-      }).catch(function () {
-        statusEl.textContent = 'Something went wrong. Email kyle@ultracoustics.ca for the datasheet.';
-        statusEl.style.color = '#ff6b6b';
-        btn.textContent = 'Download Datasheet (PDF)';
-        btn.disabled = false;
-      });
-    });
-  }
-
   // ====== FAQ Accordion ======
   document.querySelectorAll('.faq__question').forEach(function (btn) {
     btn.addEventListener('click', function () {
