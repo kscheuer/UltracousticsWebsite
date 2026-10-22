@@ -519,6 +519,26 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
 }
 
+.product-downloads {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.product-downloads .btn {
+  padding: 16px 12px;
+  font-size: 14px;
+  text-align: center;
+  white-space: normal;
+}
+
+@media (max-width: 600px) {
+  .product-downloads {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- Counter / Stats --- */
 .stat {
   display: inline-flex;
