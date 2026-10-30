@@ -478,7 +478,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }).catch(function () {
         statusEl.className = 'form__status form__status--error';
-        statusEl.textContent = 'Something went wrong. Please email kyle@ultracoustics.ca directly.';
+        statusEl.textContent = 'Something went wrong. Please try again shortly or call the number listed on this page.';
       }).finally(function () {
         submitBtn.classList.remove('btn--sending');
         submitBtn.textContent = 'Send Message';
