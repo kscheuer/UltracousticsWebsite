@@ -129,15 +129,39 @@
     }
 
     .dl-changelog {
-      margin: 24px 0;
-      padding: 20px 24px;
+      margin: 40px 0;
+      padding: clamp(20px, 4vw, 32px);
       background: var(--bg-elev, #14141a);
       border: 1px solid var(--border, #2a2a33);
       border-radius: 12px;
     }
-    .dl-changelog h3 { margin-top: 0; }
-    .dl-changelog ul { padding-left: 20px; color: var(--text-secondary, #a0a0aa); }
-    .dl-changelog ul li { margin-bottom: 6px; }
+    .dl-changelog__header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px 20px;
+      margin-bottom: 20px;
+    }
+    .dl-changelog h2 { margin: 0; font-size: 1.25rem; line-height: 1.4; }
+    .dl-changelog time { color: var(--text-secondary); font-size: 0.85rem; }
+    .dl-changelog__list {
+      list-style: disc;
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .dl-changelog__list li + li { margin-top: 12px; }
+    .dl-changelog__list li::marker { color: var(--accent); }
+    .dl-changelog__list strong { color: var(--text-primary); font-weight: 600; }
+    .dl-changelog__history {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border, #2a2a33);
+      font-size: 0.9rem;
+    }
+    .dl-changelog__history a { text-decoration: underline; text-underline-offset: 4px; }
   </style>
 </head>
 <body>
@@ -293,39 +317,32 @@
           </ul>
         </section>
 
-        <!-- ====== Changelog ====== -->
-        <div class="dl-changelog">
-          <h3>Release Notes &mdash; v2.0.0</h3>
-          <ul>
-            <li>Updated live waveform and spectrum views, trigger controls, and recording tools.</li>
-            <li>Open saved recordings for review and comparison.</li>
-            <li>Bundled hardware and software tours for setup and operation.</li>
-            <li>Portable Windows package with the required graphics modules included and verified.</li>
+        <!-- ====== Release Notes ====== -->
+        <section class="dl-changelog" aria-labelledby="release-notes-title">
+          <header class="dl-changelog__header">
+            <h2 id="release-notes-title">What&rsquo;s new in v2.0.0</h2>
+            <time datetime="2026-10-30">October 30, 2026</time>
+          </header>
+          <ul class="dl-changelog__list">
+            <li><strong>Live analysis.</strong> Updated waveform and spectrum views with configurable trigger controls.</li>
+            <li><strong>Recording and review.</strong> Save recordings, reopen them, and compare results.</li>
+            <li><strong>Guided setup.</strong> Hardware and software tours walk you through setup and operation.</li>
+            <li><strong>Portable Windows app.</strong> Extract the ZIP and run &mdash; no Python installation required.</li>
           </ul>
-          <h3 style="margin-top: 24px;">v1.2.0</h3>
-          <p><strong>What's new</strong></p>
-          <ul>
-            <li><strong>New USB engine:</strong> acquisition runs in a dedicated background process using async USB transfers — no more dropped samples when the UI is busy.</li>
-            <li><strong>Lock-free shared-memory pipeline:</strong> samples flow straight from USB into a shared ring buffer.</li>
-            <li><strong>Hardware-accelerated plots:</strong> time-domain and FFT views use OpenGL by default for smoother updates at high sample rates.</li>
-            <li>More accurate live MSPS readout via rolling average.</li>
-          </ul>
-          <p><strong>Compatibility</strong></p>
-          <ul>
-            <li>Requires firmware version with 8-byte USB headers — needed to ensure correct data alignment.</li>
-            <li>Firmware with expanded FIFO (commit <code>b5c5021</code> or later) will enable true 10 MSPS throughput. Without expanded FIFO there will be hardware-side loss.</li>
-          </ul>
-          <h3 style="margin-top: 24px;">v1.1</h3>
-          <ul>
-            <li>Improved data throughput calculation.</li>
-          </ul>
-          <h3 style="margin-top: 24px;">v1.0</h3>
-          <ul>
-            <li>Initial public release of ReadoutGUI.</li>
-            <li>Live streaming and recording from BROADSONIC hardware.</li>
-            <li>Time-domain and frequency-domain views.</li>
-          </ul>
-        </div>
+          <p class="dl-changelog__history">
+            <a href="https://github.com/kscheuer/UltracousticsWebsite/releases">View previous releases on GitHub &rarr;</a>
+          </p>
+        </section>
+
+        <!-- ====== Source Code ====== -->
+        <section style="margin-top: 40px;" aria-labelledby="source-code-title">
+          <h2 id="source-code-title">Source Code</h2>
+          <p style="color: var(--text-secondary, #a0a0aa); line-height: 1.8;">
+            Source code for BROADSONIC ReadoutGUI is available on request. Email
+            <a href="mailto:kyle@ultracoustics.ca?subject=BROADSONIC%20ReadoutGUI%20source%20code%20request">kyle@ultracoustics.ca</a>
+            and include the software version you downloaded.
+          </p>
+        </section>
 
         <!-- ====== License / Legal ====== -->
         <section style="margin-top: 40px;">
