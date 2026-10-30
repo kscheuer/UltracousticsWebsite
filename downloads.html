@@ -216,15 +216,15 @@
           <div class="dl-meta">
             <div class="dl-meta__item">
               <span class="dl-meta__label">Version</span>
-              <span class="dl-meta__value">v1.2.0</span>
+              <span class="dl-meta__value">v2.0.0</span>
             </div>
             <div class="dl-meta__item">
               <span class="dl-meta__label">Released</span>
-              <span class="dl-meta__value">April 30 2026</span>
+              <span class="dl-meta__value">October 30, 2026</span>
             </div>
             <div class="dl-meta__item">
               <span class="dl-meta__label">Size</span>
-              <span class="dl-meta__value">~75 MB</span>
+              <span class="dl-meta__value">208.7 MB (ZIP)</span>
             </div>
             <div class="dl-meta__item">
               <span class="dl-meta__label">Platform</span>
@@ -233,17 +233,12 @@
           </div>
 
           <div class="dl-actions">
-            <!--
-              The download asset is hosted on GitHub Releases, NOT in this repository.
-              The URL below auto-resolves to the most recent release's asset with the
-              given filename. Upload the exe to a release named (for example) "readoutgui-v1.2.0"
-              with the asset filename exactly matching "BROADSONIC-ReadoutGUI-v1.2.0.exe".
-            -->
-            <a href="https://github.com/kscheuer/UltracousticsWebsite/releases/latest/download/BROADSONIC-ReadoutGUI-v1.2.0.exe"
+            <!-- Versioned release URL keeps this download aligned with the size and checksum below. -->
+            <a href="https://github.com/kscheuer/UltracousticsWebsite/releases/download/readoutgui-v2.0.0/BROADSONIC-ReadoutGUI-v2.0.0-windows-x64-portable.zip"
                class="btn btn--primary btn--lg"
                download
                rel="noopener">
-              Download for Windows (.exe)
+              Download for Windows (.zip)
             </a>
             <a href="https://github.com/kscheuer/UltracousticsWebsite/releases"
                class="btn btn--secondary btn--lg"
@@ -256,11 +251,11 @@
           <div style="margin-top: 24px;">
             <span class="dl-meta__label">SHA-256 Checksum</span>
             <div class="dl-checksum" id="dl-sha256">
-              DEF68BC1DBC1434393173528E86983DE97BFDF54B2152DCACB4A0B0926D62AFE
+              93b3abce4c068236723b678d7e246657bbc2331ffa0b996c21ac51f7a4bc39c0
             </div>
             <p style="font-size: 0.8rem; color: var(--text-secondary, #a0a0aa); margin-top: 8px;">
               Verify with PowerShell:
-              <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">Get-FileHash .\BROADSONIC-ReadoutGUI-v1.2.0.exe -Algorithm SHA256</code>
+              <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">Get-FileHash .\BROADSONIC-ReadoutGUI-v2.0.0-windows-x64-portable.zip -Algorithm SHA256</code>
             </p>
           </div>
         </div>
@@ -276,13 +271,13 @@
 
         <!-- ====== Install Steps ====== -->
         <section style="margin-top: 40px;">
-          <h2>Installing</h2>
+          <h2>Getting Started</h2>
           <ol class="dl-steps">
-            <li>Download the installer using the button above.</li>
+            <li>Download the Windows portable ZIP using the button above. Python does not need to be installed.</li>
             <li>Verify the SHA-256 checksum matches the value shown here.</li>
-            <li>Double-click the <code>.exe</code>. If SmartScreen appears, choose <strong>More info &rarr; Run anyway</strong>.</li>
-            <li>Follow the installer prompts.</li>
-            <li>Connect your BROADSONIC unit via USB and launch <strong>ReadoutGUI</strong>.</li>
+            <li>Right-click the ZIP and choose <strong>Extract All</strong>. Keep the executable and its <code>_internal</code> folder together; do not run the app from inside the ZIP.</li>
+            <li>Open the extracted <code>BROADSONIC_ReadoutGUI_v2.0.0_Dist</code> folder and run <strong>BROADSONIC ReadoutGUI v2.0.0.exe</strong>. If SmartScreen appears, choose <strong>More info &rarr; Run anyway</strong>.</li>
+            <li>Connect your BROADSONIC unit via USB, confirm it is connected, and press <strong>START</strong>. The hardware tour in the Help menu guides you through setup.</li>
           </ol>
         </section>
 
@@ -293,14 +288,21 @@
             <li><strong>OS:</strong> Windows 10 (1809+) or Windows 11, 64-bit</li>
             <li><strong>CPU:</strong> x64 processor, 2 cores or more</li>
             <li><strong>RAM:</strong> 4 GB minimum, 8 GB recommended</li>
-            <li><strong>Disk:</strong> ~200 MB free</li>
+            <li><strong>Disk:</strong> 600 MB free for the ZIP and extracted app, plus space for recordings</li>
             <li><strong>Connectivity:</strong> USB for hardware interface</li>
           </ul>
         </section>
 
         <!-- ====== Changelog ====== -->
         <div class="dl-changelog">
-          <h3>Release Notes &mdash; v1.2.0</h3>
+          <h3>Release Notes &mdash; v2.0.0</h3>
+          <ul>
+            <li>Updated live waveform and spectrum views, trigger controls, and recording tools.</li>
+            <li>Open saved recordings for review and comparison.</li>
+            <li>Bundled hardware and software tours for setup and operation.</li>
+            <li>Portable Windows package with the required graphics modules included and verified.</li>
+          </ul>
+          <h3 style="margin-top: 24px;">v1.2.0</h3>
           <p><strong>What's new</strong></p>
           <ul>
             <li><strong>New USB engine:</strong> acquisition runs in a dedicated background process using async USB transfers — no more dropped samples when the UI is busy.</li>
