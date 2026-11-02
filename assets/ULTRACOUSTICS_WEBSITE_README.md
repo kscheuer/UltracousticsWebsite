@@ -259,7 +259,7 @@ This page is well-organized on the current site. Maintain the same structure:
 ### 7. TEAM (team.html)
 
 **Team members:**
-- Kyle Scheuer, MSc, EIT -- CEO | Optical & Electronics Lead
+- Kyle Scheuer, MSc, P.Eng. -- CEO | Optical & Electronics Lead
 - Dr. Ray DeCorby, PhD, P.Eng -- CTO | Professor, University of Alberta
 - Ayden Chen, BSc, EIT -- COO | Mechanical & Software Lead
 - Brad Spencer, BSc, P.Eng -- Retired TELUS VP of Mission Critical Environments | Business Advisor
