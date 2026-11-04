@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Downloads | Ultracoustics</title>
   <meta name="theme-color" content="#FF4FC9">
-  <meta name="description" content="Download the Ultracoustics BROADSONIC ReadoutGUI software for Windows. The official desktop application for interfacing with the BROADSONIC optical ultrasonic sensor.">
+  <meta name="description" content="Download the Ultracoustics BROADSONIC ReadoutGUI software for Windows and macOS. The official desktop application for interfacing with the BROADSONIC optical ultrasonic sensor.">
 
   <meta property="og:title" content="Downloads | Ultracoustics">
-  <meta property="og:description" content="Download the official BROADSONIC ReadoutGUI software for Windows.">
+  <meta property="og:description" content="Download the official BROADSONIC ReadoutGUI software for Windows and macOS.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ultracoustics.ca/downloads.html">
   <meta property="og:image" content="https://ultracoustics.ca/assets/images/Logos/cropped-BlackLogo-scaled-1.jpg">
@@ -294,9 +294,71 @@
           Always verify the SHA-256 above before running. Code-signed releases are on our roadmap.
         </div>
 
+        <!-- ====== macOS Download ====== -->
+        <div class="dl-card" id="macos">
+          <div class="dl-card__header">
+            <h2 class="dl-card__title">BROADSONIC ReadoutGUI</h2>
+            <span class="dl-card__tag">macOS</span>
+          </div>
+          <p class="dl-card__desc">
+            The same application for Macs with Apple Silicon (M1 or newer). To check yours, open
+            the Apple menu and select <strong>About This Mac</strong>.
+          </p>
+
+          <div class="dl-meta">
+            <div class="dl-meta__item">
+              <span class="dl-meta__label">Version</span>
+              <span class="dl-meta__value">v2.0.0</span>
+            </div>
+            <div class="dl-meta__item">
+              <span class="dl-meta__label">Released</span>
+              <span class="dl-meta__value">November 2026</span>
+            </div>
+            <div class="dl-meta__item">
+              <span class="dl-meta__label">Size</span>
+              <span class="dl-meta__value">177.0 MB (ZIP)</span>
+            </div>
+            <div class="dl-meta__item">
+              <span class="dl-meta__label">Platform</span>
+              <span class="dl-meta__value">macOS 15 or newer (Apple Silicon)</span>
+            </div>
+          </div>
+
+          <div class="dl-actions">
+            <a href="https://github.com/kscheuer/UltracousticsWebsite/releases/download/readoutgui-v2.0.0/BROADSONIC-ReadoutGUI-v2.0.0-macos-arm64.zip"
+               class="btn btn--primary btn--lg"
+               download
+               rel="noopener">
+              Download for Mac (.zip)
+            </a>
+          </div>
+
+          <div style="margin-top: 24px;">
+            <span class="dl-meta__label">SHA-256 Checksum</span>
+            <div class="dl-checksum">
+              2eb52d9cede6c625265a667e48e12588c33300377fbad2bd64f26b12a56f6075
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary, #a0a0aa); margin-top: 8px;">
+              Verify in Terminal:
+              <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">shasum -a 256 ~/Downloads/BROADSONIC-*.zip</code>
+            </p>
+          </div>
+        </div>
+
+        <!-- ====== Gatekeeper Notice ====== -->
+        <div class="dl-notice">
+          <strong>A note on macOS security.</strong>
+          The current build is not yet notarized by Apple, so macOS blocks the first launch and
+          reports that it could not verify the app. This is expected. To proceed: try to open the
+          app once and click <strong>Done</strong>, then open <strong>System Settings</strong>
+          &rarr; <strong>Privacy &amp; Security</strong>, scroll down to <strong>Security</strong> and click
+          <strong>Open Anyway</strong>. Always verify the SHA-256 above before running.
+        </div>
+
         <!-- ====== Install Steps ====== -->
         <section style="margin-top: 40px;">
           <h2>Getting Started</h2>
+          <h3 style="margin-top: 24px;">Windows</h3>
           <ol class="dl-steps">
             <li>Download the Windows portable ZIP using the button above. Python does not need to be installed.</li>
             <li>Verify the SHA-256 checksum matches the value shown here.</li>
@@ -304,14 +366,33 @@
             <li>Open the extracted <code>BROADSONIC_ReadoutGUI_v2.0.0_Dist</code> folder and run <strong>BROADSONIC ReadoutGUI v2.0.0.exe</strong>. If SmartScreen appears, choose <strong>More info &rarr; Run anyway</strong>.</li>
             <li>Connect your BROADSONIC unit via USB, confirm it is connected, and press <strong>START</strong>. The hardware tour in the Help menu guides you through setup.</li>
           </ol>
+
+          <h3 style="margin-top: 24px;">macOS</h3>
+          <ol class="dl-steps">
+            <li>Download the Mac ZIP using the button above. Python does not need to be installed.</li>
+            <li>Verify the SHA-256 checksum matches the value shown here.</li>
+            <li>Open the ZIP in Finder to extract it, then drag <strong>BROADSONIC ReadoutGUI</strong> to your <strong>Applications</strong> folder.</li>
+            <li>Open the app. When macOS blocks it, follow the steps in the note above once; macOS remembers your choice.</li>
+            <li>Connect your BROADSONIC unit via USB, confirm it is connected, and press <strong>START</strong>. The hardware tour in the Help menu guides you through setup.</li>
+          </ol>
         </section>
 
         <!-- ====== System Requirements ====== -->
         <section style="margin-top: 40px;">
           <h2>System Requirements</h2>
+          <h3 style="margin-top: 24px;">Windows</h3>
           <ul style="color: var(--text-secondary, #a0a0aa); line-height: 1.8;">
             <li><strong>OS:</strong> Windows 10 (1809+) or Windows 11, 64-bit</li>
             <li><strong>CPU:</strong> x64 processor, 2 cores or more</li>
+            <li><strong>RAM:</strong> 4 GB minimum, 8 GB recommended</li>
+            <li><strong>Disk:</strong> 600 MB free for the ZIP and extracted app, plus space for recordings</li>
+            <li><strong>Connectivity:</strong> USB for hardware interface</li>
+          </ul>
+
+          <h3 style="margin-top: 24px;">macOS</h3>
+          <ul style="color: var(--text-secondary, #a0a0aa); line-height: 1.8;">
+            <li><strong>OS:</strong> macOS 15 (Sequoia) or newer</li>
+            <li><strong>CPU:</strong> Apple Silicon (M1 or newer)</li>
             <li><strong>RAM:</strong> 4 GB minimum, 8 GB recommended</li>
             <li><strong>Disk:</strong> 600 MB free for the ZIP and extracted app, plus space for recordings</li>
             <li><strong>Connectivity:</strong> USB for hardware interface</li>
@@ -329,6 +410,7 @@
             <li><strong>Recording and review.</strong> Save recordings, reopen them, and compare results.</li>
             <li><strong>Guided setup.</strong> Hardware and software tours walk you through setup and operation.</li>
             <li><strong>Portable Windows app.</strong> Extract the ZIP and run &mdash; no Python installation required.</li>
+            <li><strong>Mac app.</strong> A native build for Apple Silicon Macs running macOS 15 or newer.</li>
           </ul>
           <p class="dl-changelog__history">
             <a href="https://github.com/kscheuer/UltracousticsWebsite/releases">View previous releases on GitHub &rarr;</a>
