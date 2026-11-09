@@ -2461,65 +2461,311 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
-/* --- Fabry-Perot Animation --- */
-.fpi-animation-wrap {
-  position: relative;
-  width: 100%;
-  min-height: 300px;
+/* --- Technology Film (product page) --- */
+.tech-film {
+  background: #000;
 }
 
-.fpi-animation-wrap canvas {
+.tech-film__frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  container-type: inline-size;
+}
+
+.tech-film__video {
+  display: block;
   width: 100%;
+  height: 100%;
+  background: #000;
+  -webkit-mask-image: linear-gradient(#000 96%, transparent);
+  mask-image: linear-gradient(#000 96%, transparent);
+}
+
+/* Desktop ending: the idle loop and the return to the opening sit over the film,
+   and only appear once they have a frame to show */
+.tech-film__layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tech-film__layer.is-visible {
+  opacity: 1;
+}
+
+/* A headline over the whole-system shot, a step larger than the captions;
+   the shot stays empty to about 59% across above the laptop */
+.tech-film__headline {
+  position: absolute;
+  left: 3.5%;
+  top: 6%;
+  width: 56%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.8s ease;
+  pointer-events: none;
+  font-size: 22px;
+  font-size: clamp(18px, 2.6cqw, 40px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 2px 18px rgba(0, 0, 0, 0.9);
+}
+
+.tech-film__headline.is-shown {
+  opacity: 1;
+  transform: none;
+}
+
+/* Captions sit in parts of each shot that stay empty, so they read as part of the film */
+.tech-caps {
+  list-style: none;
+}
+
+.tech-cap {
+  position: absolute;
+  left: 3.5%;
+  top: 6%;
+  width: 28%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.8s ease;
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 2px 18px rgba(0, 0, 0, 0.9);
+}
+
+.tech-cap.is-shown {
+  opacity: 1;
+  transform: none;
+}
+
+.tech-cap--5 {
+  left: 60%;
+  top: 49%;
+  width: 32%;
+}
+
+.tech-cap__line {
+  display: block;
+  font-size: 18px;
+  font-size: clamp(15px, 1.9cqw, 28px);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+
+.tech-film__controls {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.tech-film__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.tech-film__button:hover {
+  border-color: var(--accent);
+}
+
+.tech-film__replay[hidden] {
+  display: none;
+}
+
+.tech-film__info-toggle {
+  padding: 0;
+  color: var(--text-muted);
+}
+
+.tech-film__info-toggle:hover,
+.tech-film__info-toggle[aria-expanded="true"] {
+  color: var(--text-primary);
+}
+
+.tech-film__button svg {
+  width: 14px;
+  height: 14px;
+}
+
+.tech-film__info-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+.tech-film__icon {
+  display: none;
+}
+
+.tech-film__control[data-state="play"] .tech-film__icon--play,
+.tech-film__control[data-state="pause"] .tech-film__icon--pause,
+.tech-film__control[data-state="replay"] .tech-film__icon--replay {
   display: block;
 }
 
-.fpi-steps {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 16px;
-}
-
-.fpi-step {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  border-radius: var(--radius);
+.tech-film__info {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  width: min(340px, calc(100vw - 48px));
+  padding: 12px 14px;
   border: 1px solid var(--border-subtle);
-  font-size: 13px;
+  border-radius: 8px;
+  background: rgba(10, 10, 10, 0.94);
+  font-size: 12.5px;
+  line-height: 1.6;
   color: var(--text-secondary);
-  transition: all 0.3s ease;
 }
 
-.fpi-step--active {
-  border-color: var(--accent);
+.tech-film__info[hidden] {
+  display: none;
+}
+
+.tech-film__info p + p {
+  margin-top: 8px;
+}
+
+.tech-film__info a {
   color: var(--text-primary);
-  background: rgba(255, 79, 201, 0.08);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-.fpi-step__num {
-  width: 22px;
-  height: 22px;
+.tech-film__info a:hover {
+  color: var(--accent);
+}
+
+/* A quiet row naming the five steps; the current one lights up */
+.tech-film__steps {
+  list-style: none;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  border-radius: 50%;
-  background: var(--border-subtle);
-  color: var(--text-secondary);
-  font-size: 11px;
-  font-weight: 700;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
+  gap: 4px 32px;
+  margin-top: 18px;
+  padding: 0 24px;
 }
 
-.fpi-step--active .fpi-step__num {
-  background: var(--accent);
-  color: #000;
+.tech-film__step {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  color: #5c5c5c;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.4s ease;
 }
 
-.fpi-step__text {
-  white-space: nowrap;
+.tech-film__step:hover {
+  color: var(--text-muted);
+}
+
+/* The step the film is showing stands out in white */
+.tech-film__step.is-active {
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .tech-film__frame {
+    aspect-ratio: 4 / 5;
+  }
+
+  .tech-film__video {
+    -webkit-mask-image: linear-gradient(#000 88%, transparent);
+    mask-image: linear-gradient(#000 88%, transparent);
+  }
+
+  /* Mobile cut: a band across the top, and across the bottom for the sound-wave shot */
+  .tech-cap,
+  .tech-cap--3,
+  .tech-cap--5 {
+    left: 6%;
+    right: 6%;
+    top: 4%;
+    width: auto;
+  }
+
+  /* Leaves the bottom-right corner to the controls */
+  .tech-cap--3 {
+    top: auto;
+    right: 30%;
+    bottom: 3%;
+  }
+
+  /* The laptop's lid starts about a quarter of the way down */
+  .tech-cap--5 {
+    top: 2%;
+  }
+
+  .tech-cap__line {
+    font-size: clamp(15px, 4.6cqw, 19px);
+  }
+
+  /* The whole-system shot is empty across its top third */
+  .tech-film__headline {
+    left: 6%;
+    right: 6%;
+    top: 4%;
+    width: auto;
+    font-size: clamp(18px, 5.6cqw, 24px);
+  }
+
+  .tech-film__controls {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .tech-film__control,
+  .tech-film__replay {
+    padding: 0;
+  }
+
+  .tech-film__control-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .tech-film__steps {
+    gap: 0 14px;
+    margin-top: 12px;
+  }
+
+  .tech-film__step {
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+  }
 }
 
 /* --- Scroll-Driven Animations --- */

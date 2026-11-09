@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261022-downloads">
+  <link rel="stylesheet" href="css/style.css?v=20261109-ending">
 
   <link rel="stylesheet" href="css/documentation.css?v=20261030">
 
@@ -140,43 +140,72 @@
     <div class="hero-divider"></div>
 
     <!-- ====== How It Works ====== -->
-    <section class="section">
-      <div class="container">
-        <div class="hero__grid fade-in">
-          <div>
-            <p class="section-header__label">Technology</p>
-            <h2 class="section-header__title">50x Beyond Conventional Ultrasonic Microphones</h2>
-            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px;">
-              BROADSONIC uses Fabry-Perot interferometry: laser light travels through a fiber and reflects between two mirrors inside a micro-cavity. When sound pressure deflects the membrane, the cavity length changes, shifting the interference pattern. This optical readout captures the full 0&ndash;5 MHz acoustic band with ~100 &micro;Pa/&radic;Hz sensitivity &mdash; no electrical elements, inherently immune to EMI.
-            </p>
-            <p style="font-size: 13px; color: var(--text-muted); margin-top: -16px; margin-bottom: 24px;">50x = 5 MHz vs. ~100 kHz typical bandwidth of conventional ultrasonic microphones.</p>
-            <div class="fpi-steps">
-              <div class="fpi-step" data-step="1">
-                <span class="fpi-step__num">1</span>
-                <span class="fpi-step__text">Laser enters fiber</span>
-              </div>
-              <div class="fpi-step" data-step="2">
-                <span class="fpi-step__num">2</span>
-                <span class="fpi-step__text">Light reflects in cavity</span>
-              </div>
-              <div class="fpi-step" data-step="3">
-                <span class="fpi-step__num">3</span>
-                <span class="fpi-step__text">Sound deflects membrane</span>
-              </div>
-              <div class="fpi-step" data-step="4">
-                <span class="fpi-step__num">4</span>
-                <span class="fpi-step__text">Interference shift → signal</span>
-              </div>
-              <div class="fpi-step" data-step="5">
-                <span class="fpi-step__num">5</span>
-                <span class="fpi-step__text">Signal split into frequencies</span>
-              </div>
+    <section class="section tech-film" aria-labelledby="techTitle">
+      <h2 class="sr-only" id="techTitle">How BROADSONIC works</h2>
+      <div class="tech-film__stage fade-in">
+        <div class="tech-film__frame">
+          <video id="techFilm" class="tech-film__video" muted playsinline preload="none" poster="assets/images/tech-film-desktop-0001.webp" aria-label="Animation: laser light travels to the BROADSONIC sensor, is changed by sound, and returns to the control unit and software" aria-describedby="techCaps">
+            <source src="assets/Videos/tech-film-mobile-intro.av1.mp4" media="(max-width: 768px)" type='video/mp4; codecs="av01.0.05M.08"'>
+            <source src="assets/Videos/tech-film-mobile-intro.h264.mp4" media="(max-width: 768px)" type="video/mp4">
+            <source src="assets/Videos/tech-film-desktop-intro.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+            <source src="assets/Videos/tech-film-desktop-intro.h264.mp4" type="video/mp4">
+          </video>
+          <!-- It opens on a loop of the whole system and goes into the box to the laser,
+               then the film pulls back out to the loop; Replay goes back into the box -->
+          <video id="techFilmIdle" class="tech-film__video tech-film__layer" muted playsinline loop preload="none" poster="assets/images/tech-film-desktop-0846.webp" aria-hidden="true">
+            <source src="assets/Videos/tech-film-mobile-idle.av1.mp4" media="(max-width: 768px)" type='video/mp4; codecs="av01.0.05M.08"'>
+            <source src="assets/Videos/tech-film-mobile-idle.h264.mp4" media="(max-width: 768px)" type="video/mp4">
+            <source src="assets/Videos/tech-film-desktop-idle.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+            <source src="assets/Videos/tech-film-desktop-idle.h264.mp4" type="video/mp4">
+          </video>
+          <video id="techFilmReturn" class="tech-film__video tech-film__layer" muted playsinline preload="none" aria-hidden="true">
+            <source src="assets/Videos/tech-film-mobile-return.av1.mp4" media="(max-width: 768px)" type='video/mp4; codecs="av01.0.05M.08"'>
+            <source src="assets/Videos/tech-film-mobile-return.h264.mp4" media="(max-width: 768px)" type="video/mp4">
+            <source src="assets/Videos/tech-film-desktop-return.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+            <source src="assets/Videos/tech-film-desktop-return.h264.mp4" type="video/mp4">
+          </video>
+          <!-- Shown over the whole-system shot, in its empty top-left corner (top band on phones) -->
+          <p class="tech-film__headline">Advanced laser technology<br> for exceptional ultrasonic sensitivity.</p>
+          <!-- Each caption shows between the two times (seconds) for that cut, where its corner of the shot is empty -->
+          <ol class="tech-caps" id="techCaps">
+            <li class="tech-cap tech-cap--1" data-title="Interrogation Beam" data-desktop="0.3 4.6" data-mobile="0.3 4.4">
+              <span class="tech-cap__line">An infrared laser beam is sent down an optical fiber to the sensor.</span>
+            </li>
+            <li class="tech-cap tech-cap--2" data-title="Optical Sensor" data-desktop="5.0 7.05" data-mobile="5.8 7.05">
+              <span class="tech-cap__line">The beam enters a 100&nbsp;&micro;m optical cavity, about the width of a human hair.</span>
+            </li>
+            <li class="tech-cap tech-cap--3" data-title="Sound Detection" data-desktop="7.4 12.0" data-mobile="7.4 11.75">
+              <span class="tech-cap__line">Sound flexes the cavity, changing its length and the light reflected back.</span>
+            </li>
+            <li class="tech-cap tech-cap--4" data-title="Beam Readout" data-desktop="15.9 19.85" data-mobile="15.6 19.9">
+              <span class="tech-cap__line">The returning light is detected and digitized inside the BROADSONIC control unit.</span>
+            </li>
+            <li class="tech-cap tech-cap--5" data-title="Data Analysis" data-desktop="20.6 24.3" data-mobile="20.3 25.6">
+              <span class="tech-cap__line">The signal streams over USB, and the software displays the sound&rsquo;s waveform and spectrum.</span>
+            </li>
+          </ol>
+          <div class="tech-film__controls">
+            <button type="button" class="tech-film__button tech-film__info-toggle" aria-expanded="false" aria-controls="techInfo" aria-label="About this animation">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.3 7h1.4v4.5H7.3zM8 4.2a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z" fill="currentColor"/></svg>
+            </button>
+            <button type="button" class="tech-film__button tech-film__replay" aria-controls="techFilm" hidden>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3a5 5 0 1 1-4.6 3.05l1.4.6A3.5 3.5 0 1 0 8 4.5V7L4.5 3.75 8 .5z" fill="currentColor"/></svg>
+              <span class="tech-film__control-label">Replay</span>
+            </button>
+            <button type="button" class="tech-film__button tech-film__control" aria-controls="techFilm" data-state="play">
+              <svg class="tech-film__icon tech-film__icon--play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
+              <svg class="tech-film__icon tech-film__icon--pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h3v11H4zm5 0h3v11H9z" fill="currentColor"/></svg>
+              <svg class="tech-film__icon tech-film__icon--replay" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3a5 5 0 1 1-4.6 3.05l1.4.6A3.5 3.5 0 1 0 8 4.5V7L4.5 3.75 8 .5z" fill="currentColor"/></svg>
+              <span class="tech-film__control-label">Play</span>
+            </button>
+            <div class="tech-film__info" id="techInfo" hidden>
+              <p>Illustration, simplified. The infrared beam is invisible and is drawn in magenta, and the on-screen data is simulated.</p>
+              <p>Laptop model &ldquo;<a href="https://sketchfab.com/3d-models/macbook-pro-m3-16-inch-2024-8e34fc2b303144f78490007d91ff57c4" target="_blank" rel="noopener">macbook pro M3 16 inch 2024</a>&rdquo; by <a href="https://sketchfab.com/jackbaeten" target="_blank" rel="noopener">jackbaeten</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>, modified.</p>
             </div>
           </div>
-          <div class="fpi-animation-wrap">
-            <canvas id="fpiCanvas" width="500" height="400"></canvas>
-          </div>
         </div>
+        <!-- Filled from the captions by js/tech-film.js -->
+        <ol class="tech-film__steps" aria-label="Steps in the animation"></ol>
       </div>
     </section>
 
@@ -447,7 +476,7 @@
   </footer>
 
   <script src="js/main.js?v=20261030-support"></script>
-  <script src="js/fpi-animation.js"></script>
+  <script src="js/tech-film.js?v=20261109-ending"></script>
 
   <!-- Sticky CTA Bar -->
   <div class="sticky-cta" id="stickyCta">

@@ -46,7 +46,7 @@ The repository is connected to Cloudflare Pages, which builds and deploys automa
 │
 ├── js/
 │   ├── main.js                 # Shared JS (mobile nav, scroll animations, counters)
-│   ├── fpi-animation.js        # Fabry-Perot interferometry animation (product page)
+│   ├── tech-film.js            # Technology film (opens on the system loop, goes into the box), synced steps (product page)
 │   └── thickness-map.js        # Interactive thickness map demo
 │
 └── assets/
