@@ -2466,10 +2466,16 @@ h1, h2, h3, h4, h5, h6 {
   background: #000;
 }
 
+/* Full width where the window is tall enough; otherwise as wide as lets the whole picture,
+   the step row under it and the fixed menu bar (72px) fit on screen. The film's black
+   background matches the section, so the space at the sides doesn't show. */
 .tech-film__frame {
   position: relative;
   aspect-ratio: 16 / 10;
   container-type: inline-size;
+  max-width: calc((100vh - 140px) * 1.6);
+  max-width: calc((100svh - 140px) * 1.6);
+  margin-inline: auto;
 }
 
 .tech-film__video {
@@ -2477,8 +2483,12 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   background: #000;
-  -webkit-mask-image: linear-gradient(#000 96%, transparent);
-  mask-image: linear-gradient(#000 96%, transparent);
+  /* Soft bottom edge, and soft sides so shots running off the frame fade into the black
+     when the film is narrower than the window */
+  -webkit-mask-image: linear-gradient(#000 96%, transparent), linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(#000 96%, transparent), linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-composite: intersect;
 }
 
 /* Desktop ending: the idle loop and the return to the opening sit over the film,
@@ -2695,11 +2705,14 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .tech-film__frame {
     aspect-ratio: 4 / 5;
+    /* The step row wraps to two lines here */
+    max-width: calc((100vh - 180px) * 0.8);
+    max-width: calc((100svh - 180px) * 0.8);
   }
 
   .tech-film__video {
-    -webkit-mask-image: linear-gradient(#000 88%, transparent);
-    mask-image: linear-gradient(#000 88%, transparent);
+    -webkit-mask-image: linear-gradient(#000 88%, transparent), linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(#000 88%, transparent), linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
   }
 
   /* Mobile cut: a band across the top, and across the bottom for the sound-wave shot */
