@@ -84,5 +84,4 @@
   .doc-card__cover { width: 76px; }
   .doc-card h2 { font-size: 22px; }
   .doc-card__actions .btn { min-width: 120px; }
-  .product-actions--documents { grid-template-columns: 1fr; }
 }

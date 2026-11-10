@@ -19,8 +19,26 @@
     return { el: el };
   });
 
+  // The first playable <source> for this cut. Picked here rather than left to the browser:
+  // WebKit can test a <source media> query against the wrong width while the page loads,
+  // and then plays the desktop cut on a phone
+  function sourceFor(clip) {
+    var sources = clip.querySelectorAll('source');
+    for (var i = 0; i < sources.length; i++) {
+      var media = sources[i].getAttribute('media');
+      if (media && !window.matchMedia(media).matches) continue;
+      if (sources[i].type && !clip.canPlayType(sources[i].type)) continue;
+      return sources[i].getAttribute('src');
+    }
+  }
+
   function useCut() {
     cut = phone.matches ? 'mobile' : 'desktop';
+    // Setting src restarts loading, and preload="none" still holds until the film is near
+    clips.forEach(function (clip) {
+      var src = sourceFor(clip);
+      if (src) clip.src = src;
+    });
     captions.forEach(function (caption) {
       var times = caption.el.getAttribute('data-' + cut).split(' ').map(parseFloat);
       caption.start = times[0];
@@ -239,7 +257,6 @@
     var resume = !current().paused;
     showFilm();
     useCut();
-    clips.forEach(function (clip) { clip.load(); });
     if (hasEnding() && !started) {
       opening();
       if (resume) play();
