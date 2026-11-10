@@ -21,12 +21,13 @@
   <link rel="canonical" href="https://ultracoustics.ca/broadsonic.html">
 
   <!-- Preload LCP hero image for faster first paint -->
-  <link rel="preload" as="image" href="assets/images/Product/Transparent/BROADSONIC_Box_Dual_SCAPC-1280.webp" type="image/webp" imagesrcset="assets/images/Product/Transparent/BROADSONIC_Box_Dual_SCAPC-640.webp 640w, assets/images/Product/Transparent/BROADSONIC_Box_Dual_SCAPC-1280.webp 1280w" imagesizes="(max-width: 1024px) calc(100vw - 48px), (max-width: 1248px) calc(50vw - 54px), 570px" fetchpriority="high">
+  <link rel="preload" as="image" media="(max-width: 1024px)" href="assets/images/Product/BROADSONIC_Box_Probe_Render-wide-800.webp" type="image/webp" imagesrcset="assets/images/Product/BROADSONIC_Box_Probe_Render-wide-800.webp 800w, assets/images/Product/BROADSONIC_Box_Probe_Render-wide-1600.webp 1600w" imagesizes="calc(100vw - 48px)" fetchpriority="high">
+  <link rel="preload" as="image" media="(min-width: 1025px)" href="assets/images/Product/BROADSONIC_Box_Probe_Render-1280.webp" type="image/webp" imagesrcset="assets/images/Product/BROADSONIC_Box_Probe_Render-640.webp 640w, assets/images/Product/BROADSONIC_Box_Probe_Render-1280.webp 1280w, assets/images/Product/BROADSONIC_Box_Probe_Render-2400.webp 2400w" imagesizes="(max-width: 1200px) calc(50vw - 60px), (max-width: 1363px) 540px, (max-width: 2182px) calc(44vw - 60px), 900px" fetchpriority="high">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261110-phone">
+  <link rel="stylesheet" href="css/style.css?v=20261110-herobig2">
 
   <link rel="stylesheet" href="css/documentation.css?v=20261110-phone">
 
@@ -108,39 +109,35 @@
 
   <main>
     <!-- ====== Hero ====== -->
-    <section class="hero hero--short hero--dark">
+    <section class="hero hero--dark hero--product">
       <div class="hero__mesh"></div>
       <div class="hero__bg-glow"></div>
       <div class="container hero__content">
         <div class="hero__grid">
           <div class="product-hero-img">
             <picture>
-              <source srcset="assets/images/Product/Transparent/BROADSONIC_Box_Dual_SCAPC-640.webp 640w, assets/images/Product/Transparent/BROADSONIC_Box_Dual_SCAPC-1280.webp 1280w" sizes="(max-width: 1024px) calc(100vw - 48px), (max-width: 1248px) calc(50vw - 54px), 570px" type="image/webp">
-              <img src="assets/images/Product/Transparent/BROADSONIC_Box_Dual_SCAPC.png" alt="BROADSONIC control unit with two vertically stacked green SC/APC fiber ports" width="1469" height="1071" fetchpriority="high" decoding="async">
+              <!-- One column below 1025 px: a wider crop of the same render, so it isn't framed by tall black bands -->
+              <source media="(max-width: 1024px)" srcset="assets/images/Product/BROADSONIC_Box_Probe_Render-wide-800.webp 800w, assets/images/Product/BROADSONIC_Box_Probe_Render-wide-1600.webp 1600w" sizes="calc(100vw - 48px)" width="1600" height="1042" type="image/webp">
+              <source srcset="assets/images/Product/BROADSONIC_Box_Probe_Render-640.webp 640w, assets/images/Product/BROADSONIC_Box_Probe_Render-1280.webp 1280w, assets/images/Product/BROADSONIC_Box_Probe_Render-2400.webp 2400w" sizes="(max-width: 1200px) calc(50vw - 60px), (max-width: 1363px) 540px, (max-width: 2182px) calc(44vw - 60px), 900px" width="1280" height="1097" type="image/webp">
+              <img src="assets/images/Product/BROADSONIC_Box_Probe_Render.jpg" alt="BROADSONIC control unit with its fiber-optic probe on a stand; the probe cable is coiled around the unit and plugged into its two green SC/APC ports" width="1400" height="1200" fetchpriority="high" decoding="async">
             </picture>
           </div>
-          <div style="padding-bottom: 48px;">
+          <div class="product-hero__copy">
             <h1 class="hero__title">BROADSONIC</h1>
-            <p class="hero__subtitle">Optical Ultrasonic Sensor</p>
-            <div class="stat" style="margin: 24px 0;">
-              <span class="stat__number" data-counter="250">250</span>
-              <span class="stat__suffix">x</span>
-            </div>
-            <p class="stat__label">the frequency range of human hearing (5 MHz vs. 20 kHz)</p>
-            <div class="product-actions product-actions--documents" style="margin-top: 32px;">
-              <a href="contact.html" class="btn btn--primary btn--lg">Get a Quote</a>
-              <a href="assets/docs/UltracousticsBroadsonicDatasheet.pdf" download="BROADSONIC_Datasheet.pdf" class="btn btn--secondary btn--lg"><span><span class="btn__verb">Download<br></span>Datasheet</span></a>
-              <a href="assets/docs/BROADSONIC_Quick_Start_Guide.pdf?v=2.0.0-20261030-support" download="BROADSONIC_Quick_Start_Guide_v2.0.0.pdf" class="btn btn--secondary btn--lg"><span><span class="btn__verb">Download<br></span>Quick Start Guide</span></a>
-              <a href="assets/docs/BROADSONIC_User_Manual.pdf?v=2.0.0-20261030-support" download="BROADSONIC_User_Manual_Rev3_v2.0.0.pdf" class="btn btn--secondary btn--lg"><span><span class="btn__verb">Download<br></span>User Manual</span></a>
+            <p class="hero__subtitle product-hero__sub">Optical Ultrasonic Sensor<span class="sr-only">, </span><span class="product-hero__spec"><span class="product-hero__spec-value">5&#8239;MHz</span> bandwidth</span></p>
+            <div class="product-hero__actions">
+              <a href="contact.html" class="btn btn--primary">Get a Quote</a>
+              <a href="assets/docs/UltracousticsBroadsonicDatasheet.pdf" download="BROADSONIC_Datasheet.pdf" class="btn btn--secondary"><svg class="product-hero__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1.75v8m0 0L4.75 6.5M8 9.75l3.25-3.25M2.5 11v2.75h11V11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><span class="btn__verb">Download </span>Datasheet</span></a>
             </div>
           </div>
         </div>
       </div>
+      <a class="product-hero__more" href="#how-it-works">See how it works<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </section>
     <div class="hero-divider"></div>
 
     <!-- ====== How It Works ====== -->
-    <section class="section tech-film" aria-labelledby="techTitle">
+    <section class="section tech-film" id="how-it-works" aria-labelledby="techTitle">
       <h2 class="sr-only" id="techTitle">How BROADSONIC works</h2>
       <div class="tech-film__stage fade-in">
         <div class="tech-film__frame">

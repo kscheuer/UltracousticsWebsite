@@ -1733,6 +1733,171 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
 }
 
+/* --- Product page hero: fills the window; the render and the copy sit centred in it, with
+   "See how it works" at the bottom edge. Taller content still grows the section. --- */
+.hero.hero--product {
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(var(--nav-height) + 48px) 0 20px;
+}
+
+.hero--product .hero__content {
+  margin-block: auto;
+}
+
+/* Big screens: the content widens past the 1200 px page width (to 88% of the window, at most
+   1920 px), but never so far that the 1.17:1 render would be taller than the window can show */
+@media (min-width: 1025px) {
+  .hero--product .product-hero-img {
+    max-width: none;
+  }
+
+  .hero--product .hero__content.container {
+    max-width: 1200px;
+    max-width: max(1200px, min(88vw, 1920px, calc((100vh - 300px) * 2.34 + 120px)));
+    max-width: max(1200px, min(88vw, 1920px, calc((100svh - 300px) * 2.34 + 120px)));
+  }
+}
+
+@media (min-width: 1600px) {
+  .hero--product .hero__title {
+    font-size: clamp(56px, 3.5vw, 80px);
+  }
+
+  .hero--product .hero__subtitle {
+    font-size: clamp(20px, 1.2vw, 26px);
+  }
+
+  .product-hero__actions .btn {
+    min-width: 184px;
+    padding: 15px 32px;
+    font-size: 16px;
+  }
+}
+
+.hero--product .hero__grid {
+  align-items: center;
+  gap: 72px;
+}
+
+.hero--product .hero__title {
+  margin-bottom: 14px;
+}
+
+/* One quiet line under the name: what it is, then the headline spec in white */
+.hero--product .product-hero__sub {
+  margin-bottom: 36px;
+}
+
+.product-hero__spec {
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 1px solid #3a3a3a;
+}
+
+.product-hero__spec-value {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.product-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.product-hero__actions .btn {
+  min-width: 168px;
+  justify-content: center;
+}
+
+.product-hero__icon {
+  flex-shrink: 0;
+}
+
+/* A quiet pointer at the foot of the hero, down to the Technology film */
+.product-hero__more {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 40px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.product-hero__more:hover {
+  color: var(--text-primary);
+}
+
+/* Where the link lands: on phones the film section's padding is less than the fixed nav is tall */
+.tech-film {
+  scroll-margin-top: 24px;
+}
+
+.product-hero__more svg {
+  animation: product-hero-nudge 2.4s ease-in-out infinite;
+}
+
+@keyframes product-hero-nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-hero__more svg {
+    animation: none;
+  }
+}
+
+/* One column: the render stacks above the copy */
+@media (max-width: 1024px) {
+  .hero.hero--product {
+    padding: calc(var(--nav-height) + 32px) 0 12px;
+  }
+
+  .hero--product .hero__grid {
+    gap: 32px;
+  }
+
+  .product-hero__more {
+    margin-top: 32px;
+  }
+}
+
+/* Phones: the two buttons share a row */
+@media (max-width: 600px) {
+  /* The spec drops to its own line rather than wrapping mid-phrase */
+  .product-hero__spec {
+    display: block;
+    margin: 4px 0 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .hero--product .product-hero__sub {
+    margin-bottom: 28px;
+  }
+
+  .product-hero__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .product-hero__actions .btn {
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+}
+
 /* --- Seamless Video Stage Homepage Hero --- */
 .hero--video-stage {
   background: #000;
