@@ -1836,11 +1836,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-/* Where the link lands: on phones the film section's padding is less than the fixed nav is tall */
-.tech-film {
-  scroll-margin-top: 24px;
-}
-
 .product-hero__more svg {
   animation: product-hero-nudge 2.4s ease-in-out infinite;
 }
@@ -2266,49 +2261,121 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* --- Spectrum Visualizer --- */
-.spectrum-section {
-  position: relative;
-  overflow: hidden;
+/* --- Bandwidth explorer (product page): styled after the Technology film above it --- */
+/* The section and its frame are laid out by the Technology film's rules, which it shares */
+
+/* The text over the chart scales with the frame's height as well as its width, so a short
+   window keeps room for the chart; --bw-h is the frame's height, set by js/spectrum-explorer.js */
+.bw-film__frame .tech-cap__line {
+  font-size: clamp(15px, min(1.9cqw, var(--bw-h, 700px) * 0.033), 28px);
 }
 
-.spectrum-canvas-wrap {
-  position: relative;
+/* Bottom left here: the page's back-to-top button floats over the bottom right */
+.tech-film__controls.bw-film__controls-left {
+  right: auto;
+  left: 16px;
+}
+
+.bw-film__controls-left .tech-film__info {
+  right: auto;
+  left: 0;
+}
+
+.bw-film__frame canvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: 100%;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--border-subtle);
-  background: #0a0a0a;
+  height: 100%;
+  touch-action: pan-y;
+  cursor: crosshair;
 }
 
-.spectrum-canvas-wrap canvas {
-  display: block;
-  width: 100%;
-  height: 340px;
-}
-
-.spectrum-labels {
+/* Headline and caption sit over the top of the picture, which the curves leave empty */
+.bw-film__text {
+  position: absolute;
+  left: 3.5%;
+  right: 3.5%;
+  top: 6%;
   display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6%;
+  pointer-events: none;
 }
 
-.spectrum-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.bw-film__headline {
+  font-size: 22px;
+  font-size: clamp(18px, min(2.6cqw, var(--bw-h, 700px) * 0.046), 40px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.bw-film__cap {
+  width: 36%;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+.bw-film__cap.is-changing {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.bw-film__link {
+  display: inline-block;
+  margin-top: 10px;
   font-size: 13px;
   font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  pointer-events: auto;
 }
 
-.spectrum-label__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
-  flex-shrink: 0;
+.bw-film__link[hidden] {
+  display: none;
+}
+
+.bw-film__link:hover {
+  color: var(--text-primary);
+}
+
+.bw-film__mic[aria-pressed="true"] {
+  border-color: var(--accent);
+}
+
+.bw--failed {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .tech-film__controls.bw-film__controls-left {
+    left: 10px;
+  }
+
+  .bw-film__text {
+    left: 6%;
+    right: 6%;
+    top: 4%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .bw-film__headline {
+    font-size: clamp(18px, 5.6cqw, 24px);
+  }
+
+  .bw-film__cap {
+    width: auto;
+  }
+
+  .bw-film__cap .tech-cap__line {
+    font-size: clamp(14px, 4.2cqw, 17px);
+  }
+
+  .bw-film__link {
+    margin-top: 6px;
+  }
 }
 
 /* --- Waveform Background Section --- */
@@ -2402,14 +2469,6 @@ h1, h2, h3, h4, h5, h6 {
 
   .sticky-cta__text {
     font-size: 14px;
-  }
-
-  .spectrum-canvas-wrap canvas {
-    height: 240px;
-  }
-
-  .spectrum-labels {
-    gap: 16px;
   }
 
   .nav__links {
@@ -2680,19 +2739,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --- Technology Film (product page) --- */
-.tech-film {
+/* The film and the bandwidth chart under it are laid out alike, and like the hero above them:
+   each fills the window, with its picture and row of names centred in it and a quiet link to
+   the next section at the foot. The nav's height is kept clear at the top, so each lands with
+   its top edge at the top of the window. */
+.tech-film,
+.bw-film {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(var(--nav-height) + 8px) 0 20px;
   background: #000;
 }
 
-/* Full width where the window is tall enough; otherwise as wide as lets the whole picture,
-   the step row under it and the fixed menu bar (72px) fit on screen. The film's black
+.tech-film__stage,
+.bw-film__stage {
+  width: 100%;
+  margin-block: auto;
+}
+
+/* Full width where the window is tall enough; otherwise as wide as lets the whole picture, the
+   step row, the link under it and the fixed menu bar fit on screen (216px in all). The black
    background matches the section, so the space at the sides doesn't show. */
 .tech-film__frame {
   position: relative;
   aspect-ratio: 16 / 10;
   container-type: inline-size;
-  max-width: calc((100vh - 140px) * 1.6);
-  max-width: calc((100svh - 140px) * 1.6);
+  max-width: calc((100vh - 216px) * 1.6);
+  max-width: calc((100svh - 216px) * 1.6);
   margin-inline: auto;
 }
 
@@ -2883,6 +2958,23 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent);
 }
 
+/* The same quiet pointer as the foot of the hero, at the foot of these two sections */
+.tech-film__more {
+  align-self: center;
+  margin-top: 8px;
+}
+
+@media (max-width: 1024px) {
+  .tech-film,
+  .bw-film {
+    padding-bottom: 12px;
+  }
+
+  .tech-film__more {
+    margin-top: 8px;
+  }
+}
+
 /* A quiet row naming the five steps; the current one lights up */
 .tech-film__steps {
   list-style: none;
@@ -2924,8 +3016,8 @@ h1, h2, h3, h4, h5, h6 {
   .tech-film__frame {
     aspect-ratio: 4 / 5;
     /* The step row wraps to two lines here */
-    max-width: calc((100vh - 180px) * 0.8);
-    max-width: calc((100svh - 180px) * 0.8);
+    max-width: calc((100vh - 232px) * 0.8);
+    max-width: calc((100svh - 232px) * 0.8);
   }
 
   .tech-film__video {
@@ -3057,12 +3149,6 @@ h1, h2, h3, h4, h5, h6 {
     animation: slideFromRight linear both;
     animation-timeline: view();
     animation-range: entry 0% entry 60%;
-  }
-
-  .spectrum-canvas-wrap {
-    animation: scaleIn linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 70%;
   }
 
   .software-hero__img {

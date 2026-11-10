@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261110-herocoil">
+  <link rel="stylesheet" href="css/style.css?v=20261110-threesections">
 
   <link rel="stylesheet" href="css/documentation.css?v=20261110-phone">
 
@@ -134,7 +134,7 @@
     <div class="hero-divider"></div>
 
     <!-- ====== How It Works ====== -->
-    <section class="section tech-film" id="how-it-works" aria-labelledby="techTitle">
+    <section class="tech-film" id="how-it-works" aria-labelledby="techTitle">
       <h2 class="sr-only" id="techTitle">How BROADSONIC works</h2>
       <div class="tech-film__stage fade-in">
         <div class="tech-film__frame">
@@ -201,38 +201,44 @@
         <!-- Filled from the captions by js/tech-film.js -->
         <ol class="tech-film__steps" aria-label="Steps in the animation"></ol>
       </div>
+      <a class="product-hero__more tech-film__more" href="#what-it-hears">See what it hears<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </section>
 
-    <!-- ====== Frequency Spectrum Visualizer ====== -->
-    <section class="section spectrum-section" style="background: var(--bg-secondary);">
-      <div class="container">
-        <div class="section-header section-header--centered fade-in">
-          <p class="section-header__label">Bandwidth Advantage</p>
-          <h2 class="section-header__title">See the Frequency Spectrum</h2>
-          <p class="section-header__desc">BROADSONIC covers a frequency range that no other air-coupled sensor can reach.</p>
-        </div>
-        <div class="spectrum-canvas-wrap fade-in">
-          <canvas id="spectrumCanvas"></canvas>
-        </div>
-        <div class="spectrum-labels fade-in">
-          <div class="spectrum-label">
-            <span class="spectrum-label__dot" style="background: #4ade80;"></span>
-            <span style="color: var(--text-secondary);">Human Hearing (20 Hz &ndash; 20 kHz)</span>
+    <!-- ====== Bandwidth Explorer ====== -->
+    <!-- Follows the Technology film above it: black, no card, text set over the picture,
+         a quiet row of names underneath and round controls in the corners. The section
+         is laid out by the film's rules, so the two match. -->
+    <section class="bw-film" id="what-it-hears" aria-labelledby="bwTitle">
+      <h2 class="sr-only" id="bwTitle">What a 4.5 MHz bandwidth records</h2>
+      <div class="bw-film__stage fade-in" id="bandwidthExplorer">
+        <div class="tech-film__frame bw-film__frame">
+          <canvas role="img" aria-label="Measured spectra from 0 to 4.5 MHz"></canvas>
+          <div class="bw-film__text">
+            <p class="bw-film__headline">Hear what other<br> microphones miss.</p>
+            <div class="bw-film__cap" aria-live="polite">
+              <p class="tech-cap__line" data-bw="caption"></p>
+              <a class="bw-film__link" data-bw="link" href="#"></a>
+            </div>
           </div>
-          <div class="spectrum-label">
-            <span class="spectrum-label__dot" style="background: #f59e0b;"></span>
-            <span style="color: var(--text-secondary);">Conventional Ultrasonic Mic (&le; 100 kHz)</span>
-          </div>
-          <div class="spectrum-label">
-            <span class="spectrum-label__dot" style="background: var(--accent);"></span>
-            <span style="color: var(--text-primary); font-weight: 600;">BROADSONIC (5 MHz)</span>
+          <div class="tech-film__controls bw-film__controls-left">
+            <button type="button" class="tech-film__button bw-film__mic" aria-pressed="false">Conventional microphone</button>
+            <button type="button" class="tech-film__button tech-film__info-toggle" aria-expanded="false" aria-controls="bwInfo" aria-label="About these measurements">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.3 7h1.4v4.5H7.3zM8 4.2a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z" fill="currentColor"/></svg>
+            </button>
+            <div class="tech-film__info" id="bwInfo" hidden>
+              <p>Real BROADSONIC measurements, shown as signal above background.</p>
+              <p>Where each curve ends is set by distance, not by the sensor. Air absorbs high frequencies quickly, so a closer measurement shows more of the band, up to 4.5&nbsp;MHz.</p>
+            </div>
           </div>
         </div>
+        <!-- Filled from the data by js/spectrum-explorer.js -->
+        <ol class="tech-film__steps" aria-label="Measured sound sources"></ol>
       </div>
+      <a class="product-hero__more tech-film__more" href="#specifications">See the specifications<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </section>
 
     <!-- ====== Technical Specifications ====== -->
-    <section class="section">
+    <section class="section" id="specifications">
       <div class="container">
         <div class="section-header fade-in">
           <h2 class="section-header__title">Technical Specifications</h2>
@@ -471,6 +477,7 @@
 
   <script src="js/main.js?v=20261030-support"></script>
   <script src="js/tech-film.js?v=20261110-src"></script>
+  <script src="js/spectrum-explorer.js?v=20261110-window2"></script>
 
   <!-- Sticky CTA Bar -->
   <div class="sticky-cta" id="stickyCta">
