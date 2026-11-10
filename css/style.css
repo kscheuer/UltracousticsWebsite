@@ -1747,7 +1747,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Big screens: the content widens past the 1200 px page width (to 88% of the window, at most
-   1920 px), but never so far that the 1.17:1 render would be taller than the window can show */
+   1920 px), but never so far that the 1.6:1 render would be taller than the window can show */
 @media (min-width: 1025px) {
   .hero--product .product-hero-img {
     max-width: none;
@@ -1755,8 +1755,8 @@ h1, h2, h3, h4, h5, h6 {
 
   .hero--product .hero__content.container {
     max-width: 1200px;
-    max-width: max(1200px, min(88vw, 1920px, calc((100vh - 300px) * 2.34 + 120px)));
-    max-width: max(1200px, min(88vw, 1920px, calc((100svh - 300px) * 2.34 + 120px)));
+    max-width: max(1200px, min(88vw, 1920px, calc((100vh - 300px) * 3.2 + 120px)));
+    max-width: max(1200px, min(88vw, 1920px, calc((100svh - 300px) * 3.2 + 120px)));
   }
 }
 
