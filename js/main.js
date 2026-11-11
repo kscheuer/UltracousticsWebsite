@@ -211,10 +211,28 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- Reduced Motion Check ---
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // --- Hero film (Homepage): pick the cut here rather than leave it to the browser. WebKit can
+  // test a <source media> query against the wrong width while the page loads, and then plays the
+  // desktop cut on a phone. Only a wrong pick is replaced, so the right one keeps loading. ---
+  var heroFilm = document.querySelector('.hero--video-stage video');
+  if (heroFilm) {
+    var heroSources = heroFilm.querySelectorAll('source');
+    for (var h = 0; h < heroSources.length; h++) {
+      var heroMedia = heroSources[h].getAttribute('media');
+      if (heroMedia && !window.matchMedia(heroMedia).matches) continue;
+      if (heroSources[h].type && !heroFilm.canPlayType(heroSources[h].type)) continue;
+      var heroPick = heroSources[h].getAttribute('src');
+      if (heroFilm.currentSrc.slice(-heroPick.length) !== heroPick) heroFilm.src = heroPick;
+      break;
+    }
+  }
+
   // --- Typing Ticker (Homepage) ---
   var tickerEl = document.getElementById('heroTicker');
   if (tickerEl && !prefersReducedMotion) {
+    var tickerSlot = tickerEl.parentNode;
     var tickerWords = ['Transducer Characterization', 'Leak Detection', 'Ultrasonic Cleaning', 'Non-Destructive Testing', 'Partial Discharge', 'Research'];
+    var tickerWidths = [];
     var wordIndex = 0;
     var charIndex = tickerWords[0].length;
     var isDeleting = true;
@@ -229,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (charIndex === 0) {
           isDeleting = false;
           wordIndex = (wordIndex + 1) % tickerWords.length;
+          tickerSlot.style.width = tickerWidths[wordIndex] + 'px';
           setTimeout(tickerType, 300);
           return;
         }
@@ -244,7 +263,16 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(tickerType, typeSpeed);
       }
     }
-    setTimeout(tickerType, pauseTime);
+    // Reserve each phrase's width so the line holds still and the finished phrase lands centred
+    document.fonts.ready.then(function () {
+      tickerWidths = tickerWords.map(function (word) {
+        tickerEl.textContent = word;
+        return tickerEl.getBoundingClientRect().width;
+      });
+      tickerEl.textContent = tickerWords[0];
+      tickerSlot.style.width = tickerWidths[0] + 'px';
+      setTimeout(tickerType, pauseTime);
+    });
   }
 
   // --- Contact Form Feedback ---

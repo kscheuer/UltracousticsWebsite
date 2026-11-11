@@ -57,6 +57,115 @@
     ]
   }
   </script>
+<style>
+  /* Homepage hero: product first. One window tall and black; the film takes all the room above
+     a caption along the bottom edge (headline and typed line on the left, actions on the right). */
+  .hero.home-hero {
+    --caption-room: 150px;   /* height kept clear at the foot for the caption */
+    display: block;
+    height: 100vh;
+    height: 100svh;
+    min-height: 540px;
+    padding: 0;
+    background: #000;
+    isolation: isolate;
+  }
+  /* A soft floor under the caption, for when the close-up passes behind it */
+  .hero.home-hero::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    inset: auto 0 0;
+    height: calc(var(--caption-room) + 60px);
+    background: linear-gradient(0deg, rgba(0, 0, 0, .82), rgba(0, 0, 0, .5) 55%, transparent);
+    pointer-events: none;
+  }
+  /* The film is centred in the space between the nav and the caption, as large as fits. Its top
+     and bottom edges are empty black, so it may run 8% past that space. */
+  .home-hero__stage {
+    position: absolute;
+    z-index: 0;
+    inset: var(--nav-height) 0 var(--caption-room);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    container-type: size;
+    pointer-events: none;
+  }
+  .home-hero__stage video {
+    display: block;
+    flex: none;
+    width: min(100cqw, 238cqh);
+    aspect-ratio: 1920 / 872;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  }
+  .home-hero__caption {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: clamp(22px, 4.5vh, 52px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    padding-inline: clamp(24px, 5vw, 96px);
+  }
+  .home-hero__title {
+    margin: 0;
+    font-size: clamp(34px, 4.4vw, 76px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.03;
+    color: #fff;
+    text-shadow: 0 0 24px #000, 0 0 48px #000;
+  }
+  .home-hero__sub {
+    margin: 0.6em 0 0;
+    font-size: clamp(16px, 1.45vw, 22px);
+    line-height: 1.4;
+    color: var(--text-secondary);
+    text-shadow: 0 0 8px #000, 0 0 18px #000;
+  }
+  /* The typed application, in white; each phrase's width is reserved by js/main.js */
+  .home-hero__for { white-space: nowrap; }
+  .home-hero .hero__ticker { display: inline-block; text-align: left; white-space: nowrap; vertical-align: bottom; transition: width .3s ease; }
+  .home-hero .hero__ticker-word { color: #fff; font-weight: 500; text-transform: lowercase; border-right-color: rgba(255, 255, 255, .7); }
+  .home-hero__actions { display: flex; align-items: center; gap: 12px 28px; margin-bottom: 4px; }
+  .home-hero__cta,
+  .home-hero__link { white-space: nowrap; font-size: 16px; }
+  .home-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #000;
+    font-weight: 600;
+    transition: background var(--transition), transform var(--transition);
+  }
+  .home-hero__cta:hover { background: var(--accent-hover); color: #000; transform: translateY(-1px); }
+  .home-hero__link { color: #fff; font-weight: 500; text-shadow: 0 0 8px #000, 0 0 18px #000; }
+  .home-hero__link::after { content: ' \203A'; }
+  .home-hero__link:hover { color: var(--accent); }
+  /* Narrower windows: the actions drop under the lines */
+  @media (max-width: 1100px) {
+    .hero.home-hero { --caption-room: 210px; }
+    .home-hero__caption { display: block; }
+    .home-hero__actions { margin: 20px 0 0; flex-wrap: wrap; }
+  }
+  @media (max-width: 768px) {
+    .hero.home-hero { --caption-room: 240px; }
+    .home-hero__actions { gap: 12px 18px; }
+    .home-hero__stage video { width: min(100cqw, 116cqh); aspect-ratio: 944 / 874; }
+    .home-hero__title { font-size: clamp(34px, 10vw, 52px); }
+    .home-hero__for { display: block; }
+    .home-hero__caption { bottom: clamp(18px, 4svh, 40px); }
+    .home-hero__cta, .home-hero__link { font-size: 15px; }
+    .home-hero__cta { padding: 13px 24px; }
+  }
+</style>
 </head>
 <body>
 
@@ -112,22 +221,23 @@
 
   <main>
     <!-- ====== Hero ====== -->
-    <section class="hero hero--video-stage">
-      <div class="product-hero-img product-hero-img--orbit hero__video-bg">
-        <video autoplay loop muted playsinline preload="auto" aria-label="BROADSONIC optical ultrasonic sensor orbit animation">
-          <source src="assets/Videos/orbit-1080.av1.mp4" type='video/mp4; codecs="av01"'>
-          <source src="assets/Videos/orbit-1080.h264.mp4" type="video/mp4">
+    <section class="hero hero--video-stage home-hero">
+      <div class="home-hero__stage">
+        <video autoplay muted playsinline preload="auto" aria-label="Animation: the camera circles the BROADSONIC control unit and probe, and the sensor lights up">
+          <source src="assets/Videos/hero-ignition-mobile.av1.mp4" media="(max-width: 768px)" type='video/mp4; codecs="av01.0.05M.08"'>
+          <source src="assets/Videos/hero-ignition-mobile.h264.mp4" media="(max-width: 768px)" type="video/mp4">
+          <source src="assets/Videos/hero-ignition-desktop.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+          <source src="assets/Videos/hero-ignition-desktop.h264.mp4" type="video/mp4">
         </video>
       </div>
-      <div class="container hero__content">
-        <div class="hero__stage-copy">
-          <p class="hero__label">Optical Ultrasonic Sensor</p>
-          <h1 class="hero__title">Hear What Other Sensors <span class="text-gradient">Can&rsquo;t</span></h1>
-          <p class="hero__subtitle">Non-Contact. Unparalleled Bandwidth. Ultra-Sensitive.</p>
-          <p class="hero__desc hero__stage-ticker">For <span class="hero__ticker"><span class="hero__ticker-word" id="heroTicker">Transducer Characterization</span></span></p>
-          <div class="hero__actions">
-            <a href="broadsonic.html" class="btn btn--primary btn--lg">Explore BROADSONIC</a>
-          </div>
+      <div class="home-hero__caption">
+        <div>
+          <h1 class="home-hero__title">Hear what other sensors can&rsquo;t.</h1>
+          <p class="home-hero__sub">The optical ultrasonic sensor <span class="home-hero__for">for <span class="hero__ticker"><span class="hero__ticker-word" id="heroTicker">Transducer Characterization</span></span></span></p>
+        </div>
+        <div class="home-hero__actions">
+          <a href="broadsonic.html" class="home-hero__cta">Explore BROADSONIC</a>
+          <a href="contact.html" class="home-hero__link">Get a quote</a>
         </div>
       </div>
     </section>
@@ -399,7 +509,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20261030-support"></script>
+  <script src="js/main.js?v=20261111-herosrc"></script>
 
   <!-- Back to Top -->
   <button class="back-to-top" id="backToTop" aria-label="Back to top">
