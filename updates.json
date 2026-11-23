@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "gui": {
+    "macos": {
+      "version": "3.0.0"
+    },
+    "windows": {
+      "version": "3.0.0"
+    }
+  },
+  "sdk": {
+    "version": "2.0.0"
+  },
+  "firmware": {
+    "main": [
+      {
+        "version": "0e503ca",
+        "from": []
+      },
+      {
+        "version": "9514d0a"
+      }
+    ],
+    "1550": [
+      {
+        "version": "9387b0f"
+      }
+    ],
+    "638": [
+      {
+        "version": "8135918"
+      },
+      {
+        "version": "a608f8c"
+      },
+      {
+        "version": "76c58c8"
+      }
+    ]
+  }
+}
